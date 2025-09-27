@@ -30,5 +30,5 @@ variable "global_tags" {
 }
 
 variable "c3finops_key_name" {
-  default = "c3ops_preprod_keypair"
+  default = "c3ops-preprod-keypair"
 }

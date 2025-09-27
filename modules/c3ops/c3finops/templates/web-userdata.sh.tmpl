@@ -1,0 +1,61 @@
+#!/bin/bash
+set -euxo pipefail
+
+REGION="${region}"
+UI_BUCKET="${ui_bucket}"
+UI_KEY="${ui_key}"            # e.g., builds/ui/dist.zip (or .tar.gz)
+DOC_ROOT="/var/www/html"
+
+# System prep
+dnf -y update
+dnf -y install httpd unzip || true
+dnf -y install awscli2 || dnf -y install awscli || true
+
+# Enable & start httpd
+systemctl enable httpd
+systemctl start httpd
+
+# Fetch and deploy UI artifact from S3
+mkdir -p /tmp/ui
+aws s3 cp "s3://${UI_BUCKET}/${UI_KEY}" /tmp/ui/artifact --region "${REGION}"
+
+mkdir -p "${DOC_ROOT}"
+if file /tmp/ui/artifact | grep -qi 'zip'; then
+  unzip -o /tmp/ui/artifact -d "${DOC_ROOT}"
+elif file /tmp/ui/artifact | grep -qi 'gzip\|tar'; then
+  mkdir -p /tmp/ui/unpack
+  tar -xzf /tmp/ui/artifact -C /tmp/ui/unpack
+  rsync -a /tmp/ui/unpack/ "${DOC_ROOT}/"
+else
+  # Fallback: assume plain files (index.html, assets, etc.)
+  cp -f /tmp/ui/artifact "${DOC_ROOT}/index.html" || true
+fi
+
+# Basic SPA-friendly config (optional but helpful for Angular routes)
+cat >/etc/httpd/conf.d/angular-spa.conf <<'CONF'
+<Directory "/var/www/html">
+    AllowOverride All
+    Options FollowSymLinks
+    Require all granted
+</Directory>
+
+# If using HTML5 routes, redirect unknown paths to index.html
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ /index.html [L]
+CONF
+
+# Ensure rewrite module is available (it is by default on AL2023)
+echo "LoadModule rewrite_module modules/mod_rewrite.so" >/etc/httpd/conf.modules.d/00-rewrite.conf || true
+
+# Permissions
+chown -R apache:apache "${DOC_ROOT}"
+restorecon -R "${DOC_ROOT}" || true  # no-op if SELinux is permissive
+
+# Harden basic HTTPD params
+sed -i 's/^#\?ServerTokens.*/ServerTokens Prod/g' /etc/httpd/conf/httpd.conf || true
+sed -i 's/^#\?ServerSignature.*/ServerSignature Off/g' /etc/httpd/conf/httpd.conf || true
+
+# Reload to pick up config
+systemctl reload httpd

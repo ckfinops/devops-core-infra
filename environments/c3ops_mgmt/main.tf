@@ -23,7 +23,7 @@ module "c3finops_dev" {
   c3finops_environment         = "dev"
   ec2_policy_for_ssm           = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
   c3finops_ssl_certificate     = "arn:aws:acm:us-east-1:225989338000:certificate/9ac2df4a-2640-4e82-8e30-21a14259b6e7"
-  c3finops_key_name            = "c3ops_preprod_keypair"
+  c3finops_key_name            = "c3ops-preprod-keypair"
   c3finops_admin_linux_sg_id   = data.terraform_remote_state.c3ops_preprod_core_infra.outputs.admin_linux_sg_id
   c3finops_admin_web_sg_id     = data.terraform_remote_state.c3ops_preprod_core_infra.outputs.admin_web_sg_id
   c3finops_web_instance_size       = "t2.micro"

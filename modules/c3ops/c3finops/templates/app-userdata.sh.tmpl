@@ -1,0 +1,70 @@
+#!/bin/bash
+set -euxo pipefail
+
+REGION="${region}"
+API_BUCKET="${api_bucket}"
+API_KEY="${api_key}"                   # e.g., builds/api/app.war
+TOMCAT_VERSION="${tomcat_version}"     # e.g., 10.1.29
+TOMCAT_USER="tomcat"
+TOMCAT_GROUP="tomcat"
+CATALINA_HOME="/opt/tomcat"
+JAVA_PKG="java-17-amazon-corretto"
+
+# System prep
+dnf -y update
+dnf -y install unzip || true
+dnf -y install awscli2 || dnf -y install awscli || true
+dnf -y install "${JAVA_PKG}"
+
+# Create tomcat user
+id -u ${TOMCAT_USER} >/dev/null 2>&1 || useradd -r -m -d "${CATALINA_HOME}" -s /sbin/nologin "${TOMCAT_USER}"
+
+# Install Tomcat
+mkdir -p "${CATALINA_HOME}"
+cd /tmp
+curl -fSL "https://dlcdn.apache.org/tomcat/tomcat-10/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz" -o tomcat.tgz
+tar -xzf tomcat.tgz
+rsync -a "apache-tomcat-${TOMCAT_VERSION}/" "${CATALINA_HOME}/"
+chown -R ${TOMCAT_USER}:${TOMCAT_GROUP} "${CATALINA_HOME}"
+
+# Optional hardening: remove default apps
+rm -rf "${CATALINA_HOME}/webapps/docs" \
+       "${CATALINA_HOME}/webapps/examples" \
+       "${CATALINA_HOME}/webapps/host-manager" \
+       "${CATALINA_HOME}/webapps/manager" || true
+
+# Systemd service
+cat >/etc/systemd/system/tomcat.service <<'UNIT'
+[Unit]
+Description=Apache Tomcat Application Server
+After=network.target
+
+[Service]
+Type=forking
+User=tomcat
+Group=tomcat
+Environment="JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto"
+Environment="CATALINA_HOME=/opt/tomcat"
+Environment="CATALINA_BASE=/opt/tomcat"
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
+Restart=on-failure
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
+UNIT
+
+systemctl daemon-reload
+systemctl enable tomcat
+
+# Deploy backend WAR from S3
+aws s3 cp "s3://${API_BUCKET}/${API_KEY}" "${CATALINA_HOME}/webapps/app.war" --region "${REGION}"
+chown ${TOMCAT_USER}:${TOMCAT_GROUP} "${CATALINA_HOME}/webapps/app.war"
+
+# Tune minimal server ports (optional)
+sed -i 's/port="8080"/port="8080"/' "${CATALINA_HOME}/conf/server.xml"
+sed -i 's/redirectPort="8443"/redirectPort="8443"/' "${CATALINA_HOME}/conf/server.xml"
+
+# Start Tomcat
+systemctl start tomcat

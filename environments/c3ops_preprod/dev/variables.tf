@@ -30,5 +30,15 @@ variable "global_tags" {
 }
 
 variable "c3finops_key_name" {
-  default = "c3ops_preprod_keypair"
+  default = "c3ops-preprod-keypair"
 }
+
+variable "hosted_zone_name" {
+  type    = string
+  default = "c3ops.in."
+}
+variable "record_name" {
+  type    = string
+  default = "c3.c3ops.in"
+
+} # e.g., "app" or "app.c3ops.in"
