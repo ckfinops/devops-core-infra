@@ -1,0 +1,5 @@
+{
+"agent": {"metrics_collection_interval": 60},
+"metrics": {"append_dimensions": {"InstanceId": "${aws:InstanceId}"}, "metrics_collected": {"Memory": {"measurement": ["% Committed Bytes In Use"]}}},
+"logs": {"logs_collected": {"files": {"collect_list": [{"file_path": "C:/Ops/logs/*.log", "log_group_name": "/c3ops/app", "log_stream_name": "{instance_id}"}]}}}
+}

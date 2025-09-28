@@ -1,0 +1,5 @@
+---
+- name: Install Temurin JDK 17
+ansible.windows.win_chocolatey:
+name: temurin17
+state: present

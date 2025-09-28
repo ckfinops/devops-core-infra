@@ -1,0 +1,11 @@
+---
+- name: Configure AL2023 web/runtime host
+  hosts: al2023
+  become: true
+  vars_files:
+    - group_vars/all.yml
+  roles:
+    - common
+    - web
+    - java
+    - metrics

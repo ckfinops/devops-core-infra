@@ -1,0 +1,21 @@
+---
+- name: Ensure Chocolatey present
+ansible.windows.win_chocolatey:
+name: chocolatey
+state: present
+
+
+- name: Install core tools
+ansible.windows.win_chocolatey:
+name:
+- awscli
+- 7zip
+- git
+state: present
+
+
+- name: Ensure SSM Agent running
+ansible.windows.win_service:
+name: AmazonSSMAgent
+start_mode: auto
+state: started

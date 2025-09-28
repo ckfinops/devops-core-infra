@@ -1,0 +1,3 @@
+app_user: appadmin
+java_heap: 256m
+cloudwatch_log_group_app: "/c3ops/app"

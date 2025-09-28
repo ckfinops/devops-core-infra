@@ -1,0 +1,16 @@
+---
+- name: Install Amazon Corretto 21
+ansible.builtin.dnf:
+name: java-21-amazon-corretto
+state: present
+
+
+- name: Create systemd unit for app (if jar present)
+ansible.builtin.template:
+src: app.service.j2
+dest: /etc/systemd/system/c3finops.service
+mode: "0644"
+notify:
+- Reload systemd
+- Restart app
+when: ansible_facts['distribution'] is defined

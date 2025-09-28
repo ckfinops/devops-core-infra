@@ -1,0 +1,20 @@
+[Unit]
+Description=C3Ops Java Service
+After=network-online.target
+Wants=network-online.target
+
+
+[Service]
+Type=simple
+User=root
+Environment=JAVA_OPTS=-Xms{{ java_heap }} -Xmx{{ java_heap }}
+ExecStart=/usr/bin/java $JAVA_OPTS -jar /opt/app/service/service.jar
+WorkingDirectory=/opt/app/service
+Restart=always
+RestartSec=5
+StandardOutput=append:/opt/app/logs/c3finops.log
+StandardError=append:/opt/app/logs/c3finops.err
+
+
+[Install]
+WantedBy=multi-user.target

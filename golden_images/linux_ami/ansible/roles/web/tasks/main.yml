@@ -1,0 +1,20 @@
+---
+- name: Install httpd
+ansible.builtin.dnf:
+name: httpd
+state: present
+
+
+- name: Deploy httpd.conf
+ansible.builtin.template:
+src: httpd.conf.j2
+dest: /etc/httpd/conf/httpd.conf
+mode: "0644"
+notify: Restart httpd
+
+
+- name: Ensure httpd enabled
+ansible.builtin.service:
+name: httpd
+state: started
+enabled: true

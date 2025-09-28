@@ -1,0 +1,23 @@
+---
+- name: Restart httpd
+ansible.builtin.service:
+name: httpd
+state: restarted
+
+
+- name: Reload systemd
+ansible.builtin.command: systemctl daemon-reload
+
+
+- name: Restart app
+ansible.builtin.service:
+name: c3finops
+state: restarted
+enabled: true
+
+
+- name: Restart cloudwatch agent
+ansible.builtin.service:
+name: amazon-cloudwatch-agent
+state: restarted
+enabled: true

@@ -1,0 +1,10 @@
+version: 0.0
+os: windows
+files:
+- source: ./
+destination: C:\Ops\deploy
+hooks:
+AfterInstall:
+- location: scripts/Deploy-App.ps1
+timeout: 1200
+runas: Administrator
