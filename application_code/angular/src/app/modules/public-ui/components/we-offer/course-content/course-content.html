@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Content Modules</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    .course-content-section {
+      padding: 60px 0;
+      background: #f8f9fa;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      color: #1c1d1f;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #4a5568;
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .course-modules {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .module {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .module:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .module-header {
+      background: linear-gradient(135deg, #5624d0 0%, #7c4dff 100%);
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .module-header h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .module-duration {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .module-content {
+      padding: 20px;
+    }
+
+    .module-content ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .module-content li {
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+      color: #4a5568;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    .module-content li:last-child {
+      border-bottom: none;
+    }
+
+    .module-content li::before {
+      content: '✓';
+      color: #5624d0;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    @media (max-width: 992px) {
+      .course-modules {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-title h2 {
+        font-size: 28px;
+      }
+
+      .section-title p {
+        font-size: 16px;
+      }
+
+      .module-header h3 {
+        font-size: 18px;
+      }
+
+      .module-content li {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="course-content-section">
+    <div class="section-title">
+      <h2>Course Content Modules</h2>
+      <p>Comprehensive curriculum covering all aspects of DevOps and cloud platforms</p>
+    </div>
+
+    <div class="course-modules">
+      <div class="module">
+        <div class="module-header">
+          <h3>Fundamentals & Cloud Basics</h3>
+          <div class="module-duration">2 Weeks</div>
+        </div>
+        <div class="module-content">
+          <ul>
+            <li>Introduction to DevOps & Cloud Computing</li>
+            <li>Linux Fundamentals & Shell Scripting</li>
+            <li>Git & Version Control Systems</li>
+            <li>Networking Fundamentals</li>
+            <li>Cloud Service Models (IaaS, PaaS, SaaS)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="module">
+        <div class="module-header">
+          <h3>CI/CD & Automation</h3>
+          <div class="module-duration">3 Weeks</div>
+        </div>
+        <div class="module-content">
+          <ul>
+            <li>Jenkins Pipeline & Automation</li>
+            <li>Docker Containerization</li>
+            <li>Kubernetes Orchestration</li>
+            <li>Infrastructure as Code (Terraform)</li>
+            <li>Configuration Management (Ansible)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="module">
+        <div class="module-header">
+          <h3>Cloud Platforms</h3>
+          <div class="module-duration">4 Weeks</div>
+        </div>
+        <div class="module-content">
+          <ul>
+            <li>AWS Core Services & Architecture</li>
+            <li>Azure Fundamentals & Services</li>
+            <li>Google Cloud Platform Essentials</li>
+            <li>Multi-Cloud Strategy & Implementation</li>
+            <li>Cloud Security & Compliance</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="module">
+        <div class="module-header">
+          <h3>DevSecOps & Security</h3>
+          <div class="module-duration">3 Weeks</div>
+        </div>
+        <div class="module-content">
+          <ul>
+            <li>Security Automation & Compliance</li>
+            <li>Vulnerability Scanning & Management</li>
+            <li>Identity & Access Management</li>
+            <li>Security Monitoring & Incident Response</li>
+            <li>Compliance Frameworks (HIPAA, PCI DSS)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="module">
+        <div class="module-header">
+          <h3>FinOps & Cost Optimization</h3>
+          <div class="module-duration">2 Weeks</div>
+        </div>
+        <div class="module-content">
+          <ul>
+            <li>Cloud Cost Management Strategies</li>
+            <li>Resource Optimization & Rightsizing</li>
+            <li>Cost Allocation & Tagging</li>
+            <li>Budgeting & Forecasting</li>
+            <li>FinOps Tools & Automation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="module">
+        <div class="module-header">
+          <h3>Advanced Topics & Capstone</h3>
+          <div class="module-duration">3 Weeks</div>
+        </div>
+        <div class="module-content">
+          <ul>
+            <li>Microservices Architecture</li>
+            <li>Serverless Computing</li>
+            <li>Observability & Monitoring</li>
+            <li>Disaster Recovery & High Availability</li>
+            <li>Capstone Project Implementation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html> 

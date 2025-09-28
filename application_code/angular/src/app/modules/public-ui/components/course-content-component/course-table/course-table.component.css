@@ -1,0 +1,164 @@
+/* Add or modify styles as needed */
+
+/* Desktop view */
+.main-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.sub-tabs {
+  display: flex;
+  width: 80vw;
+  justify-content: space-around;
+}
+
+.sub-tab {
+  padding: 10px 20px;
+  font-weight: 600;
+  color: #000;
+  background-color: #a2ddfe;
+  cursor: pointer;
+  margin-right: 10px;
+  border-radius: 12px 12px 12px 12px;
+  width: 26vw;
+  height: 50px;
+  font-size: 18px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.sub-tab:hover {
+  background-color: #a8d6f0;
+}
+
+.sub-tab.active {
+  /* background-color: #353935; */
+  background-color: #fff;
+  height: 70px;
+  color: #000;
+  display: flex;
+  font-size: larger;
+  font-weight: 900;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 5px;
+  min-height: 200px;
+  width: 80vw;
+  /* background-color: #353935; */
+  background-color: #fff;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.content h2 {
+  color: black;
+  font-weight: 600;
+}
+
+.content-columns {
+  display: flex;
+  width: -webkit-fill-available;
+}
+
+.left-column {
+  flex: 1;
+  padding: 0 10px;
+  border-right: 1px solid #ccc;
+  flex-basis: 50%;
+  max-width: 50%;
+  overflow-y: scroll;
+  height: 390px;
+}
+
+.module {
+  padding: 10px 0 0 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  height: 75px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background-color: #e9ecef;
+}
+
+.module:hover {
+  background-color: #f0f0f0;
+}
+
+.module.active-module {
+  background: linear-gradient(to right, #a8d6f0, #fff);
+  color: black;
+}
+
+.right-column {
+  flex: 2;
+  margin: 0 32px 0 57px;
+  background: aliceblue; /* linear-gradient(to right, #fff, #a8d6f0); */
+  padding-left: 47px;
+  padding-right: 24px;
+  padding-top: 21px;
+  border-radius: 10px;
+  color: #000;
+}
+
+/* Mobile view */
+@media (max-width: 767px) {
+  .main-tab {
+    margin-top: 10px;
+  }
+
+  .sub-tabs {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .sub-tab {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .sub-tab.active {
+    height: 50px;
+  }
+
+  .content {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .content-columns {
+    flex-direction: column;
+    height: fit-content;
+  }
+
+  .left-column {
+    /* flex: 1; */
+    border-right: none;
+    max-width: 100%;
+    overflow-y: scroll;
+    max-height: 320px;
+  }
+
+  .right-column {
+    /* flex: 2; */
+    margin: 10px 0;
+    min-height: 275px;
+  }
+}
+
+.default-image {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  padding-left: 0px;
+  display: block;
+}
+
+ul { list-style-type: disc; /* Default bullet style for the main list */ margin: 0; padding: 0; } 
+ul ul{ list-style-type: square; /* Different bullet style for the first level sub-list */ padding-left: 20px; /* Increase padding for indentation */ margin-left: 20px; /* Increase margin for indentation */ } 

@@ -1,0 +1,31 @@
+version: 0.2 
+phases:
+  install:
+    runtime-versions:
+      java : corretto17
+  pre_build:
+    commands:
+      - echo "pre-build started"
+      - pwd
+      - ls -lrta
+  build:
+    commands:
+      - echo Build started on `date`
+      #- mvn clean validate compile test install verify package
+      - cd application_code/java/
+      - mvn package 
+      - echo Build completed on `date`
+  post_build:
+    commands:
+      - echo "Artifact Upload To S3"
+      # Get the size of the bucket
+      - aws s3 ls s3://c3ops-iac-terraform/backendcode/c3finops-1.0.0.war  --recursive --human-readable --summarize --region ap-south-2
+      
+      # Remove Bucket Content
+      #- aws s3 rm s3://c3ops-iac-terraform/backendcode/c3finops-1.0.0.war --recursive --region ap-south-2
+
+      # Upload the code to s3 bucket
+      - aws s3 sync . s3://c3ops-iac-terraform/backendcode/c3finops-1.0.0.war --region ap-south-2
+artifacts:
+  files:
+    - '**/*'

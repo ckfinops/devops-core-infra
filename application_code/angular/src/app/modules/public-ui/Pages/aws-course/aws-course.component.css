@@ -1,0 +1,475 @@
+ /* Reset some default styles for better layout */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+}
+
+/* Header Styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+}
+
+/* Container Styles */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Left Column Styles */
+.left-column {
+    flex: 2;
+    padding: 20px;
+}
+
+/* Course Name Styles */
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+/* Key Features Styles */
+.feature-container {
+
+
+    padding-top: 43px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+
+}
+
+.feature-icon {
+    font-size: 36px;
+}
+
+/* Right Column Styles */
+.right-column {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Request Callback Styles */
+/* .form {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+*/
+
+mat-form-field {
+  width: -webkit-fill-available;
+  font-size: 14px;
+}
+
+button[type="submit"] {
+    background-color: #172342;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color .3s,transform .3s,box-shadow .3s;
+   /* text-shadow: 0px 5px 4px rgba(0,0,0,.5); */
+    box-shadow: 0 4px 4px #00000080;
+}
+
+button[type="submit"]:hover {
+    transform: scale(1.05);
+    box-shadow: none;
+}
+
+button[type="submit"]:disabled {
+    
+    cursor: not-allowed;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+ 
+  input[type="submit"] {
+    text-shadow: 0px 2.5px 4px rgba(0,0,0,.5);
+  }
+  h1 {
+    font-size: 29px !important; /* Adjust the font size as needed for mobile view */
+  }
+  h2{
+    font-size: medium;
+  }
+
+  .container {
+    flex-direction: column;
+    padding-top: 10px !important;  /* Remove the padding-top in mobile view */
+    
+  }
+
+  .left-column {
+    flex: 1;
+  }
+
+  .right-column {
+    
+    flex: 1;
+
+  }
+
+  .feature-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .feature-icon {
+    flex: 0 0 calc(50% - 10px); /* Two images in a row with a 10px gap */
+    margin-bottom: 10px; /* Add some margin for spacing */
+    font-size: 24px; /* Adjust icon size on mobile */
+    width: 100%; /* Set the width to 100% to make the images responsive */
+  }
+}
+
+
+
+.awscoursebtn {
+    background-color: #172342;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 26px;
+
+    transition: background-color .3s,transform .3s,box-shadow .3s;
+   /* text-shadow: 0px 5px 4px rgba(0,0,0,.5); */
+    box-shadow: 0 4px 4px #00000080;
+
+}
+
+.awscoursebtn:hover {
+
+        /* background-color: #002346; */
+        box-shadow: none;
+        transform: scale(.9);
+
+}
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+    background-color: #172342;
+    color: #fff;
+    padding: 30px 125px;
+  }
+
+
+  .banner div {
+    flex: 1;
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+  .banner {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .banner div {
+    margin: 10px 0;
+  }
+  .awscoursebtn{
+    text-shadow: 0px 2.5px 4px rgba(0,0,0,.5);
+
+  }
+}
+
+
+
+.banner div:nth-child(2) {
+    border-left: 1px solid #fff; /* Add a white thin line */
+
+  }
+  .banner div:nth-child(3) {
+    border-left: 1px solid #fff; /* Add a white thin line */
+    /* Add some spacing above the line */
+  }
+
+
+  @media (max-width: 768px) {
+    .banner {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .banner div:nth-child(2),
+    .banner div:nth-child(3) {
+      border-left: none !important ; /* Remove border lines in mobile view */
+    }
+    .awscoursebtn {
+      text-shadow: 0px 2.5px 4px rgba(0, 0, 0, .5);
+    }
+  }
+  
+/* By default, hide the mobile view */
+.course-contentmob {
+    display: none;
+  }
+  
+  /* Show the desktop view for screens wider than 768px (adjust this value as needed) */
+  @media screen and (min-width: 768px) {
+    .desktop {
+      display: block;
+    }
+    .mobile {
+      display: none;
+    }
+  }
+  
+  /* Show the mobile view for screens 768px or narrower */
+  @media screen and (max-width: 768px) {
+    .desktop {
+      display: none;
+    }
+    .mobile {
+      display: block;
+    }
+    
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .exp {
+      display: flex;
+      gap: 15px;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+ /* Add this to your component's CSS file or directly in your component styles */
+
+.form-container {
+  border: 2px solid #ccc; /* Border color and width */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle shadow effect */
+  padding: 20px; /* Add padding to create space between the border and form content */
+  border-radius: 8px; /* Optional: Add border-radius for rounded corners */
+}
+
+/* By default, hide the mobile view */
+.course-contentmob {
+  display: none;
+}
+
+/* Show the desktop view for screens wider than 768px (adjust this value as needed) */
+@media screen and (min-width: 768px) {
+  .desktop {
+    display: block;
+  }
+  .mobile {
+    display: none;
+  }
+}
+
+/* Show the mobile view for screens 768px or narrower */
+@media screen and (max-width: 768px) {
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+  
+}
+
+
+.info-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.info-item {
+  width: 30%;
+  margin: 10px;
+  text-align: center;
+  padding: 10px;
+  position: relative; /* Add relative positioning */
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Align items vertically */
+}
+
+/* Add a border to the right side of the first two items */
+.info-item:nth-child(-n+2)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -5px; /* Adjust this value to control the border thickness */
+  height: 100%;
+  width: 1px;
+  background-color: #ccc;
+}
+
+/* Adjust margin to create space between items */
+.info-item:not(:last-child) {
+  margin-right: 20px; /* Increase margin-right to create space between items */
+}
+
+/* Set the size of the images */
+.info-item img {
+  width: 64px; /* Increase the width to make the icons larger */
+  height: 64px; /* Increase the height to make the icons larger */
+  margin-right: 10px; /* Add some space between the image and text */
+}
+
+/* Style the heading */
+.info-item h2 {
+  margin: 0; /* Reset margin */
+  font-weight: 700
+}
+@media screen and (max-width: 768px) {
+  .info-item {
+    border: 2px solid #ccc; /* Add border for mobile */
+    border-radius: 10px; /* Add border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add glow effect */
+    transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    text-align: center; /* Center text */
+    padding: 15px; /* Increase padding for better spacing */
+  }
+
+  .info-item:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4); /* Change glow on hover */
+  }
+
+  .info-container {
+    /* flex-direction: column; */
+    align-items: stretch;
+  }
+
+  .info-item {
+    width: 100%;
+    margin-bottom: 20px; /* Remove margin-right and add margin-bottom */
+  }
+
+  .info-item:nth-child(-n+2)::after {
+    display: none;
+  }
+
+  .info-item img {
+    width: 48px;
+    height: 48px;
+    margin-right: 10px; /* Adjust margin for better spacing */
+  }
+}
+
+.tick-mark {
+  background-image: url('https://www.digital-lync.com/images/tick-mark-blu.jpg');
+  background-repeat: no-repeat;
+  background-size: 20px; /* Fixed size for the tick mark image */
+  background-position: left center; /* Position the tick mark on the left */
+  padding-left: 40px; /* Increase padding for more spacing */
+  list-style-type: none;
+  margin-bottom: 10px; /* Add margin between list items */
+  line-height: 1.5; /* Ensure consistent spacing */
+}
+
+/* Media query for mobile view */
+@media screen and (max-width: 768px) {
+  .tick-mark {
+    padding-left: 30px; /* Adjust padding for smaller screens */
+  }
+}
+
+.fullnode.salcebrdr {
+  border: none !important;
+  position: relative;
+  list-style-type: none; /* Removes default list styling */
+  padding-left: 20px; /* Indent content */
+}
+
+.fullnode.salcebrdr div {
+  position: relative; /* Ensure pseudo-element is positioned relative to this */
+  /* margin-bottom: 10px;  Add space between items */
+}
+
+.fullnode.salcebrdr div:before {
+  position: absolute;
+  content: "";
+  width: 6px;
+  height: 6px;
+  background-color: #01ac61;
+  border-radius: 50%;
+  left: -16px; /* Adjust position */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+.fullnode.salcebrdr div:not(:last-child):after {
+     content: "";
+  position: absolute;
+  left: -14px;
+  top: 100%;
+  transform: translateY(-50%);
+  height: calc(100% - -12px);
+  border-left: 2px solid #01ac61;
+}
+
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Optionally, apply additional styling if you want more control over the spinner's appearance */
+.mat-progress-spinner circle {
+  stroke-width: 2px; /* Adjust the stroke width if needed */
+}

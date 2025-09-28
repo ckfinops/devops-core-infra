@@ -7,16 +7,48 @@ packer {
   }
 }
 
-variable "aws_region"            { default = "ap-south-2" }
-variable "instance_type"         { default = "t3.large" }
-variable "ami_name"              { default = "win2022-c3finops-web-runtime-{{timestamp}}" }
-variable "vpc_id"                { default = "" }
-variable "subnet_id"             { default = "" }
-variable "security_group_ids"    { type = list(string), default = [] }
-variable "iam_instance_profile"  { default = "packer-ec2-s3" }
-variable "application_name"      { default = "c3finops-web" }
-variable "application_version"   { default = "1.0.0" }
-variable "share_account_ids_csv" { default = "" }
+variable "aws_region" {
+  default = "ap-south-2"
+}
+
+variable "instance_type" {
+  default = "t3.micro"
+}
+
+variable "ami_name" {
+  default = "win2022-c3ops-runtime-{{timestamp}}"
+}
+
+variable "vpc_id" {
+  default = "vpc-0305c51d2febe0d64"
+}
+
+variable "subnet_id" {
+  default = "subnet-0ab7ef12823c1b8c3"
+}
+
+variable "security_group_ids" {
+  type    = list(string)
+  default = ["sg-08cf4cea70d7c2508"]
+}
+
+variable "iam_instance_profile" {
+  default = "c3ops-ec2-ssm"
+}
+
+#default = "packer-ec2-s3"
+
+variable "application_name" {
+  default = "c3ops-windows"
+}
+
+variable "application_version" {
+  default = "1.0.0"
+}
+
+variable "share_account_ids_csv" {
+  default = "225989338000"
+}
 
 # Enable WinRM over HTTPs via user_data
 locals {
@@ -55,7 +87,7 @@ source "amazon-ebs" "win2022" {
       root-device-type    = "ebs"
       virtualization-type = "hvm"
     }
-    owners      = ["801119661308"] # Amazon Windows
+    owners      = ["225989338000"] # Amazon Windows
     most_recent = true
   }
 
@@ -67,7 +99,7 @@ source "amazon-ebs" "win2022" {
   launch_block_device_mappings {
     device_name          = "xvda"
     volume_type          = "gp3"
-    volume_size          = 60
+    volume_size          = 30
     delete_on_termination = true
     iops = 3000
     throughput = 125
@@ -88,15 +120,15 @@ build {
   sources = ["source.amazon-ebs.win2022"]
 
   # Copy your PowerShell scripts and (reference) Ansible playbooks
-  provisioner "file" {
-    source      = "win-scripts/"
-    destination = "C:/Temp/win-scripts"
-  }
+  # provisioner "file" {
+  #   source      = "win-scripts/"
+  #   destination = "C:/Temp/win-scripts"
+  # }
 
-  provisioner "file" {
-    source      = "ansible/"
-    destination = "C:/Temp/ansible"
-  }
+  # provisioner "file" {
+  #   source      = "ansible/"
+  #   destination = "C:/Temp/ansible"
+  # }
 
   # Install runtime prerequisites
   provisioner "powershell" {
@@ -129,15 +161,22 @@ build {
       # Create standard folders
       "New-Item -ItemType Directory -Force -Path C:\\Ops\\scripts | Out-Null",
       "New-Item -ItemType Directory -Force -Path C:\\Ops\\ansible | Out-Null",
-      "Copy-Item -Path C:\\Temp\\win-scripts\\* -Destination C:\\Ops\\scripts -Recurse -Force -ErrorAction SilentlyContinue",
-      "Copy-Item -Path C:\\Temp\\ansible\\* -Destination C:\\Ops\\ansible -Recurse -Force -ErrorAction SilentlyContinue",
-
+    
       # Basic IIS default page (optional)
       "Set-Content -Path 'C:\\inetpub\\wwwroot\\health.html' -Value '<html><body><h3>OK</h3></body></html>'",
 
+      # Pull the Ui Code Artifact from S3 
+      "aws s3 cp s3://c3ops-iac-terraform/ui/c3finops-ui.tar.gz C:\\Ops\\c3finops-ui.tar.gz",
+
+      # Extract the Ui Code in /opt/ folder
+      "sudo tar xvzf C:\\Ops\\c3finops-ui.tar.gz",
+      
+      # Move the Ui Code From /opt/ to DocumentRoot
+      "sudo mv C:\\Ops\\c3finops-ui\\* C:\\inetpub\\wwwroot\\",
+
       # Cleanup
-      "Remove-Item -Recurse -Force C:\\Temp\\win-scripts -ErrorAction SilentlyContinue",
-      "Remove-Item -Recurse -Force C:\\Temp\\ansible -ErrorAction SilentlyContinue",
+      # "Remove-Item -Recurse -Force C:\\Temp\\win-scripts -ErrorAction SilentlyContinue",
+      # "Remove-Item -Recurse -Force C:\\Temp\\ansible -ErrorAction SilentlyContinue",
     ]
   }
 

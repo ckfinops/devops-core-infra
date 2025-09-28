@@ -27,18 +27,12 @@ variable "tags" {
   type        = map(string)
   default = {
 
-    "AccountName"  = "C3OPS-MGMT"
-    "Environment"  = "C3OPS-MGMT"
-    "CostCenter"   = "0001"
-    "Project"      = "C3OPS-MGMT"
+    "AccountName"  = "C3OPS-Mgmt"
+    "Environment"  = "C3OPS-Mgmt"
+    "Project"      = "C3OPS"
     "BusinessUnit" = "C3OPS"
     "ManagedBy"    = "Terraform"
-    "Application"  = "C3 - Cloud Cost Console FinOps"
     "ContactEmail" = "support@c3ops.in"
-    # "APP_ID"	= "0001"
-    # "TECH_STACK_OWNER" = "kesav@c3ops.in"
-    # "IT_OWNER_EMAIL" = "joel@c3ops.in"
-    # "FUNC_OWNER_EMAIL" = "jessica@c3ops.in"
   }
 }
 

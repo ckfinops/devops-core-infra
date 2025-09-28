@@ -1,0 +1,141 @@
+<style>
+  .highlight-button {
+      background-color: #38b6ff; /* Button color */
+      color: white; 
+      border: none; 
+      padding: 10px 20px; 
+      cursor: pointer; 
+      border-radius: 5px; /* Optional: Rounded corners */
+      box-shadow: 0 0 10px 2px yellow; /* Yellow highlight */
+      transition: box-shadow 0.3s ease; /* Smooth transition */
+  }
+
+  .highlight-button:hover {
+      box-shadow: 0 0 15px 4px yellow; /* Slightly larger highlight on hover */
+  }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- component-b.component.html -->
+
+<div class="sr-modal__content sr-modal__content--center">
+    <div class="sr-modal__header">
+      <div class="sr-modal__title h3 bold"> EMI Options</div>
+      <a class="sr-modal__close" (click)="close()">
+        <i class="fa-solid fa-x"></i>
+      </a>
+      
+    </div>
+    <div class="sr-modal__body">
+      <div class="emi-options-modal">
+        <!-- <div class="emi-options-modal__description">
+          You can Pay &amp; Using EMI Options:
+        </div> -->
+        <div class="emi-options-modal__table zoom-scholarship">
+          <div class="col-list">
+            <div class="col-list__name"></div>
+            <div class="col-list__name">Total Fee</div>
+            <div class="col-list__name">GST 18%</div>
+            <div class="col-list__name">Fee + GST</div>
+            <div class="col-list__name">Duration (Months)</div>
+            <div class="col-list__name">Monthly Payments</div>
+          </div>
+          <div class="col-list">
+            <div class="col-list__field cc">Fee</div>
+            <div class="col-list__field cc">₹14,999</div>
+            <div class="col-list__field cc">₹2,699</div>
+            <div class="col-list__field cc">₹17,698</div>
+            <div class="col-list__grid">
+              <div class="col-list__subfield grey">6</div>
+              <div class="col-list__subfield grey">9</div>
+              <div class="col-list__subfield grey">12</div>
+              <div class="col-list__subfield grey">18</div>
+              <div class="col-list__subfield grey">24</div>
+            </div>
+            <div class="col-list__field">
+              <div class="col-list__subfield orange">₹2,949</div>
+              <div class="col-list__subfield orange">₹1,966</div>
+              <div class="col-list__subfield orange">₹1,474</div>
+              <div class="col-list__subfield orange">₹983</div>
+              <div class="col-list__subfield orange">₹737</div>
+            </div>
+          </div>
+          <div class="col-list">
+            <div class="col-list__field cc">Fee</div>
+            <div class="col-list__field cc">₹14,999</div>
+            <div class="col-list__field cc">₹2,699</div>
+            <div class="col-list__field cc">₹17,698</div>
+            <div class="col-list__grid">
+              <div class="col-list__subfield grey">36</div>
+              <div class="col-list__subfield grey">60</div>
+            </div>
+            <div class="col-list__field">
+              <div class="col-list__subfield orange">₹384</div>
+              <div class="col-list__subfield orange">₹294</div>
+            </div>
+          </div>
+          <!-- <div class="sub-title">
+            <br>Call Us To
+            <a href="https://wa.me/919100073006" target="_blank">
+              <button class="highlight-button">Pay?</button>
+          </a>
+          </div> -->
+        </div>
+        <div class="emi-options-modal__table median-scholarship hidden">
+          <div class="col-list">
+            <div class="col-list__name"></div>
+            <div class="col-list__name">Total Amount</div>
+            <div class="col-list__name">Scholarship</div>
+            <div class="col-list__name">Reduced Tution Fees</div>
+            <div class="col-list__name">Upfront Downpayment</div>
+            <div class="col-list__name">Amount split over EMI</div>
+            <div class="col-list__name">Duration (Months)</div>
+            <div class="col-list__name">Monthly Payments</div>
+          </div>
+          <div class="col-list">
+            <div class="col-list__field">Fee</div>
+            <div class="col-list__field">₹24,999</div> 
+            <div class="col-list__field">₹0</div>
+            <div class="col-list__field">₹24,999</div>
+            <div class="col-list__field">₹24,999</div>
+            <div class="col-list__field">₹24,999</div>
+            <div class="col-list__field">
+              <div class="col-list__subfield grey">12</div>
+              <div class="col-list__subfield grey">9</div>
+              <div class="col-list__subfield grey">12</div>
+            </div>
+            <div class="col-list__field">
+              <div class="col-list__subfield orange">₹24,999</div>
+              <div class="col-list__subfield orange">₹24,999</div>
+              <div class="col-list__subfield orange">₹24,999</div>
+            </div>
+          </div>
+          <div class="col-list">
+            <div class="col-list__field">Fee</div>
+            <div class="col-list__field">₹24,999</div>
+            <div class="col-list__field">₹0</div>
+            <div class="col-list__field">₹24,999</div>
+            <div class="col-list__field">₹24,999</div>
+            <div class="col-list__field">₹24,999</div>
+            <div class="col-list__field">
+              <div class="col-list__subfield grey">12</div>
+              <div class="col-list__subfield grey">9</div>
+              <div class="col-list__subfield grey">12</div>
+            </div>
+            <div class="col-list__field">
+              <div class="col-list__subfield orange">₹24,999</div>
+              <div class="col-list__subfield orange">₹24,999</div>
+              <div class="col-list__subfield orange">₹24,999</div>
+            </div>
+          </div>
+          <div class="sub-title">
+            Delivered via our EMI partners <br> Call Us?
+            <a href="https://wa.me/919100073006" target="_blank">
+              <button class="highlight-button">Pay</button>
+          </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 

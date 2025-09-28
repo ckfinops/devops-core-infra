@@ -1,0 +1,306 @@
+/* Reset and box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container padding */
+.text {
+    padding: 40px;
+}
+
+/* Centered and styled headings */
+.text h3 {
+    text-align: center;
+    font-size: 30px;
+    padding: 10px;
+    color: #fff; /* Adjusted for better visibility */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Added shadow for better contrast */
+}
+
+/* Flex container for banners */
+.banner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Banner styling */
+.banner-container .banner {
+    background-image: url(https://cyfuture.cloud/frontImg/images/devops-bantop.webp);
+    border-radius: 5px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    color: white;
+}
+
+/* Modern Banner Styling */
+.banner-container .modern-banner {
+    background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+    border-radius: 12px;
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.banner-container .modern-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.05)" stroke-width="2" fill="none"/></svg>') repeat;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.banner-container .modern-banner .banner-content {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.banner-container .modern-banner .banner-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    backdrop-filter: blur(5px);
+}
+
+.banner-container .modern-banner .banner-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.banner-container .modern-banner .banner-date {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.banner-container .modern-banner .banner-date::before {
+    content: '\f073';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 8px;
+    color: #64b5f6;
+}
+
+.banner-container .modern-banner .banner-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.banner-container .modern-banner .feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.banner-container .modern-banner .feature i {
+    color: #64b5f6;
+    font-size: 18px;
+}
+
+.banner-container .modern-banner .feature span {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+}
+
+.banner-container .modern-banner .modern-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #64b5f6;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(100, 181, 246, 0.3);
+    align-self: flex-start;
+}
+
+.banner-container .modern-banner .modern-btn:hover {
+    background: #42a5f5;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(100, 181, 246, 0.4);
+}
+
+.banner-container .modern-banner .banner-image {
+    flex: 0 0 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.banner-container .modern-banner .banner-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.banner-container .modern-banner .banner-image img:hover {
+    transform: scale(1.05);
+}
+
+/* Styling for image containers to ensure same size */
+.banner-container .banner .shoe,
+.banner-container .banner .women {
+    flex: 0 1 250px;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Styling for images within banner */
+.banner-container .banner .shoe img,
+.banner-container .banner .women img {
+    width: 100%; /* Fill container width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 250px; /* Limit maximum width */
+    max-height: 250px; /* Limit maximum height */
+}
+
+/* Styling for content inside banner */
+.banner-container .banner .content {
+    flex: 1 1 250px;
+    text-align: center;
+    padding: 30px;
+}
+
+/* Highlighting span text */
+.banner-container .banner .content span {
+    color: #ffdd57; /* Bright color for emphasis */
+    font-size: 25px;
+    font-weight: bold; /* Making text bold */
+}
+
+/* Enhanced heading styles */
+.banner-container .banner .content h3 {
+    color: #fff; /* Bright color for heading */
+    font-size: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for contrast */
+    font-weight: bold; /* Making text bold */
+}
+
+/* Enhanced paragraph styling */
+.banner-container .banner .content p {
+    color: #eee;
+    font-size: 20px;
+    padding: 10px 0;
+}
+
+/* Highlighted button styling */
+.banner-container .banner .content .btn {
+    display: block;
+    height: 50px; /* Increased height for prominence */
+    width: 180px; /* Increased width for better visibility */
+    line-height: 50px;
+    background: #ffdd57; /* Bright background color */
+    color: #172342;
+    margin: 10px auto; /* Increased margin for spacing */
+    text-decoration: none;
+    border-radius: 5px; /* Rounded corners */
+    font-weight: bold; /* Bold text */
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Button hover effect */
+.banner-container .banner .content .btn:hover {
+    background: #f7c22b; /* Slightly darker on hover */
+    transform: scale(1.05); /* Slightly enlarges the button */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .banner-container .modern-banner {
+        flex-direction: column;
+    }
+    
+    .banner-container .modern-banner .banner-image {
+        order: -1;
+        padding: 20px 40px;
+    }
+    
+    .banner-container .modern-banner .banner-content {
+        padding: 30px 40px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-container .banner .women {
+        display: none;
+    }
+    
+    .banner-container .modern-banner .banner-title {
+        font-size: 28px;
+    }
+    
+    .banner-container .modern-banner .banner-date {
+        font-size: 16px;
+    }
+    
+    .banner-container .modern-banner .feature span {
+        font-size: 14px;
+    }
+    
+    .banner-container .modern-banner .modern-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .text {
+        padding: 20px;
+    }
+    
+    .banner-container .modern-banner .banner-content {
+        padding: 20px;
+    }
+    
+    .banner-container .modern-banner .banner-image {
+        padding: 15px;
+    }
+    
+    .banner-container .modern-banner .banner-title {
+        font-size: 24px;
+    }
+}

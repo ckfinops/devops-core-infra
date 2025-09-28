@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>AWS CodeDeploy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #33333300;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: #333333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #333333;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        pre {
+            font-family: 'Arial', monospace;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+<div style="padding-top: 100px;"></div>
+<header>
+    <h1>AWS CodeDeploy</h1>
+</header>
+<div class="container">
+    <h2>Introduction</h2>
+    <p>AWS CodeDeploy is 
+        a powerful and flexible service provided by Amazon Web Services (AWS) that automates the deployment of applications to various compute services such as Amazon EC2 instances, AWS Lambda functions, and even on-premises servers. It allows developers to release new features or updates with confidence, ensuring a smooth and reliable deployment process.</p>
+
+    <h2>How it Works?</h2>
+
+    <p><a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html" target="_blank" rel="noopener noreferrer">AWS CodeDeploy</a> is a comprehensive deployment service designed to streamline and automate the process of releasing software applications across diverse compute services, including Amazon EC2 instances, AWS Lambda functions, and on-premises servers. The workflow begins with the setup of the application within CodeDeploy, organizing it into logical deployment groups representing specific targets, such as EC2 instances or Lambda functions. A deployment configuration is then defined to dictate the deployment strategy, specifying parameters like "All at Once," "Half at a Time," or "Custom."</p>
+
+    <p>The actual application code, along with relevant files, is packaged into an archive known as the application revision, stored in an Amazon S3 bucket or a GitHub repository. Initiating a deployment can be done through various means, including the AWS Management Console, AWS CLI, SDKs, or integration with AWS CodePipeline for continuous delivery.</p>
+
+    <img src="assets/blogs/code deploy.png" alt="code deploy.png" width="800" height="350">
+    <h2>Key Features:</h2>
+
+    <ul>
+        <li><strong>Multi-Environment Deployments:</strong>
+            
+                <li>Deploy applications to development, testing, and production environments with ease.</li>
+            
+        
+
+        <li><strong>Automated Deployments:</strong>
+            <p>Automate the deployment process, reducing the risk of human error and ensuring consistency.</p>
+        </li>
+
+        <li><strong>Rollbacks:</strong>
+            <p>Quickly roll back deployments to a previous, stable version in case of issues.</p>
+        </li>
+
+        <li><strong>Integration with AWS Services:</strong>
+            <p>Seamlessly integrate with other AWS services like Amazon S3, GitHub, and more.</p>
+        </li>
+    </ul>
+
+    <h2>Getting Started with AWS CodeDeploy</h2>
+
+    <ol>
+        <li><strong>Set Up AWS CodeDeploy:</strong>
+            <p>Start by configuring AWS CodeDeploy through the AWS Management Console or AWS CLI. Create an application and deployment group to manage your deployment targets.</p>
+            <pre>
+aws deploy create-application --application-name MyApp<
+            </pre>
+        </li>
+
+        <li><strong>Define Deployment Configurations:</strong>
+            <p>Specify how your deployment should progress with deployment configurations. Choose from various deployment strategies like All at Once, Half at a Time, or Custom.</p>
+            <pre>
+aws deploy create-deployment-config --deployment-config-name MyDeploymentConfig --minimum-healthy-hosts type=FLEET_PERCENT,value=75
+            </pre>
+        </li>
+
+        <li><strong>Prepare Your Application:</strong>
+            <p>Ensure your application is ready for deployment by packaging it with the necessary files and scripts. CodeDeploy supports various application types, including EC2 instances, Lambda functions, and more.</p>
+            <pre>
+aws deploy push --application-name MyApp --s3-location s3://my-bucket/my-app.zip --ignore-hidden-files
+            </pre>
+        </li>
+    </ol>
+
+    <h2>Best Practices and Advanced Features</h2>
+
+    <ul>
+        <h3>Best Practices for AWS CodeDeploy:</h3>
+            
+                <li><strong>Continuous Deployment:</strong></li>
+                
+                <li>Implement continuous deployment practices for faster and more frequent releases.</li>
+
+                <li><strong>Health Checks:</strong></li>
+                    <p>Leverage built-in health checks to monitor the health of your deployment targets during and after deployment.</p>
+                
+                <li><strong>Traffic Shifting:</strong></li>
+                    <p>Gradually shift traffic to the updated version using deployment groups, reducing the impact of changes.</p>
+                
+            
+
+        <h3>Advanced Features:</h3>
+            
+                <li><strong>Blue/Green Deployments:</strong>
+                    <p>Implement Blue/Green deployments to reduce downtime and mitigate risks by directing traffic between two identical environments.</p>
+                </li>
+                <li><strong>Custom Deployment Scripts:</strong>
+                    <p>Create custom deployment scripts using hooks to perform actions at different stages of the deployment process.</p>
+                </li>
+                <li><strong>AWS CodePipeline Integration:</strong>
+                    <p>Integrate AWS CodeDeploy with AWS CodePipeline for a fully automated continuous delivery pipeline.</p>
+                </li>
+            
+        
+    </ul>
+    <h2>Pricing</h2>
+    <ul>
+    <p>For CodeDeploy on EC2, Lambda, ECS: There is no additional charge for code deployments to Amazon EC2, AWS Lambda or Amazon ECS through AWS CodeDeploy.</p>
+
+    <p>For CodeDeploy On-Premises: You pay $0.02 per on-premises instance update using AWS CodeDeploy. There are no minimum fees and no upfront commitments. For example, a deployment to three instances equals three instance updates. You will only be charged if CodeDeploy performs an update to an instance. You will not be charged for any instances skipped during the deployment.</p>
+    
+    <p>You pay for any other AWS resources (e.g. S3 buckets) you may use in conjunction with CodeDeploy to store and run your application. You only pay for what you use, as you use it; there are no minimum fees and no upfront commitments.</p>
+   </ul>
+    <h2>Conclusion:</h2>
+
+    <p>AWS CodeDeploy simplifies and streamlines the deployment process, allowing developers to focus on writing code rather than managing deployments. By following best practices and exploring advanced features, you can achieve efficient, reliable, and automated deployments in your AWS environment. Embrace the power of AWS CodeDeploy and elevate your deployment workflows to the next level!</p>
+    <span><button><a _ngcontent-tbw-c76="" class="ks-button ks-button--primary" href="https://cloudbinary.io/blogs" target="_blank"> For More like This </a></button></span>
+</div>
+</body>
+</html>

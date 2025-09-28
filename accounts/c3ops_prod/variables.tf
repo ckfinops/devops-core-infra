@@ -26,19 +26,12 @@ variable "tags" {
   description = "Tags to apply to resources"
   type        = map(string)
   default = {
-
     "AccountName"  = "C3OPS-prod"
     "BusinessUnit" = "C3OPS"
     "ManagedBy"    = "Terraform"
     "ContactEmail" = "support@c3ops.in"
-    # "Application"  = "C3 - Cloud Cost Console FinOps"
-    # "Environment"  = "dev"
-    # "CostCenter"   = "0001"
-    # "Project"      = "C3OPS-prod"
-    # "APP_ID"	= "0001"
-    # "TECH_STACK_OWNER" = "kesav@c3ops.in"
-    # "IT_OWNER_EMAIL" = "joel@c3ops.in"
-    # "FUNC_OWNER_EMAIL" = "jessica@c3ops.in"
+    "Environment"  = "prod"
+    "TECH_STACK_OWNER" = "kesav@c3ops.in"
   }
 }
 

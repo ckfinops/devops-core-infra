@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-145YV0H277"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-145YV0H277');
+</script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating MySQL Database using EC2 Instance</title>
+
+</head>
+<body>
+    <div class="spacing" style="padding-top: 100px;"></div>
+    <h1>Creating MySQL Database using EC2 Instance</h1>
+
+    <p>MySQL is a widely used relational database management system (RDBMS) that is used to manage and store data. Here are some of the common uses of MySQL:</p>
+
+    <ul>
+        <li>Web Applications: MySQL is often used in web applications to store and manage data, such as user data, content, and application settings.</li>
+        <li>Content Management Systems (CMS): Many popular CMS platforms, such as WordPress and Drupal, use MySQL as their database system to store content, user data, and settings.</li>
+        <li>Business Applications: MySQL can be used in a variety of business applications to manage and store data, such as financial data, customer data, and inventory.</li>
+        <li>Analytics and Data Warehousing: MySQL can be used to store and manage large amounts of data for analytical purposes, such as data warehousing and business intelligence.</li>
+        <li>Mobile and IoT Applications: MySQL can be used in mobile and IoT applications to store and manage data collected from sensors and other devices.</li>
+    </ul>
+
+    <p>MySQL is a robust and reliable database system that can handle large amounts of data and complex transactions. It is also open source and has a large community of developers, which means it is constantly being improved and updated with new features and enhancements.</p>
+    <img src="assets/blogs/mysql.png" alt="mysql.png" width="800" height="500">
+    <h2>Package Management - CentOS/Redhat/Fedora/Oracle Linux/AmazonLinux:</h2>
+    <pre>
+$ yum list installed | grep mysql
+$ yum install mysql-community-server -y
+    </pre>
+
+    <h2>Package Management - Debian/Ubuntu:</h2>
+    <pre>
+$ dpkg -l | grep mysql
+$ apt update
+$ sudo apt install mysql-server -y 
+    </pre>
+
+    <h2>Documentation:</h2>
+    <pre>
+Path: /usr/share/man/man1/mysql.1.gz
+    </pre>
+
+    <h2>Configuration:</h2>
+    <pre>
+Path: /etc/my.cnf
+    </pre>
+
+    <h2>Binary Files:</h2>
+    <pre>
+Path: /usr/bin/mysql /usr/lib64/mysql
+    </pre>
+
+    <h2>Service:</h2>
+    <pre>
+Path: /usr/lib/systemd/system/mysqld.service
+    </pre>
+
+    <h2>Enable, Stop, Start, Restart Service:</h2>
+    <pre>
+To Enable a Service at boot level:
+    $ systemctl enable mysql
+
+To check a Service status:
+    $ systemctl status mysql
+
+To Start a Service:
+    $ systemctl start mysql
+
+To Restart a Service:
+    $ systemctl restart mysql   
+    </pre>
+
+    <h2>Check Port:</h2>
+    <pre>
+$ netstat -tulpn | grep LISTEN
+$ sudo ss -tap | grep mysql
+    </pre>
+
+    <h2>Check Service Port in Configuration File:</h2>
+    <pre>
+$ cat /etc/services | grep -w '3306/tcp'
+    </pre>
+
+    <h2>Find Initial Root Password [CentOS/Redhat/Fedora/Oracle Linux/AmazonLinux]:</h2>
+    <pre>
+For root user, the password is available in the log file:
+$ cat /var/log/mysqld.log
+    </pre>
+
+    <h2>Grep Root User Password from Log File:</h2>
+    <pre>
+$ cat /var/log/mysqld.log | grep "A Temporary password"
+    </pre>
+
+    <h2>Connect MySQL Database from Linux Server:</h2>
+    <ul>
+        <li>Your MySQL server is ready to use now.</li>
+        <li>From the terminal, you can run the below command to connect to the MySQL command line interface.</li>
+        <li>It will prompt for the root account password.</li>
+        <li>On successful authentication, you will get the MySQL prompt.</li>
+    </ul>
+    <pre>
+$ mysql -u root -p
+    </pre>
+
+    <h2>Create a User in MySQL DB:</h2>
+    <ul>
+        <li>Connect to MySQL as a root user.</li>
+        <li>You need to connect to MySQL as a root user to create a new user and grant permissions.</li>
+        <li>Open the MySQL shell and connect to the MySQL server as the root user using the following command:</li>
+    </ul>
+    <pre>
+$ mysql -u root -p
+    </pre>
+
+    <ul>
+        <li>Create a new user using the CREATE USER statement.</li>
+        <li>Replace 'newuser' and 'password' with your desired username and password, respectively.</li>
+    </ul>
+    <pre>
+CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
+CREATE USER 'tom'@'%' IDENTIFIED BY 'Redhat@123456';
+    </pre>
+
+    <ul>
+        <li>Grant full permissions to the new user using the GRANT ALL PRIVILEGES statement.</li>
+        <li>Replace 'newuser' with the username you created in the above step.</li>
+    </ul>
+    <pre>
+GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'localhost';
+GRANT ALL PRIVILEGES ON *.* TO 'tom'@'%';
+    </pre>
+
+    <ul>
+        <li>After granting permissions, reload the privileges for the changes to take effect using the FLUSH PRIVILEGES statement.</li>
+    </ul>
+    <pre>
+FLUSH PRIVILEGES;
+    </pre>
+
+    <p>That's it! You have now created a new user in MySQL and granted that user full permissions. The new user can now connect to the MySQL server and perform any operation on any database and table.</p>
+
+    <h2>Creating a Schema:</h2>
+    <ul>
+        <li>A schema is a container that holds a set of tables, views, and other database objects.</li>
+        <li>In MySQL, you can create a schema using the CREATE SCHEMA statement.</li>
+    </ul>
+    <pre>
+CREATE SCHEMA my_schema;
+CREATE SCHEMA cloudbinary;
+    </pre>
+
+    <h2>Creating a Table:</h2>
+    <ul>
+        <li>A table is a collection of related data stored in rows and columns.</li>
+        <li>In MySQL, you can create a table using the CREATE TABLE statement.</li>
+        <li>Here is an example of creating a users table with three columns: id, name, and email.</li>
+    </ul>
+    <pre>
+CREATE TABLE my_schema.users (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE cloudbinary.students (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id)
+);
+    </pre>
+
+    <h2>Inserting Data into the Table:</h2>
+    <ul>
+        <li>Now that we have created a table, we can insert some data into it using the INSERT INTO statement.</li>
+    </ul>
+    <pre>
+INSERT INTO my_schema.users (name, email) VALUES
+    ('John Doe', 'john.doe@example.com'),
+    ('Jane Smith', 'jane.smith@example.com'),
+    ('Bob Johnson', 'bob.johnson@example.com');
+
+INSERT INTO cloudbinary.students (name, email) VALUES
+    ('John Doe', 'john.doe@example.com'),
+    ('Jane Smith', 'jane.smith@example.com'),
+    ('Bob Johnson', 'bob.johnson@example.com');
+    </pre>
+
+    <h2>Updating Data in a MySQL Table:</h2>
+    <pre>
+UPDATE my_schema.users SET name = 'John Smith' WHERE id = 1;
+    </pre>
+
+    <h2>Querying Data from the Table:</h2>
+    <ul>
+        <li>Finally, we can query the data from the users table using the SELECT statement.</li>
+    </ul>
+    <pre>
+SELECT * FROM my_schema.users;
+    </pre>
+
+    <ul>
+        <li>This will return all rows from the users table.</li>
+        <li>You can also specify specific columns to return using the following syntax:</li>
+    </ul>
+    <pre>
+SELECT name, email FROM my_schema.users;
+    </pre>
+
+    <h2>Connect MySQL DB From Host Machine using 3rd Party Tools:</h2>
+    <ul>
+        <li>MySQL Workspace: <a href="https://dev.mysql.com/downloads/workbench/" target="_blank">MySQL Workbench</a></li>
+        <li>DBeaver: <a href="https://dbeaver.io/" target="_blank">DBeaver</a></li>
+    </ul>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

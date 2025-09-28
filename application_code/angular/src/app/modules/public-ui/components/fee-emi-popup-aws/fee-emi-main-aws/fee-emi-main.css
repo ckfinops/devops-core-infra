@@ -1,0 +1,91 @@
+/* General Section Styling */
+#pricing {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .sr-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Header Styling */
+  .section-header {
+    margin-bottom: 20px;
+  }
+  
+  .tuition-fee__heading {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .section-header__title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .section-header__subtitle {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  /* Information Section Styling */
+  .tuition-fee__information {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .tuition-fee__img {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .tuition-fee__content {
+    padding: 0 20px;
+  }
+  
+  /* Button Styling */
+  .tuition-fee__buttons {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .academy-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #007bff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .academy-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .academy-button.secondary {
+    background-color: #172342;
+  }
+  
+  .academy-button.secondary:hover {
+    background-color: #5a6268;
+  }
+  
+ /* Hide the component on screens smaller than 768px */
+.hide-on-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-on-mobile {
+    display: block;
+  }
+}

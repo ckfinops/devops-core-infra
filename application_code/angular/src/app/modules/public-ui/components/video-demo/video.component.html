@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Demos</title>
+    <style>
+        body {
+            margin: 60px;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #172342;
+            font-size: 45px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 800;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: space-between;
+            margin-left: 80px;
+            flex-wrap: wrap;
+            margin-right: 80px;
+            margin-top: 50px;
+            margin-bottom: 40px;
+           
+        }
+
+        @media screen and (max-width: 768px) {
+            body{
+                margin: 0px;
+            }
+            .video-container {
+                margin: 20px;
+            }
+            h2 {
+                font-size: 30px;
+            }
+        }
+
+      .video-block {
+    width: 23%; /* Adjust as needed */
+    margin-bottom: 20px; /* Add margin between blocks */
+    position: relative;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 200px; /* Adjust as needed */
+}
+
+.tagline {
+    position: absolute;
+    bottom: 0;
+    background: rgba(23, 35, 66, 0.8);
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 16px;
+    pointer-events: none; /* This will allow clicks to pass through the tagline */
+}
+
+/* Responsive styling for smaller screens (up to 768px) */
+@media screen and (max-width: 768px) {
+    .video-block {
+        width: 100%; /* Make each block take full width */
+    }
+}
+
+
+    </style>
+</head>
+<body>
+
+<h2>Experience the Future</h2>
+<img src="src/assets/key-features\MOTO_MOBILE.SVG" alt="">
+
+<div class="video-container">
+    <div class="video-block">
+        <iframe title="Video: Demo 1 AWS DevOps" src="https://www.youtube.com/embed/-ZrNXrC_9T0" loading="lazy" frameborder="0" allowfullscreen></iframe>
+        <div class="tagline">Demo 1 AWS DEVOPS</div>
+    </div>
+    <div class="video-block">
+        <iframe title="Video: Demo 2 AWS DevOps" src="https://www.youtube.com/embed/PivMBWfVrcw" loading="lazy" frameborder="0" allowfullscreen></iframe>
+        <div class="tagline">Demo 2 AWS DEVOPS</div>
+    </div>
+    <div class="video-block">
+        <iframe title="Video: EC2 Instance Using AWS CLI" src="https://www.youtube.com/embed/VaZ8INzOkXM" loading="lazy" frameborder="0" allowfullscreen></iframe>
+        <div class="tagline">EC2 Instance Using AWS CLI</div>
+    </div>
+    <div class="video-block">
+        <iframe title="Launch AWS EC2 Instance - Linux" src="https://www.youtube.com/embed/Hgx0ruV6cDY" loading="lazy" frameborder="0" allowfullscreen></iframe>
+        <div class="tagline">Launch AWS EC2 Instance - Linux</div>
+    </div>
+</div>
+
+</body>
+</html>

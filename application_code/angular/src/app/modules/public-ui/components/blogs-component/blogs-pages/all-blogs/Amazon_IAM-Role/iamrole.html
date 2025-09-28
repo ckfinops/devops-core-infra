@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>IAM Role - AWS</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #000000;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #000000;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #000000;
+        }
+
+        ol {
+            color: #000000;
+            padding-left: 20px;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div style="padding-top: 100px;"></div>
+    <header>
+        <h1>IAM Role - AWS</h1>
+    </header>
+
+    <section>
+        <h2 style="color: white;">IAM Role</h2>
+        <p> <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html" target="_blank" title="Go to IAM">IAM</a> identity that you can create in your account that has specific permissions. An IAM role has some similarities to an IAM user. Roles and users are both AWS identities with permissions policies that determine what the identity can and cannot do in AWS. However, instead of being uniquely associated with one person, a role is intended to be assumable by anyone who needs it. Also, a role does not have standard long-term credentials such as a password or access keys associated with it. Instead, when you assume a role, it provides you with temporary security credentials for your role session.</p>
+        <img src="assets/blogs/iam-role.png" alt="iam-role.png" width="170" height="130">
+        <h2>Roles can be used by the following:</h2>
+        <ul>
+            <li>An IAM user in the same AWS account as the role</li>
+            <li>An IAM user in a different AWS account than the role</li>
+            <li>A web service offered by AWS such as Amazon Elastic Compute Cloud (Amazon EC2)</li>
+            <li>An external user authenticated by an external identity provider (IdP) service that is compatible with SAML 2.0 or OpenID Connect, or a custom-built identity broker.</li>
+        </ul>
+
+        <h2>Creating IAM Role</h2>
+        <ol>
+            <li><strong>Sign in to the AWS Management Console:</strong></li>
+             Open your web browser and navigate to the AWS Management Console. Sign in with your AWS account credentials.
+            <li><strong>Navigate to IAM:</strong> </li>
+            In the AWS Management Console, find the "Services" dropdown, and under "Security, Identity, & Compliance," select "IAM."
+            <li><strong>Access the Roles Page:</strong> </li>
+            In the IAM dashboard, click on "Roles" in the left navigation pane to access the Roles page.
+            <li><strong>Create a New Role:</strong> </li>
+            Click the "Create role" button to start the process of creating a new IAM role.
+            <li><strong>Choose the Trusted Entity Type:</strong> </li>
+            Select the trusted entity type that will assume the role. For example, choose "AWS service" if you want an AWS service to assume the role.
+            <li><strong>Select Use Case:</strong> </li>
+            Choose a use case or service that will assume the role. The available options depend on the trusted entity type selected. For example, for an EC2 instance, choose "EC2."
+            <li><strong>Attach Permissions Policies:</strong> </li>
+            Attach policies to the role to define the permissions it will have. You can choose from existing policies or create custom policies. This step determines what actions the role is allowed to perform.
+            <li><strong>Set Role Name and Review:</strong> </li>
+            Enter a name for the role and optionally provide a description. Review the configuration to ensure it meets your requirements.
+            <li><strong>Add Tags (Optional):</strong> </li>
+            You can add tags to the role for better organization and management. Tags are key-value pairs.
+            <li><strong>Review and Create:</strong> </li>
+            Review the role details, permissions, and settings. If everything looks correct, click on the "Create role" button.
+            <li><strong>Role Created:</strong> </li>
+            Once the role is created, you'll see a confirmation screen with details about the new role. Take note of the Role ARN (Amazon Resource Name).
+        </ol>
+        <span><button><a _ngcontent-tbw-c76="" class="ks-button ks-button--primary" href="https://cloudbinary.io/blogs" target="_blank"> For More like This </a></button></span>   
+
+    </section>
+
+</body>
+</html>

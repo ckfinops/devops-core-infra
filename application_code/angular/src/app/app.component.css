@@ -1,0 +1,407 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    max-width: 1440px;
+    margin: 0 auto;
+    border-radius: 0 0 12px 12px;
+    height: 95px;
+}
+
+.header .title {
+    font-weight: 600;
+    font-size: 26px;
+    margin-bottom: -4px;
+    line-height: 1.2;
+}
+
+.header .sub-title {
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+.logo_link {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.flogo {
+    height: 65px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.flogo:hover {
+    transform: scale(1.05);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+.header a {
+    font-weight: 500;
+    color: #172342;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    white-space: nowrap;
+    font-size: 1.1rem;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header a i {
+    font-size: 1.1rem;
+    width: 1.1rem;
+    text-align: center;
+}
+
+.header a:hover {
+    color: #38b6ff;
+    background-color: rgba(56, 182, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.header a.router-link-active {
+    color: #38b6ff;
+    font-weight: 600;
+}
+
+.header a.router-link-active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px;
+    height: 3px;
+    background-color: #38b6ff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* AWS DevOps specific styling */
+.header a[routerLink="/aws-devops"] i {
+    color: #FF9900;
+}
+
+.header a[routerLink="/aws-devops"]:hover i {
+    color: #FF9900;
+}
+
+.header a[routerLink="/aws-devops"].router-link-active i {
+    color: #FF9900;
+}
+
+/* Azure DevOps specific styling */
+.header a[routerLink="/azure-devops"] i {
+    color: #0078d4;
+}
+
+.header a[routerLink="/azure-devops"]:hover i {
+    color: #0078d4;
+}
+
+.header a[routerLink="/azure-devops"].router-link-active i {
+    color: #0078d4;
+}
+
+/* GitOps specific styling */
+.header .gitops-link i {
+    color: #f05032;
+}
+
+.header .gitops-link:hover i {
+    color: #f05032;
+}
+
+.header .gitops-link.router-link-active i {
+    color: #f05032;
+}
+
+/* Mobile Header Styles */
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 1rem 2rem;
+        border-radius: 0;
+        height: 85px;
+    }
+    
+    /* AWS DevOps specific styling for mobile */
+    .sidenav a[routerLink="/aws-devops"] i {
+        color: #FF9900;
+    }
+    
+    .sidenav a[routerLink="/aws-devops"]:hover i {
+        color: #FF9900;
+    }
+    
+    /* Azure DevOps specific styling for mobile */
+    .sidenav a[routerLink="/azure-devops"] i {
+        color: #0078d4;
+    }
+    
+    .sidenav a[routerLink="/azure-devops"]:hover i {
+        color: #0078d4;
+    }
+    
+    /* GitOps specific styling for mobile */
+    .sidenav .gitops-link i {
+        color: #f05032;
+    }
+    
+    .sidenav .gitops-link:hover i {
+        color: #f05032;
+    }
+    
+    .flogo {
+        height: 55px;
+    }
+    
+    .header-right {
+        gap: 1rem;
+    }
+    
+    .header a {
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+        height: 45px;
+        gap: 0.4rem;
+    }
+    
+    .header a i {
+        font-size: 1rem;
+        width: 1rem;
+    }
+    
+    .whatsapp-button {
+        padding: 0.6rem 1.2rem;
+        height: 45px;
+    }
+    
+    .whatsapp-button span {
+        display: none;
+    }
+}
+
+/* Mobile Header Specific */
+.mobile-header {
+    padding: 1rem 2rem;
+}
+
+.mobile-header .header-right {
+    gap: 0;
+}
+
+.mobile-header .header-right i {
+    font-size: 1.6rem;
+    padding: 0.75rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.mobile-header .header-right i:hover {
+    color: #38b6ff;
+}
+
+/* Sidenav Styles */
+.sidenav {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100%;
+    background-color: #ffffff;
+    color: #172342;
+    transition: all 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    padding: 5rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sidenav.open {
+    left: 0;
+}
+
+.sidenav a {
+    color: #172342;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.sidenav a i {
+    font-size: 1.1rem;
+    width: 1.1rem;
+    text-align: center;
+}
+
+.sidenav a:hover {
+    background-color: rgba(56, 182, 255, 0.1);
+    color: #38b6ff;
+    transform: translateX(5px);
+}
+
+.sidenav a.router-link-active {
+    background-color: #38b6ff;
+    color: white;
+}
+
+.header__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    backdrop-filter: blur(4px);
+}
+
+.header__backdrop.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* WhatsApp Button Styles */
+.whatsapp-button {
+    background-color: #e1f2f2;
+    color: #172342;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    height: 50px;
+}
+
+.whatsapp-button:hover {
+    background-color: #38b6ff;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(56, 182, 255, 0.2);
+}
+
+.whatsapp-button i {
+    font-size: 1.4rem;
+}
+
+/* Floating WhatsApp Button */
+.floating {
+    position: fixed;
+    width: 3.5rem;
+    height: 3.5rem;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #25D366;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    transition: all 0.3s ease;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+}
+
+.floating img {
+    width: 80%;
+    height: auto;
+}
+
+@media screen and (max-width: 480px) {
+    .floating {
+        width: 3rem;
+        height: 3rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+.float-button{
+	margin-top:16px;
+}
+
+/* Styles for the active tab */
+.header-right a.router-link-active {
+  position: relative;
+}
+
+.header-right a.router-link-active::after {
+  content: "";
+  position: absolute;
+    bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+    width: 50%;
+    height: 3px;
+    background-color: #172342;
+}
+
+/* Styles for other tabs */
+.header-right a {
+  position: relative;
+  color: black;
+}
+
+.header-right a::after {
+  content: "";
+  position: absolute;
+    bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+    width: 0%;
+    height: 3px;
+    background-color: transparent;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

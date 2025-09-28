@@ -1,0 +1,140 @@
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+.center {
+  display: flex;
+  flex-wrap: wrap; /* Allow cards to wrap to the next line on small screens */
+  padding-top: 30px;
+  padding-bottom: 50px;
+  justify-content: center;
+}
+
+.article-card {
+  width: 300px;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 300ms;
+  margin-right: 20px;
+  margin-bottom: 20px; /* Add margin between cards on small screens */
+}
+
+.article-card:last-child {
+  margin-right: 0;
+}
+
+.article-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.article-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.article-card .content {
+  box-sizing: border-box;
+  width: 100%;
+  position: absolute;
+  padding: 15px; /* Adjust padding for better mobile appearance */
+  bottom: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+}
+
+.article-card .date,
+.article-card .title {
+  margin: 0;
+}
+
+.article-card .date {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 4px;
+}
+
+.article-card .title {
+  font-size: 17px;
+  color: #fff;
+}
+
+h5 {
+  margin-top: 85px;
+  display: flex;
+  justify-content: center; /* Center text on small screens */
+  text-align: center;
+  font-weight: bolder;
+  font-size: 35px; /* Adjust font size for better mobile appearance */
+  color: #172342;
+}
+
+/* Your existing CSS styles */
+
+.view-more-btn {
+  position: absolute;
+  bottom: 15px; /* Adjust the distance from the bottom for better mobile appearance */
+  right: 15px; /* Adjust the distance from the right for better mobile appearance */
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.view-more-btn:hover {
+  text-decoration: underline;
+}
+
+/* Your existing CSS styles */
+.view-more-blogs {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Adjust the distance from the articles as needed */
+  height: fit-content;
+}
+
+.view-more-blogs a {
+  text-decoration: none;
+  
+  color: #172342;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-top: 100px;
+}
+
+.view-more-blogs a:hover {
+  background-color: #0f1630;
+  color: #fff;
+}
+
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+  .article-card {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .center {
+    padding-left: 15px; /* Add some padding to the left on small screens */
+    padding-right: 15px; /* Add some padding to the right on small screens */
+  }
+  .view-more-blogs a {
+    margin-top: none;
+  }
+  .article-card {
+    width: 350px;
+    height: 220px;
+  }
+  .view-more-blogs {
+    margin-top: -90px;
+  }
+}

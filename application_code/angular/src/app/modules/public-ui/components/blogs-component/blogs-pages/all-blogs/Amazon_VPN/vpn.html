@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>AWS VPN</title>
+    <style>
+         header {
+            background-color: #33333300;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3, h4 {
+            color: #333;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #111010;
+        }
+
+        .feature-list {
+            margin-top: 20px;
+        }
+
+        .feature-list h3, .feature-list h4 {
+            color: #0f0f10;
+        }
+
+        .code {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div style="padding-top: 100px;"></div>
+       <header>
+        <h1>Amazon VPN(Virtual Private Network)</h1>
+       </header>
+
+        <div class="container">
+        <section>
+            <h2>How it works</h2>
+            <p>AWS Client VPN is used by your remote workforce to securely access resources both on AWS and within your on-premises networks.</p>
+        </section>
+
+        <section>
+            <h2>Use Cases</h2>
+            <ul class="feature-list">
+                <li><h3>Quickly scale remote access</h3>Automatically scale up to handle peak demand, then scale down so you aren’t paying for unused capacity.</li>
+                <li><h3>Integrate with your mobile authentication systems</h3>Integrate with Mobile Device Management (MDM) solutions to reject devices that do not comply with your policies.</li>
+                <li><h3>Control your application migrations</h3>Host an Amazon Virtual Private Cloud (VPC) behind your firewall and seamlessly move IT resources, without affecting the user experience.</li>
+                <li><h3>Secure communication between remote locations</h3>Use Site-to-Site VPN connections to communicate securely between remote sites.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>AWS Client VPN</h2>
+            <p>AWS Client VPN is a fully-managed remote access VPN solution used by your remote workforce to securely access resources within both AWS and your on-premises network. Fully elastic, it automatically scales up, or down, based on demand. When migrating applications to AWS, your users access them the same way before, during, and after the move. AWS Client VPN, including the software client, supports the OpenVPN protocol.</p>
+
+            <img src="assets/blogs/AWS-Client-VPN.png" alt="AWS-Client-VPN.png" width="800" height="400">
+
+            <h3>AWS Client VPN features</h3>
+            <ul class="feature-list">
+                <li><h4>Authentication</h4> AWS Client VPN will authenticate using either Active Directory or certificates. Client VPN integrates with AWS Directory Services, which connects to your existing on-premises Active Directory, so it does not require you to replicate data from your existing Active Directory to the cloud. Certificate-based authentication with Client VPN integrates with AWS Certificate Manager to easily provision, manage, and deploy certificates.</li>
+                <li><h4>Authorization</h4>AWS Client VPN provides network-based authorization so you can define access control rules that limit access to specific networks, based on Active Directory groups.</li>
+                <li><h4>Secure connectivity</h4>AWS Client VPN uses the secure TLS VPN tunnel protocol to encrypt the traffic. A single VPN tunnel terminates at each Client VPN endpoint and provides users access to all AWS and on-premises resources.</li>
+                <li><h4>Connection management</h4>You can use Amazon CloudWatch Logs to monitor, store, and access your log files from AWS Client VPN connection logs. You can then retrieve the associated log data from CloudWatch Logs. You can easily monitor, conduct forensics analysis, and terminate specific connections, while staying in control of who has access to your network.</li>
+                <li><h4>Compatibility with your employees' devices</h4>AWS Client VPN is designed to connect devices to your network. It allows you to choose from OpenVPN-based client, giving employees the option to use the device of their choice, including Windows, Mac, iOS, Android, and Linux-based devices.
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>AWS Site-to-Site VPN</h2>
+            <p>AWS Site-to-Site VPN is a fully-managed service that creates a secure connection between your data center or branch office and your AWS resources using IP Security (IPSec) tunnels. When using Site-to-Site VPN, you can connect to both your Amazon Virtual Private Clouds (VPC) as well as AWS Transit Gateway, and two tunnels per connection are used for increased redundancy.
+                For globally distributed applications, the Accelerated Site-to-Site VPN option provides even greater performance by working with AWS Global Accelerator to intelligently route your traffic to the nearest AWS network endpoint with the best performance.
+                </p>
+
+                <img src="assets/blogs/Site-to-Site-VPN.png" alt="Site-to-Site-VPN.png" width="800" height="400">
+
+            <h3>AWS Site-to-Site VPN features</h3>
+            <ul class="feature-list">
+                <li><h4>Secure connectivity</h4>AWS Client VPN uses OpenVPN, which utilizes a TLS encrypted control channel to negotiate the data channel parameters. The data channel is SSL based, but adds additional safeguards (such as HMAC, hashing, and x.509 certificates).</li>
+                <li><h4>High availability</h4>With AWS Site-to-Site VPN you can create failover and CloudHub solutions with AWS Direct Connect. CloudHub enables your remote sites to communicate with each other, and not just with the VPC. It operates on a simple hub-and-spoke model that you can use with or without a VPC. This design is suitable for customers with multiple branch offices and existing internet connections who would like to implement a convenient, potentially low-cost hub-and-spoke model for primary or backup connectivity between these remote offices.</li>
+                <li><h4>Customization</h4>AWS Site-to-Site VPN offers customizable tunnel options including inside tunnel IP address, pre-shared key, and Border Gateway Protocol Autonomous System Number (BGP ASN). In this way, you can set up multiple secure VPN tunnels to increase the bandwidth for your applications or for resiliency in case of a down time. In addition, equal-cost multi-path routing (ECMP) is available with AWS Site-to-Site VPN on AWS Transit Gateway to help increase the traffic bandwidth over multiple paths.</li>
+                <li><h4>Network Address Translation (NAT) Traversal</h4>AWS Site-to-Site VPN supports NAT Traversal applications so that you can use private IP addresses on private networks behind routers with a single public IP address facing the internet.</li>
+                <li><h4>Private IP VPN</h4>Private IP VPN provides the ability to deploy Site-to-site VPN connections over Direct Connect (DX) using private IP addresses. With this feature, you can encrypt DX traffic between your on-premises network and AWS without the need for public IP addresses, thus enabling enhanced security and network privacy at the same time. Private IP VPN can be deployed using AWS Transit Gateway which allows centralized management of customer’s AWS Virtual Private Clouds (VPC) and connections to your on-premises networks in a more secured, private and scalable manner.</li>
+                <li><h4>Monitoring</h4>AWS Site-to-Site VPN can send metrics to CloudWatch to provide you with greater visibility and monitoring. CloudWatch also allows you to send your own custom metrics and add data points in any order, and at any rate you choose. You can retrieve statistics about those data points as an ordered set of time-series data.</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

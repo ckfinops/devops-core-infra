@@ -1,0 +1,71 @@
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .toolsplotform {
+        text-align: center;
+        font-family: 'Quicksand', sans-serif;
+        margin: 100px;
+        padding: 0;
+        box-sizing: border-box;
+        border: 2px solid #ddd;
+        box-shadow: 0 0 10px rgba(4, 121, 255, 0.3);
+    }
+
+    @media only screen and (max-width: 600px) {
+        .toolsplotform {
+            margin: 0px;
+            padding: 0;
+        box-sizing: none;
+        border:none;
+        box-shadow: none;
+    }
+    .toolsplotform ul{
+        margin: 0px !important;
+    }
+    }
+
+    .toolsplotform ul {
+        margin: 35px;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style-type: none;
+    }
+
+    .toolsplotform ul li {
+        margin: 0 10px 15px; /* Adjust the margin as needed */
+        width: 150px; /* Set a specific width for the list items */
+        transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+    }
+
+    .toolsplotform ul li:hover {
+        transform: scale(1.1); /* Increase the size on hover */
+    }
+
+    .toolsplotform ul li img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .toolsplotform ul li:hover::before {
+        content: attr(title);
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+     
+        border-radius: 5px;
+        white-space: nowrap;
+    }
+    h5{
+        margin: 25px 0 43px;
+    }

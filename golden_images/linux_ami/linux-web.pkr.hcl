@@ -33,8 +33,10 @@ variable "security_group_ids" {
 }
 
 variable "iam_instance_profile" {
-  default = "packer-ec2-s3"
+  default = "c3ops-ec2-ssm"
 }
+
+#default = "packer-ec2-s3"
 
 variable "application_name" {
   default = "c3ops-linux"
@@ -133,8 +135,8 @@ build {
       # SSM (preinstalled on AL2023) – ensure running
       "sudo systemctl enable amazon-ssm-agent --now || true",
       # CloudWatch Agent
-      "sudo dnf -y install amazon-cloudwatch-agent",
-      "sudo systemctl enable amazon-cloudwatch-agent || true",
+      # "sudo dnf -y install amazon-cloudwatch-agent",
+      # "sudo systemctl enable amazon-cloudwatch-agent || true",
 
       # Optionally OIDC module (only if you really need it; EPEL on AL2023 ships it)
       "sudo dnf -y install mod_auth_openidc || true",

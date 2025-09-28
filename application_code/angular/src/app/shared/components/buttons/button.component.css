@@ -1,0 +1,415 @@
+/* Button styles */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ripple animation */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: scale(0);
+  animation: ripple-effect 1s;
+}
+
+.ripple-outer {
+  background-color: rgba(255, 255, 255, 0.3);
+  animation: ripple-effect 1s;
+}
+
+@keyframes ripple-effect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Basic Button */
+.button1 {
+  border: 1px solid #ccc;
+
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.button1:hover {
+  background-color: #ddd;
+}
+
+/* Gradient Button */
+.button2 {
+  border: none;
+
+  color: #fff;
+  background-image: linear-gradient(to right, #6ab04c, #3a803e);
+}
+
+.button2:hover {
+  opacity: 0.8;
+}
+
+/* Rounded Button */
+.button3 {
+  border: none;
+  /* border-radius: 20px; */
+  border-radius: 999px;
+  padding: 18px 35px;
+  font-family: "Arial", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  transition: box-shadow 0.3s ease-in-out;
+
+  color: #fff;
+  background-color: #e7005e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.308);
+}
+
+.button3:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.308);
+  background-color: #f70163;
+}
+
+/* Outline Button */
+.button4 {
+  border: 2px solid #007bff;
+
+  color: #007bff;
+  background-color: transparent;
+}
+
+.button4:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Outline Button */
+.OutlineButtonImg {
+  display: inline-flex;
+  border: 2px solid #585fa2;
+  border-radius: 999px;
+  padding: 13px 35px;
+  font-family: "Arial", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #fff;
+  background-color: transparent;
+}
+
+.play-btn {
+  margin-right: 3px;
+}
+
+.OutlineButtonImg:hover {
+  background-color: #585fa2;
+  color: #fff;
+}
+
+/* Icon Button */
+.button5 {
+  border: none;
+
+  color: #fff;
+  background-color: #ff4c4c;
+}
+
+.button5 i {
+  margin-right: 8px;
+}
+
+.button5::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s;
+}
+
+.button5:hover::before {
+  left: 0;
+}
+
+/* Animated Button */
+.button6 {
+  border: none;
+
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.button6::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transition: width 0.5s, height 0.5s, opacity 0.5s;
+}
+
+.button6:hover::before {
+  width: 200px;
+  height: 200px;
+  opacity: 1;
+}
+
+/* https://www.geekboots.com/css/simple-button-hover-animation */
+.button7 {
+  border: none;
+  font-size: 20px;
+  background-color: #ffeadd;
+  color: #ff6666;
+  box-shadow: 0 5px 8px 2px #1b1b1b;
+  transition: 0.3s all ease-in-out;
+  transition: 0.5s box-shadow ease-in-out;
+}
+
+.button7:hover {
+  background-color: #ff6666;
+  color: #ffeadd;
+  box-shadow: 0 0 12px 2px #ffeadd;
+}
+
+/* https://www.geekboots.com/css/gradient-border-animtion */
+.button8 {
+  font-size: 18px;
+  padding: 10px 25px;
+  background-color: #0e1538;
+  text-decoration: none;
+  position: relative;
+  color: #fbff00;
+  transition: 0.3s all ease-in-out;
+  margin-top: 50px;
+  z-index: 0;
+}
+
+.button8:hover {
+  color: #d4002e;
+}
+
+.button8::before,
+.button8::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(310deg, #fbff00, #0e1538, #d4002e);
+  z-index: -1;
+  transition: 0.3s all ease-in-out;
+}
+
+.button8::after {
+  filter: blur(10px);
+}
+
+.button8:hover::before {
+  transform: skewX(2deg) skewY(4deg);
+}
+
+/* https://www.geekboots.com/css/dual-color-button */
+.button9 {
+  padding: 10px 30px;
+  text-decoration: none;
+  font-size: 24px;
+  color: #292929;
+  border: solid thin #9f9f9f;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.button9::before,
+.button9::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  transition: 0.3s all ease-in-out;
+  z-index: -1;
+}
+
+.button9::before {
+  left: -50%;
+  background-color: #ff6600;
+}
+.button9::after {
+  right: -50%;
+  background-color: #ffd900;
+}
+
+.button9:hover::before {
+  left: 0;
+}
+
+.button9:hover::after {
+  right: 0;
+}
+
+/* border-animation */
+.button10 {
+  color: #fff;
+  z-index: 0;
+  overflow: unset;
+}
+
+.button10::before,
+.button10::after {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  border: 2px solid transparent;
+  transition: 0.3s all ease-in-out;
+}
+.button10::before {
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+.button10::after {
+  width: 100%;
+  height: 0;
+  top: 50%;
+  left: 0;
+  border-left-color: #fff;
+  border-right-color: #fff;
+}
+
+.button10:hover::before,
+.button10:hover::after {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* https://www.geekboots.com/css/button-with-liquid-filling-effect */
+.button11 {
+  width: fit-content;
+  border-radius: 30px;
+  color: #292929;
+  background-color: #ff081e;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 1s all ease-in-out;
+  z-index: 0;
+}
+
+.button11::before,
+.button11::after {
+  position: absolute;
+  content: "";
+  width: 400px;
+  height: 400px;
+  border-radius: 45%;
+  transition: 2s all ease-in-out;
+}
+
+.button11::before {
+  background-color: #ececec;
+  top: -370px;
+  left: -120px;
+  animation: wave11 10s infinite linear;
+}
+
+.button11::after {
+  background-color: #ececec80;
+  top: -360px;
+  left: -125px;
+  animation: wave11 9s infinite linear;
+}
+
+.button11 span {
+  position: relative;
+  z-index: 1;
+}
+
+.button11:hover {
+  color: #fff;
+}
+
+.button11:hover::before {
+  top: -450px;
+}
+
+.button11:hover::after {
+  top: -440px;
+}
+
+@keyframes wave11 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* animated button border */
+/* https://www.geekboots.com/css/animated-button-border */
+.button12 {
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  position: relative;
+  background-color: transparent;
+  color: #fff;
+  transition: 0.3s all ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button12::before {
+  position: absolute;
+  content: "";
+  border-top: #fff solid 3px;
+  border-left: #fff solid 3px;
+  width: 10%;
+  height: 30%;
+  top: -3px;
+  left: -3px;
+  transition: 0.3s all ease-in-out;
+}
+
+.button12::after {
+  position: absolute;
+  content: "";
+  border-bottom: #fff solid 3px;
+  border-right: #fff solid 3px;
+  width: 10%;
+  height: 30%;
+  bottom: -3px;
+  right: -3px;
+  transition: 0.3s all ease-in-out;
+}
+
+.button12:hover {
+  color: #d84400;
+}
+
+.button12:hover::before,
+.button12:hover::after {
+  width: 100%;
+  height: 105%;
+  border-color: #d84400;
+}

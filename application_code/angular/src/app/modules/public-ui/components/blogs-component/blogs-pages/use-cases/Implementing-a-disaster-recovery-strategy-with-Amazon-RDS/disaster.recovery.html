@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementing Disaster Recovery Strategy with Amazon RDS</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        header {
+            max-width: 1500px;
+            color: #fff;
+            padding: 20px;
+            background-color: #6495ED;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center content horizontally */
+            margin-top: 120px;
+        }
+
+        section {
+            max-width: 1235px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+
+
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        h2 {
+            color: #050505;
+            border-bottom: 2px solid #050505;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+
+
+        p {
+            color: #0e0e0e;
+        }
+
+        ol {
+            color: #111010;
+            padding-left: 20px;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+     
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 id="Deploy_Docker_Containers" class="lb-txt-none lb-txt-white lb-none-v-margin lb-h1 lb-title" style="margin-top: 10px; margin-bottom: 5px;">Implementing Disaster Recovery Strategy with Amazon RDS</h1>   
+    </header>
+
+        
+        <div class="container">
+            <h2>Why You Need a Disaster Recovery Plan</h2>
+            <div class="update-info">
+        <p>This post was updated on 2/1/2021 to fix a statement about how to share automated snapshots between AWS Accounts.</p>
+        <p>Amazon RDS (Relational Database Service) is a managed service that makes it easier to set up, operate, and scale a relational database. Based on AWS high performance compute and storage, Amazon RDS supports the MySQL, SQL Server, PostgreSQL, MariaDB, and Oracle database engines. It offers a complete set of solutions for provisioning, patching, monitoring, and disaster recovery (DR). This blog presents three features in Amazon RDS that support DR: automated backups, manual backups, and Read Replicas.</p> 
+        <p>For a production environment, it is important to take precautions so that you can recover if there’s an unexpected event. While Amazon RDS provides a highly available Multi-AZ configuration, it can’t protect from every possibility, such as a natural disaster, a malicious actor, or logical corruption of a database. To maintain business continuity, it is important to design and test a DR plan.</p>
+    </div>
+</div>
+    <div class="container">
+        <h2>Understanding RTO and RPO</h2>
+        <div class="update-info">
+        <p><span class="important">Recovery time objective (RTO)</span> and <span class="important">recovery point objective (RPO)</span> are two key metrics to consider when developing a DR plan. RTO represents how many hours it takes you to return to a working state after a disaster. RPO, which is also expressed in hours, represents how much data you could lose when a disaster happens. For example, an RPO of 1 hour means that you could lose up to 1 hour’s worth of data when a disaster occurs.</p>
+
+    <p>Different features of Amazon RDS support different RTOs and RPOs at different cost points:</p>
+
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>RTO</th>
+            <th>RPO</th>
+            <th>Cost</th>
+            <th>Scope</th>
+            
+        </tr>
+        <tr>
+            <td>Automated backups</td>
+            <td>Good</td>
+            <td>Bettern</td>
+            <td>Origin</td>
+            <td>Low	Single Region</td>
+        </tr>
+
+        <tr>
+            <td>Manual snapshots</td>
+            <td>Better</td>
+            <td>Good</td>
+            <td>Medium</td>
+            <td>Cross-Region</td>
+        </tr>
+
+        <tr>
+            <td>Read replicas</td>
+            <td>Best</td>
+            <td>Best</td>
+            <td>High</td>
+            <td>Cross-Region</td>
+        </tr>
+
+    </table>
+
+    <p>As you can see, automated backups are limited to a single AWS Region while manual snapshots and Read Replicas are supported across multiple Regions.</p>
+</div>
+</div>
+<div class="container">
+    <h2>Amazon Aurora</h2>
+    <p>This post does not explicitly cover Amazon Aurora, because Amazon Aurora has slightly different DR features. However, many of the techniques presented are applicable to Aurora DB clusters.see the Amazon Aurora documentation.</p>
+</div>
+    <div class="container">
+        <h2>Amazon RDS Backups</h2>
+        <div class="instruction">
+        <p>Backups are a key component of a DR plan for your database. Amazon RDS supports two different types of backups: automated backups, and manual snapshots.</p>
+        <h3>Amazon RDS Backup Rules:</h3>
+        <ul>
+            <li>Your DB instance must be in the ACTIVE state for backups to occur.</li>
+            <li>Automated backups and automated snapshots do not occur while a copy is executing in the same Region for the same DB instance.</li>
+            <li>The first snapshot of a DB instance contains the data of the full DB instance.</li>
+            <li>The snapshots taken after the first snapshot are incremental snapshots. This means that only the latest changed data is captured and saved.</li>
+            <li>If it’s a Multi-AZ configuration, backups occur on the standby to reduce impact on the primary.</li>
+        </ul>
+        <p class="note">Note: Automated backups and manual snapshots are stored in an S3 bucket that is owned and managed by the Amazon RDS service. Hence, you are not able to see them from your Amazon S3 console.</p>
+        <p>For detailed information on backup mechanisms and backup storage, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html" target="_blank">Working with Backups</a> in the Amazon RDS User Guide.</p>
+    </div>
+        <h2>Automated Backups in Amazon RDS</h2>
+        <div class="instruction">
+        <p>The automated backup feature of Amazon RDS is turned on by default. Amazon RDS creates a storage volume snapshot of your DB instance, backing up the entire DB instance and not just individual databases. The first backup consists of a full instance backup. Subsequent backups are incremental in nature with snapshots containing only the blocks that changed since the previous backup. Each snapshot contains pointers to all of the snapshot data blocks that are required to reconstruct it. Deleting the earlier snapshot does not cause data loss as long as the data is still referenced by at least one snapshot.</p>
+        
+        <h3>Why do we need automated backups?</h3>
+        <p>There are several benefits of having automated backups:</p>
+        <ul>
+            <li>Data is stored in a S3 bucket that is owned and managed by Amazon RDS service.</li>
+            <li>You avoid the pressure of having to set aside time to do a manual backup and transfer it to a safe location.</li>
+            <li>You can choose a timeline that works for you: daily, weekly, or monthly.</li>
+            <li>Both manual and natural calamities are mitigated (for example, viruses, software malfunctions, or power outages).</li>
+            <li>Most importantly, you avoid the adverse effects of losing valuable data.</li>
+        </ul>
+        <p class="note">For more information, refer to <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html" target="_blank">Working with Automated Backups</a> in the Amazon RDS User Guide.</p>
+    </div>
+        <h2>Automated Backup Window</h2>
+        <div class="instruction">
+        <p>The automated backup window is a weekly time period used for creating automated backups. The window is selected at random from an 8-hour block of time for each AWS Region. However, I strongly suggest that you set the backup window during low peak hours to prevent undue load on the server. For a list of the time blocks for each Region, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow" target="_blank">Backup Window</a> in the Amazon RDS User Guide.</p>
+        <h2>Automated Backup Retention Period</h2>
+        <p>The backup retention period is the time window during which you can perform a point-in-time restore (PITR). You can set a different backup retention period when you create a DB instance, and you can modify the retention period at any time. For more detailed information, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.RetentionPeriod" target="_blank">Backup Retention Period</a>.</p>
+        <h3>There are a few differences between manual snapshots and automated backups:</h3>
+        <ul>
+            <li>Manual snapshot limits (100 snapshots per Region) do not apply to automated backups.</li>
+            <li>The backup retention period does not apply for manual snapshots.</li>
+            <li>Manual snapshots are not automatically deleted; they must be explicitly deleted.</li>
+        </ul>
+    </div>
+
+        <h2>Configuring Automated Backups During Instance Creation</h2>
+        <div class="instruction">
+            <p>On the Backup tab, in the Configure advanced settings section, set the Backup retention period and Backup window.</p>
+            <p>Set a Start time for the backup and the Duration in hours that your database requires to finish the backup. It’s a good practice to set the backup window during non-peak hours.</p>
+        </div>
+        <h2>Modifying automated backup settings</h2>
+        <p>To change your automated backup settings, follow these steps:</p>
+       <ul>
+        <li>Click the DB instance that you want change the automated backup setting for, and click the Modify button.</li>
+        <img src="assets/usecases/Implementing-a-disaster-recovery-strategy-with-Amazon-RDS/Modifyingautomatedbackupsettings-1.gif" alt="Modifying automated backup settings-1.gif" width="900" height="300">
+       </ul>
+       <ul>
+        <li>Scroll down to Backup and make the changes you want on the Backup retention period tab and the Backup window.</li>
+       </ul>
+       <ul>
+        <li>Under When to apply modifications, select the option you want, and then click Modify DB instance.</li>
+        <img src="assets/usecases/Implementing-a-disaster-recovery-strategy-with-Amazon-RDS/Modifying automated backup settings-3.gif" alt="Modifying automated backup settings-3.gif" width="900" height="360">
+       </ul>
+    </div>
+
+    <div class="container">
+        <h2>Restoring to a specified point in time</h2>
+        <div class="instruction">
+        <p>Point-in-time recovery (PITR) is the process of restoring a database to the state it was in at a specified date and time.</p>
+        <p>When automated backups are turned on for your DB instance, Amazon RDS automatically performs a full daily snapshot of your data. The snapshot occurs during your preferred backup window. It also captures transaction logs to Amazon S3 every 5 minutes (as updates to your DB instance are made). Archiving the transaction logs is an important part of your DR process and PITR. When you initiate a point-in-time recovery, transactional logs are applied to the most appropriate daily backup in order to restore your DB instance to the specific requested time.</p>
+        <p>For instructions, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html" target="_blank">Restoring a DB Instance to a Specified Time</a> in the Amazon RDS User Guide.</p>
+    
+        <h2>Retaining Automated Backups</h2>
+            <p>When you delete a DB instance, you can choose to retain its automated backups. This can be useful if you later decide to restore the DB instance. Retained automated backups contain automated snapshots and transaction logs from a DB instance. They also include your DB instance properties (such as allocated storage and DB instance class), which are required to restore it to an active instance. You can restore or remove retained automated backups using the AWS Management Console, the Amazon RDS API, and the AWS CLI. See <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.Retention" target="_blank">Retaining Automated Backups</a> in the Amazon RDS User Guide for more information on limitations and recommendations for retaining automated backups.</p>
+
+            <img src="assets/usecases/Implementing-a-disaster-recovery-strategy-with-Amazon-RDS/Retaining automated backups.gif" alt="Retaining automated backups.gif" width="750" height="500">
+            
+                <h2>Database Snapshots in Amazon RDS</h2>
+                <p>Database snapshots are manual (user-initiated) backups of your complete DB instance that serve as full backups. They’re stored in Amazon S3, and are retained until you explicitly delete them. These snapshots can be copied and shared to different Regions and accounts. Because DB snapshots include the entire DB instance, including data files and temporary files, the size of the instance affects the amount of time it takes to create the snapshot.</p>
+                <p>Creating a DB snapshot on a Single-AZ DB instance leads to a brief I/O suspension. The I/O suspension can last a few seconds or minutes depending on the instance size and class of your DB instance. Multi-AZ DB instances are not affected by the I/O suspension because the backup is taken from the standby.</p>
+                <p>See the Amazon RDS User Guide for instructions on <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateSnapshot.html" target="_blank">Creating a DB Snapshot</a>.</p>
+            <h2>Viewing snapshots</h2>
+            <p>You can view snapshots in the Amazon RDS console. Click Snapshots, and then choose Manual Snapshots. Then choose a snapshot from the list.</p>
+
+            <img src="assets/usecases/Implementing-a-disaster-recovery-strategy-with-Amazon-RDS/Viewing snapshots.gif" alt="Viewing snapshots.gif" width="1000" height="250">
+
+            <h2>Copying and sharing snapshots</h2>
+            <p>In Amazon RDS, you can copy automated or manual DB snapshots. When you create a copy of a snapshot, that copy becomes a manual snapshot. You can copy a snapshot within the same AWS Region or across AWS Regions, and you can even copy a snapshot across AWS accounts. If you copy a DB snapshot to another AWS Region, you create a manual DB snapshot that is retained in that AWS Region. Copying a DB snapshot out of the source AWS Region incurs Amazon RDS data transfer charges.</p>
+        <p>You cannot directly copy an automated snapshot to another AWS account. To share an automated DB snapshot, create a manual DB snapshot by copying the automated snapshot, and then share that copy. This process also applies to AWS Backup–generated resources. Instead, it is a two-step process, where you first share the snapshot, and then copy it in the other account.</p>
+        <p>For detailed information on copying snapshots, including limitations, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html" target="_blank">Copying a Snapshot</a> in the Amazon RDS User Guide.</p>
+        
+        <h2>Amazon RDS Cross-Account Snapshot Sharing</h2>
+        <p>Amazon RDS enables you to share DB snapshots or cluster snapshots with other AWS accounts. Sharing snapshots with other highly secure accounts can be helpful if you are concerned about a “bad actor” disrupting operations in your production accounts. You can share manual DB snapshots with up to 20 AWS accounts.</p>
+        <p>Automated Amazon RDS snapshots cannot be shared directly with other AWS accounts. To share an automated snapshot, you first make a copy of the snapshot, which turns it into a manual version. Then you share the copy with the other account.</p>
+        <p>Manual snapshots of DB instances that use custom option groups with persistent or permanent options, such as Transparent Data Encryption (TDE) and time zone, cannot be shared.</p>
+        <p>Snapshots that use the default Amazon RDS encryption key (aws/rds) cannot be shared directly. Instead, you first copy the snapshot by choosing a custom encryption key, and then you share the custom key and the copied snapshot.</p>
+        <p>For detailed instructions on sharing snapshots across accounts, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ShareSnapshot.html" target="_blank">Sharing a DB Snapshot</a> in the Amazon RDS User Guide.</p>
+    
+      
+            <h2>Restoring from a DB Snapshot</h2>
+            <p>If a disaster occurs, you can create a new DB instance by restoring from a DB snapshot. When you restore the DB instance, you choose the name of the DB snapshot from which you want to restore. Then, you provide a name for the new DB instance that is created. Here are a few things to note about the restoration process:</p>
+            <ul>
+                <li>You cannot restore from a DB snapshot to an existing DB instance. Instead, you create a new DB instance when you restore. If you want to use the same name as the existing DB instance, you must first delete or rename the existing one.</li>
+                <li>While it’s possible to restore a DB snapshot to a DB instance with a different storage type than the source DB instance, the restoration process is slower. There is additional work required to migrate the data to a new storage type.</li>
+                <li>You can’t restore a DB instance from a shared DB snapshot that is encrypted. Instead, you make a copy of the DB snapshot and then restore the DB instance from the copy.</li>
+                <li>It’s a good practice to retain the parameter group of any DB snapshots that you create. This enables you to restore the DB instance with the correct parameter group.</li>
+                <li>When you restore from a DB snapshot, by default the option group that is associated with the DB snapshot is associated with the restored DB instance. You can associate a different option group with a restored DB instance. However, the new option group must contain any persistent or permanent options that were included in the original option group.</li>
+            </ul>
+            <p>For detailed instructions, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_RestoreFromSnapshot.html" target="_blank">Restoring from a DB Snapshot</a> in the Amazon RDS User Guide.</p>
+    </div>
+</div>
+
+            <div class="container">
+                <h2>Cross-Region Restore</h2>
+                <p>As discussed, when you perform a cross-Region restore of a DB snapshot, first you copy the snapshot to the desired Region. Then, you can restore the DB snapshot to a new DB instance.</p>
+                <h2>Integrating with AWS Backup</h2>
+                <p>Amazon RDS DB snapshots can be integrated with AWS Backup. AWS Backup is a fully managed backup service that you can use to centralize and automate the backup of data across AWS services in the cloud and on premises. Using AWS Backup, you can centrally configure backup policies and monitor backup activity for your AWS resources. For more information, see <a href="https://aws.amazon.com/backup/" target="_blank">AWS Backup</a>.</p>
+            
+
+            <h2>Read Replicas</h2>
+        <p>Amazon RDS for MariaDB, MySQL, PostgreSQL, and Oracle support the ability to create Read Replicas of a source database. When you create a Read Replica, Amazon RDS first takes a snapshot of the source DB instance, and then creates a read-only instance. Amazon RDS then uses the asynchronous replication method of the DB engine to update the Read Replica whenever there is a change made on the source DB instance. The Read Replica operates as a DB instance that allows only read-only connections. Applications can connect to a Read Replica the same way they do to any DB instance. Amazon RDS replicates all objects in the source DB instance. By default, a Read Replica is created with the same instance and storage type as the source DB instance. However, you can create a Read Replica that has a different storage type from the source DB instance. You can create up to five Read Replicas per source DB instance.</p>
+        <p>In addition to using Read Replicas to reduce the load on your source DB instance, you can also use Read Replicas to implement a DR solution for your production DB environment. If the source DB instance fails, you can promote your Read Replica to a standalone source server. Read Replicas can also be created in a different Region than the source database. Using a cross-Region Read Replica can help ensure that you get back up and running if you experience a regional availability issue.</p>
+        <p>An important metric to monitor with a Read Replica is the replica lag, which is the amount of time that the replica is behind the source database. A replica lag can impact your recovery. Replica lag can vary based on the network latency between the source and destination Regions. It can also be affected by the amount of traffic that is being replicated. Because Read Replicas have a running DB instance, the time required to recover after a disaster is lower. However, using Read Replicas in this way is generally a more expensive option than using automated backups or database snapshots.</p>
+        <p>For instructions on creating a Read Replica or cross-Region Read Replica, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html" target="_blank">Working with Read Replicas</a> in the Amazon RDS User Guide.</p>
+    </div>
+
+    <div class="container">
+        <h2>Promoting a Read Replica</h2>
+        <p>Unlike an Amazon RDS Multi-AZ configuration, failover to a Read Replica is not an automated process. If you are using cross-Region Read Replicas, you should be certain that you want to switch your AWS resources between Regions. Cross-Region traffic can experience latency, and reconfiguring applications can be complicated.</p>
+        <p>For instructions, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html" target="_blank">Promoting a Read Replica</a> in the Amazon RDS User Guide.</p>
+        <p>After you promote a cross-Region Read Replica to be a standalone instance, if you want to later switch back to the original Region, you must create a new Read Replica. Unlike an Amazon RDS Multi-AZ configuration, this is not done for you automatically.</p>
+        <h2>Testing your DR plan</h2>
+        <p>A DR plan is helpful only if it’s periodically tested and validated. Testing your DR plan helps you to identify potential issues or gaps so you can take corrective action. A full DR plan includes not only your database resources, but all of your application infrastructure. While a full DR plan test can take a significant amount of time and resources, it helps ensure that you feel confident it will work when needed.</p>
+    </div>
+
+        <div class="container">
+        <h2>Summary</h2>
+        <p>In this post, I have shared some best practices for implementing DR strategy using Amazon RDS. This post provides a basic framework that you can implement on Amazon RDS for DR using automated backups, manual backups, and Read Replicas. I have also highlighted some key concepts, including point-in-time recovery, Amazon RDS cross-account snapshot sharing, and creating cross-Region Read Replicas.</p>
+    </div>
+
+    <div class="lb-transition-wrapper lb-transition-fade-in lb-active" data-lb-comp="transition-wrapper" data-lb-comp-registered="true">
+        <div class="lb-none-pad lb-grid lb-row lb-row-max-large lb-snap" style="display: flex; align-items: center;">
+            <div class="lb-col lb-tiny-24 lb-mid-24">
+                <div class="lb-bg-left-top-cover lb-border-p lb-small-pad lb-box" style="padding-left: 20px; padding-bottom: 0px; background-image: url('https://s3.cn-north-1.amazonaws.com.cn/aws-dam-prod/tmt/template/GSRC_Tutorials_Congratulations.08882b89ba8adfe231cdb223e7ccfb462038399f.png');">
+                    <h1 id="Congratulations.21" class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-xlarge-align-center lb-txt-none lb-txt-white lb-h1 lb-title"> Congratulations!</h1>
+                    <div class="lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 0px; margin-top: 0px;">
+                        <div class="lb-col lb-tiny-24 lb-mid-6">
+                        </div>
+                        <div class="lb-col lb-tiny-24 lb-mid-12" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <div class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-txt-16 lb-rtxt" style="color: #FFFFFF; margin-top: 0px;">
+                                <p style="color: #FFFFFF;">    "Congratulations on successfully implementing the Disaster Recovery Strategy with Amazon RDS! Your dedication and meticulous planning have ensured that our critical data remains secure and accessible, even in the face of unforeseen challenges. This achievement not only safeguards our operations but also reflects your commitment to excellence. Here's to your continued success in maintaining resilience and readiness for whatever the future may hold."</p>
+                            </div>
+                        </div>                    
+                        <div class="lb-col lb-tiny-24 lb-mid-6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+</body>
+</html>

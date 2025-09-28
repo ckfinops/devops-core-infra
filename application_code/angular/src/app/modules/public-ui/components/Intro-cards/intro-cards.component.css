@@ -1,0 +1,18 @@
+
+.intro-cards{
+  padding: 30px 0px !important;
+  background: url('assets/intro-card/intro_card.svg')
+}
+
+.intro-cards h3{
+  font-size: xxx-large !important;
+  color: #343a40 !important;
+  text-shadow: 1px 1px 2px black  !important;
+}
+
+@media (max-width: 720px) {
+  .intro-cards h3{
+    font-size: 30px !important;
+    text-align: center;
+  }
+}

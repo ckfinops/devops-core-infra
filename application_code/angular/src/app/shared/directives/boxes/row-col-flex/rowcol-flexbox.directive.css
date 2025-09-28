@@ -1,0 +1,10 @@
+.row-layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.col-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}

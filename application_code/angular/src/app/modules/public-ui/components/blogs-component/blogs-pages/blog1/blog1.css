@@ -1,0 +1,50 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 20px auto; /* Center the content horizontally and provide top and bottom margin */
+    max-width: 1000px; /* Limit the width of the content */
+    padding: 20px;
+    
+}
+
+h1 {
+    color: #333;
+    text-align: center; /* Center the header */
+}
+
+h2 {
+    color: #444;
+}
+
+p {
+    color: #666;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+pre {
+    font-family: 'Courier New', monospace;
+    background-color: #f8f8f8;
+    padding: 10px;
+    border: 1px solid #ddd;
+    overflow-x: auto;
+}
+
+
+a {
+    color: #007BFF;
+}
+@media only screen and (max-width: 600px) {
+    body {
+        padding: 25px !important; /* Adjust padding for smaller screens */
+    } 
+    .spacing{
+        padding-top: 15px !important;
+    }
+}
+
+
+

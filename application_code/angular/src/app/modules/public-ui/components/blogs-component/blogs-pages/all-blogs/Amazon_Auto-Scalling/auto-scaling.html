@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Amazon EC2 Auto Scaling</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #060606;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #050505;
+            border-bottom: 2px solid #050505;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #0e0e0e;
+        }
+
+        ol {
+            color: #111010;
+            padding-left: 20px;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div style="padding-top: 100px;"></div>
+    <header>
+        <h1 style="color: #fff;">Amazon EC2 Auto Scaling</h1>
+    </header>
+    
+    <section>
+    <p>
+        <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html" target="_blank" title="Go to Amazon EC2 Auto Scaling">Amazon EC2 Auto Scaling</a> helps you ensure that you have the correct number of Amazon EC2 instances 
+        available to handle the load for your application. You create collections of EC2 instances, called 
+        Auto Scaling groups. You can specify the minimum number of instances in each Auto Scaling group, 
+        and Amazon EC2 Auto Scaling ensures that your group never goes below this size. You can specify 
+        the maximum number of instances in each Auto Scaling group, and Amazon EC2 Auto Scaling ensures 
+        that your group never goes above this size. If you specify the desired capacity, either when you 
+        create the group or at any time thereafter, Amazon EC2 Auto Scaling ensures that your group has 
+        this many instances. If you specify scaling policies, then Amazon EC2 Auto Scaling can launch or 
+        terminate instances as demand on your application increases or decreases.
+    </p>
+    <div class="example-group">
+        <p>For example, the following Auto Scaling group has a minimum size of one instance, a desired capacity of two instances, and a maximum size of four instances. The scaling policies that you define adjust the number of instances, within your minimum and maximum number of instances, based on the criteria that you specify.</p>
+        <img src="https://docs.aws.amazon.com/images/autoscaling/ec2/userguide/images/as-basic-diagram.png" alt="auto-scaling.jpg" width="600" height="350">
+        <h3>How it works</h3>
+
+        <p>Amazon EC2 Auto Scaling helps you maintain application availability and lets you automatically add or remove EC2 instances using scaling policies that you define. Dynamic or predictive scaling policies let you add or remove EC2 instance capacity to service established or real-time demand patterns. The fleet management features of Amazon EC2 Auto Scaling help maintain the health and availability of your fleet.</p>
+        <img src="https://miro.medium.com/v2/resize:fit:1093/1*4lQj_u666yzYhFwblLoX9A.png" alt="auto-scaling-works.jpg" width="800" height="300">
+    
+    <h1>Creating an AWS Auto Scaling Group</h1>
+ 
+    <div class="step">
+        <h3 class="step-title">1. Navigate to Auto Scaling:</h3>
+       <li>In the AWS Management Console, go to the "Auto Scaling" service.</li>
+    </div>
+
+    <div class="step">
+        <h3 class="step-title">2. Create a Launch Configuration:</h3>
+        <li>Click on "Create launch configuration."</li>
+        <li>Choose the Amazon Machine Image (AMI) for your instances.</li>
+        <li> Select an instance type, add user data if needed, and configure storage options.</li>
+        <li> Configure security groups and any other settings required for your instances.</li>
+    </div>
+
+    <div class="step">
+        <h3 class="step-title">3. Create an Auto Scaling Group:</h3>
+    <li>After creating the launch configuration, go back to the "Auto Scaling" dashboard and click on "Create Auto Scaling group."</li>
+    <li>Define your group name, group size, and network settings.</li>
+    <li>Configure scaling policies, specifying when to scale out (add instances) or scale in (remove instances).</li>
+    <li>Set up health checks to determine the instance's health.</li>
+    </div>
+
+    <div class="step">
+        <h3 class="step-title">4. Configure Scaling Policies:</h3>
+    <li>Define policies based on CloudWatch alarms or other metrics.</li>
+    <li> For example, you can create a policy to scale out when CPU utilization exceeds a certain threshold.</li>
+    </div>
+
+    <div class="step">
+        <h3 class="step-title">5. Configure Notifications (Optional):</h3>
+    <li>Set up Amazon Simple Notification Service (SNS) notifications to receive alerts when scaling events occur.</li>
+    </div>
+
+    <div class="step">
+        <h3 class="step-title">6. Review and Launch:</h3>
+    <li>Review your configurations and click "Create Auto Scaling group."</li>
+    </div>
+
+    <div class="step">
+        <h3 class="step-title">7. Monitor and Test:</h3>
+    <li>Monitor your Auto Scaling group in the AWS Management Console.</li>
+    <li>Test the Auto Scaling group by manually terminating instances to see if new instances are launched to replace them.</li>
+    </div>
+
+    <div class="step">
+        <h3 class="step-title">8. Adjust as Needed:</h3>
+    <li>Adjust your Auto Scaling group settings as needed, such as updating the launch configuration, modifying scaling policies, or adjusting health check parameters.</li>
+
+    <h3>Features of Amazon EC2 Auto Scaling</h3>       
+    <p> 1. Monitoring the health of running instances</p>
+    <p> 2. Custom health checks</p>
+    <p> 3. Balancing capacity across Availability Zones</p>
+    <p> 4. Multiple instance types and purchase options</p>
+    <p> 5. Automated replacement of Spot Instances</p>
+    <p> 6. Load balancing</p>
+    <p> 7. Scalability</p>
+    <p> 8. Instance refresh</p>
+    <p> 9. Lifecycle hooks</p>
+    <p> 10. Support for stateful workloads</p>
+        
+
+    <h1>Pricing for Amazon EC2 Auto Scaling</h1>
+
+    <div class="pricing-container">
+        <div class="pricing">
+            <p>There are no additional fees with Amazon EC2 Auto Scaling, so it's easy to try it out and see how it can benefit your AWS architecture.</p>
+            <p>You only pay for the AWS resources (for example, EC2 instances, EBS volumes, and CloudWatch alarms) that you use.</p>
+        </div>
+    </div>

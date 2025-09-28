@@ -1,0 +1,82 @@
+/* Import Bootstrap CSS*/
+/* @import "~bootstrap/dist/css/bootstrap.min.css"; */
+@import "./bootstrap.min.css";
+@import "./owl.carousel.min.css";
+@import "./animate.min.css";
+/* styles.css or styles.scss */
+@import "~font-awesome/css/font-awesome.css";
+@import "./main.css";
+
+.container{
+  max-width: 1257px;
+}
+
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: "Arial", sans-serif; */
+  font-family: 'Quicksand', sans-serif ; 
+}
+
+.generic-section {
+  display: flex;
+  max-width: 1400x;
+  flex-direction: column;
+  align-items: center;
+  /* height: 100vh; */
+
+  background: linear-gradient(
+    135deg,
+    rgba(27, 24, 52, 1) 0%,
+    rgba(42, 33, 102, 1) 100%
+  );
+}
+
+.data-block {
+  display: grid;
+  min-width: 200px; /* Adjust the width as per your design */
+  align-items: center;
+  padding: 0 15px;
+}
+
+.title--pink {
+  color: #ff1675;
+  font-size: 18px;
+  text-transform: unset;
+  letter-spacing: unset;
+  margin: 0 0 20px 0;
+}
+
+.big-text {
+  font-size: 48px;
+  line-height: 43px;
+}
+.medium-big-text {
+  font-size: 28px;
+  line-height: 33.6px;
+}
+.medium-text {
+  font-size: 17px;
+  line-height: 23.8px;
+}
+.white {
+  color: #fff;
+}
+.margin-bottom {
+  margin-bottom: 20px;
+}
+.bold {
+  font-weight: bold;
+}
+
+.button-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto auto;
+  justify-content: start;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

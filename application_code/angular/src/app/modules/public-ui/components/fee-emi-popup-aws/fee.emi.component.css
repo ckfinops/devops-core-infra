@@ -1,0 +1,151 @@
+/* Modal container */
+.sr-modal__content {
+    display: -webkit-box;      /* For older browsers */
+    display: -ms-flexbox;     /* For Internet Explorer 10 */
+    display: flex;            /* Modern browsers */
+    -webkit-box-orient: vertical; /* For older browsers */
+    -webkit-box-direction: normal; /* For older browsers */
+    -ms-flex-direction: column; /* For Internet Explorer 10 */
+    flex-direction: column;   /* Modern browsers */
+    -webkit-box-pack: center; /* For older browsers */
+    -ms-flex-pack: center;    /* For Internet Explorer 10 */
+    justify-content: center;  /* Center items vertically */
+    background: #e6f2ff;      /* Background color */
+    -webkit-box-flex: 1;      /* For older browsers */
+    -ms-flex: 1;             /* For Internet Explorer 10 */
+    flex: 1;                 /* Modern browsers */
+    margin: 0.1rem;          /* Margin around the container */
+    text-align: center;      /* Center text horizontally */
+  }
+  
+  /* Modal header */
+  .sr-modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Modal title */
+  .sr-modal__title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Close button */
+  .sr-modal__close {
+    font-size: 1.2em;
+    color: #aaa;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .sr-modal__close:hover {
+    color: #333;
+  }
+  
+  /* Modal body */
+  .sr-modal__body {
+    overflow-x: auto;
+  }
+  
+  /* EMI options modal */
+  .emi-options-modal {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Table description */
+  .emi-options-modal__description {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  /* Table styling */
+  .emi-options-modal__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Column List for Headers and Data */
+  .col-list {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr; /* Define column widths */
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px; /* Space between rows */
+  }
+  
+  /* Style for header cells */
+  .col-list__name {
+    padding: 10px;
+    border-right: 1px solid #ddd;
+    text-align: center;
+    font-weight: bold;
+    background-color: #f9f9f9;
+  }
+  
+  /* Style for data cells */
+  .col-list__field {
+    padding: 10px;
+    border-right: 1px solid #ddd;
+    text-align: center;
+    background-color: #fff;
+  }
+  
+  /* Remove right border from the last column */
+  .col-list > :last-child {
+    border-right: none;
+  }
+  
+  /* Grid for durations and payments */
+  .col-list__grid {
+    padding: 10px;
+    border-right: 1px solid #ddd;
+    text-align: center;
+    background-color: #fff;
+  }
+  
+  .col-list__subfield {
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+  }
+  
+  .col-list__subfield.grey {
+    background-color: #38b6ff1f;
+    font-weight: bold;
+    border-color: #343a4029;
+  }
+  
+  .col-list__subfield.orange {
+    background-color: #ffeb3b;
+    font-weight: bold;
+    border-color: #f4c300;
+  }
+  
+  /* Sub-title */
+  .sub-title {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #999;
+  }
+  
+  /* Hide elements */
+  .hidden {
+    display: none;
+  }
+  
+
+.mat-dialog-container{
+    padding: 0px !important;
+}
+.cc{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

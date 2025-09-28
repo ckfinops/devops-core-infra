@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy Docker Containers on Amazon Deploy Docker Containers</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        header {
+            margin-top: 130px;
+            max-width: 1500px;
+            color: #fff;
+            padding: 20px;
+            background-color: #6495ED;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center content horizontally */
+        }
+
+        section {
+            max-width: 1235px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+
+
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #050505;
+            border-bottom: 2px solid #050505;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+
+
+        p {
+            color: #0e0e0e;
+        }
+
+        ol {
+            color: #111010;
+            padding-left: 20px;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+     
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 id="Deploy_Docker_Containers" class="lb-txt-none lb-txt-white lb-none-v-margin lb-h1 lb-title" style="margin-top: 10px; margin-bottom: 5px;">Deploy Docker Containers</h1>
+<h1 id="on_Amazon_Elastic_Container_Service_.28Amazon_ECS.29" class="lb-txt-none lb-txt-white lb-none-v-margin lb-h2 lb-title" style="margin-top: 5px; margin-bottom: 5px; color: white;">on Amazon Elastic Container Service (Amazon ECS)</h1>
+    </header>
+
+        <section>
+            <p>Amazon Elastic Container Service (Amazon ECS) is the service you use to run Docker applications on a scalable cluster. In this tutorial, you will learn how to run a Docker-enabled sample application on an Amazon ECS cluster behind a load balancer, test the sample application, and delete your resources to avoid charges.</p>
+        </section>
+            
+
+        <div class="container">
+            <!-- Your content goes here -->
+                <h2>Step 1: Set up your first run with Amazon ECS</h2>
+
+                <p>The Amazon ECS first run wizard will guide you through creating a cluster and launching a sample web application. In this step, you will enter the Amazon ECS console and launch the wizard.</p>
+                
+                <p>a. Click here to open the Amazon ECS console first run wizard.</p>
+
+                <hr class="lb-divider">
+                <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 2px; padding-bottom: 0px;">
+                    <div class="lb-col lb-tiny-24 lb-mid-16">
+                        <div class="lb-txt-16 lb-rtxt">
+                            <!-- Your content goes here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <p>b. With Amazon ECS, you have the option to use Amazon Elastic Container Registry (Amazon ECR) to create an image repository and push an image to it as part of the first run wizard. This feature is currently available in select regions.</p> 
+        
+                <ul>
+                    <li>If you do not have Amazon ECR options, skip to step 2.</li> 
+                    <li>If you have Amazon ECR options, uncheck the box next to Deploy a sample application onto an Amazon ECS Cluster and select Continue.</li> 
+                </ul>
+
+                <img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-1-china-rebranded.f920ac1678c1b282cc6e8a0c225d79a5387edba0.png" alt="deploy-docker-container-1-china-rebranded.f920ac1678c1b282cc6e8a0c225d79a5387edba0.png" width="700" height="500">
+
+                
+            </div> 
+
+
+            <div class="container">
+    <h2>Step 2: Create a task definition</h2>
+
+<p>A task definition is like a blueprint for your application. In this step, you will specify a task definition so Amazon ECS knows which Docker image to use for containers, how many containers to use in the task, and the resource allocation for each container.</p>    
+
+<p>The task definition comes pre-loaded with default configuration values.</p>
+<ul>
+<li>Review: the default values and select Next Step.</li>
+</ul>
+<p>If you prefer to modify the configurations or would like to learn more, see <a href="https://docs.amazonaws.cn/en_us/AmazonECS/latest/developerguide/task_definition_parameters.html" target="_blank" title="Go to Task Definition Parameters">Task Definition Parameters.</a></p>
+
+<img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-2-china-rebranded.e96ee0cbb94866a31f41a10c0840da464bd5b0f4.png" alt="deploy-docker-container-2-china-rebranded.e96ee0cbb94866a31f41a10c0840da464bd5b0f4.png" width="700" height="500">
+
+</div>
+
+            <div class="container">
+    <h2>Step 3: Configure your service</h2>
+
+    <p>Now that you have created a task definition, you will configure the Amazon ECS service. A service launches and maintains copies of the task definition in your cluster. For example, by running an application as a service, Amazon ECS will auto-recover any stopped tasks and maintain the number of copies you specify.</p>
+
+    <p>a. Configure service options:</p>
+    <ul>
+        <li>Service Name: The default sample-webapp is a web-based "Hello World" application. It is meant to run indefinitely, so by running it as a service, it will restart if the task becomes unhealthy or unexpectedly stops.</li>
+
+        <li>Desired number of tasks: The default value of 1. This will create 1 copy of your task.</li>
+    </ul>
+    <img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-3-china-rebranded.fb1a5fc949aed83926c4b7a65628c01e6d14481f.png" alt="deploy-docker-container-3-china-rebranded.fb1a5fc949aed83926c4b7a65628c01e6d14481f.png" width="700" height="500">
+
+
+    <hr class="lb-divider">
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 2px; padding-bottom: 0px;">
+        <div class="lb-col lb-tiny-24 lb-mid-16">
+            <div class="lb-txt-16 lb-rtxt">
+                <!-- Your content goes here -->
+            </div>
+        </div>
+    </div>
+
+    <p>b. Elastic load balancing: You have the option to use a load balancer with your service. Amazon ECS can create an Elastic Load Balancing (ELB) load balancer to distribute the traffic across the container instances your task is launched on.</p>
+    <ul>
+        <li>Container name: host port: select Simple-app:80.</li>
+        <li>The default values for ELB listener protocol, ELB listener port, and ELB health check are set up for the sample application. For more information on load balancing configuration, see Service Load Balancing.</li>
+    </ul>
+    <img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-3b-china-rebranded.845a7c37e1be563b687b24df2f98c9ec406dc839.png" alt="deploy-docker-container-3b-china-rebranded.845a7c37e1be563b687b24df2f98c9ec406dc839.png" width="700" height="500">
+
+
+    <hr class="lb-divider">
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 2px; padding-bottom: 0px;">
+        <div class="lb-col lb-tiny-24 lb-mid-16">
+            <div class="lb-txt-16 lb-rtxt">
+                <!-- Your content goes here -->
+            </div>
+        </div>
+    </div>
+
+    <p>c. Before you can attach a load balancer to an Amazon ECS service, you must create an Identity and Access Management (IAM) role for your services to use. This will allow Amazon ECS to make calls to the Amazon EC2 and Elastic Load Balancing APIs to register and deregister instances with your load balancers.</p>
+    <ul>
+        <li>If you do not have a Service IAM Role already, Amazon ECS will create one named ecsServiceRole.</li>
+        <li>If you have an existing Amazon ECS service role, select it from the dropdown.</li>
+    </ul>
+    <img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-3c-china-rebranded.09e2105bfe295520215692d0dcd3f6c86f5849ea.png" alt="deploy-docker-container-3c-china-rebranded.09e2105bfe295520215692d0dcd3f6c86f5849ea.png" width="700" height="500">
+
+    <hr class="lb-divider">
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 2px; padding-bottom: 0px;">
+        <div class="lb-col lb-tiny-24 lb-mid-16">
+            <div class="lb-txt-16 lb-rtxt">
+                <!-- Your content goes here -->
+            </div>
+        </div>
+    </div>
+
+    <p>d. Review your settings and select Next Step.</p>
+    <img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-3d-china-rebranded.bfaa2847978f38734a9bcd10728077b554790c62.png" alt="deploy-docker-container-3d-china-rebranded.bfaa2847978f38734a9bcd10728077b554790c62.png" width="700" height="500">
+
+            </div>
+
+            <div class="container">
+    <h2>Step 4: Configure your cluster</h2>
+
+    <p>Your Amazon ECS tasks run on a cluster, which is the set of container instances running the Amazon ECS container agent. In this step, you will configure the cluster, review security settings, and set IAM roles.</p>
+
+    <p>a. Follow the configuration settings below:</p>
+    <ul>
+        <li>Cluster name: Enter sample-cluster.</li>
+        <li>EC2 instance type: The default t2.micro instance type. Instance types with more CPU and memory resources can handle more tasks. For more information on the different instance types, see Amazon EC2 Instance Types.</li>
+        <li>Number of instances: Leave the default value of 1 to launch one Amazon EC2 instance to launch into your cluster for tasks to be placed on. The more instances you have in your cluster, the more tasks you can place on them.</li>
+        <li>Key pair: A key pair is required to SSH into your instances later on. You can continue by selecting None - unable to SSH, selecting an existing key pair, or by creating one in the Amazon EC2 console.</li>
+    </ul>
+    <img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-4a-china-rebranded.41644a87dd5db1064d9b1564e16457c7d79f3d32.png" alt="deploy-docker-container-4a-china-rebranded.41644a87dd5db1064d9b1564e16457c7d79f3d32.png" width="700" height="500">
+
+    <hr class="lb-divider">
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 2px; padding-bottom: 0px;">
+        <div class="lb-col lb-tiny-24 lb-mid-16">
+            <div class="lb-txt-16 lb-rtxt">
+                <!-- Your content goes here -->
+            </div>
+        </div>
+    </div>
+
+    <p>b. (Optional) Security Group: The default value (Anywhere) allows access from the entire Internet. You also have the option to choose a CIDR block that restricts access to your instances.</p>
+    <img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-4b-china-rebranded.5b758bb0cd39e8c9245152f613137c366bc3c0b1.png" alt="deploy-docker-container-4b-china-rebranded.5b758bb0cd39e8c9245152f613137c366bc3c0b1.png" width="700" height="500">
+    
+    <hr class="lb-divider">
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 2px; padding-bottom: 0px;">
+        <div class="lb-col lb-tiny-24 lb-mid-16">
+            <div class="lb-txt-16 lb-rtxt">
+                <!-- Your content goes here -->
+            </div>
+        </div>
+    </div>
+
+    <p>c. Container instance IAM role:</p>
+
+    <ul>
+        <li>If you do not have an IAM role, the Amazon ECS wizard will create one for you.</li>
+        <li>If you have an existing container instance IAM role, select it from the dropdown list.</li>
+    </ul>
+    <img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-4c-china-rebranded.794192d09b51959497633687016270473253ddbc.png" alt="deploy-docker-container-4c-china-rebranded.794192d09b51959497633687016270473253ddbc.png" width="700" height="500">
+    <hr class="lb-divider">
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 2px; padding-bottom: 0px;">
+        <div class="lb-col lb-tiny-24 lb-mid-16">
+            <div class="lb-txt-16 lb-rtxt">
+                <!-- Your content goes here -->
+            </div>
+        </div>
+    </div>
+    <p>d. Select Review and Launch.</p>
+    <img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-4d-china-rebranded.c51d0b87c5022aedd1146e9f69bd0e38086f0f8f.png" alt="deploy-docker-container-4d-china-rebranded.c51d0b87c5022aedd1146e9f69bd0e38086f0f8f.png" width="700" height="500">
+
+</div>
+
+
+
+
+<div class="container">
+<h2>Step 5: Launch and View Your Resources</h2>
+<p>In previous steps, you have configured your task definition, Amazon ECS service, and your cluster. In this step, you will review, launch, and view the resources you create.</p>
+<p>a. You have a final chance to review your task definition, task configuration, and cluster configurations before launching.</p>
+<img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-5a-china-rebranded.d40443eeec623be8bae1db50b6eff31447738b2e.png" alt="deploy-docker-container-5a-china-rebranded.d40443eeec623be8bae1db50b6eff31447738b2e.png" width="700" height="500">
+
+<hr class="lb-divider">
+<div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 2px; padding-bottom: 0px;">
+    <div class="lb-col lb-tiny-24 lb-mid-16">
+        <div class="lb-txt-16 lb-rtxt">
+            <!-- Your content goes here -->
+        </div>
+    </div>
+</div>
+
+<p>b. You are on a Launch Status page that shows the status of your launch and describes each step of the process. After the launch is complete, select View service.</p>
+<img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-5b-china-rebranded.b812fbc3d32d6f8533bc3b5117bbea37c0dfc9d6.png" alt="deploy-docker-container-5b-china-rebranded.b812fbc3d32d6f8533bc3b5117bbea37c0dfc9d6.png" width="700" height="500">
+
+</div>
+
+<div class="container">
+<h2>Step 6: Open the Sample Application</h2>
+<p>In this step, you will verify that the sample application is up and running by pointing your browser to the load balancer DNS name.</p>
+<p>a. On the sample-webapp page, click on your Load Balancer Name.</p>
+<img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-6a-china-rebranded.77d759c2d9b909f9d2a55e2d0d5049e8c73b8266.png" alt="deploy-docker-container-6a-china-rebranded.77d759c2d9b909f9d2a55e2d0d5049e8c73b8266.png" width="700" height="500">
+
+<hr class="lb-divider">
+<div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 2px; padding-bottom: 0px;">
+    <div class="lb-col lb-tiny-24 lb-mid-16">
+        <div class="lb-txt-16 lb-rtxt">
+            <!-- Your content goes here -->
+        </div>
+    </div>
+</div>
+
+<p>b. You will now test the sample application:</p>
+<ul>
+    <li>Copy the ELB DNS name.</li>
+    <li>Paste it into a new browser window.</li>
+    <li>Hit Enter on your keyboard to view the sample application (in this case, a static webpage).</li>
+</ul>
+<img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-6b-china-rebranded.2fb150157db58c9a09fe1cded043a7d2b4aa5dec.png" alt="deploy-docker-container-6b-china-rebranded.2fb150157db58c9a09fe1cded043a7d2b4aa5dec.png" width="700" height="500">
+
+</div>
+
+<div class="container">
+    <h2>Step 7: Delete Your Resources</h2>
+    <p>Throughout this tutorial, you've launched three resources: an Amazon ECS cluster, an Amazon EC2 instance, and a load balancer. In this step, you will clean up all your resources to avoid unwanted charges.</p>
+
+    <p>a. Navigate back to the Amazon ECS console page.</p>
+    <ul>
+        <li>Click on the cluster name (sample-cluster).</li>
+    </ul>
+    <img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-7a-china-rebranded.f19d71a3e84e40ab1e20de007e5b2e7e17c44f36.png" alt="deploy-docker-container-7a-china-rebranded.f19d71a3e84e40ab1e20de007e5b2e7e17c44f36.png" width="700" height="500">
+
+
+    <hr class="lb-divider">
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 2px; padding-bottom: 0px;">
+        <div class="lb-col lb-tiny-24 lb-mid-16">
+            <div class="lb-txt-16 lb-rtxt">
+                <!-- Your content goes here -->
+            </div>
+        </div>
+    </div>
+
+    <p>b. Select the checkbox next to sample-webapp and click Update.</p>
+    <img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-7b-china-rebranded.e23e6fa3d66d66566af45dc2fa0d539de056ab19.png" alt="deploy-docker-container-7b-china-rebranded.e23e6fa3d66d66566af45dc2fa0d539de056ab19.png" width="700" height="500">
+
+    <hr class="lb-divider">
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 2px; padding-bottom: 0px;">
+        <div class="lb-col lb-tiny-24 lb-mid-16">
+            <div class="lb-txt-16 lb-rtxt">
+                <!-- Your content goes here -->
+            </div>
+        </div>
+    </div>
+
+    <p>c. To ensure you don't accidentally delete a service with active tasks, you need to stop all tasks before Amazon ECS will delete a service. Set the Number of tasks to 0 and select Update Service. After you update your service, select Delete.</p>
+    <img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-7c-china-rebranded.f1ded27e92e1bab4d7c8434c758de3f24a4adb28.png" alt="deploy-docker-container-7c-china-rebranded.f1ded27e92e1bab4d7c8434c758de3f24a4adb28.png" width="700" height="500">
+
+    <hr class="lb-divider">
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 2px; padding-bottom: 0px;">
+        <div class="lb-col lb-tiny-24 lb-mid-16">
+            <div class="lb-txt-16 lb-rtxt">
+                <!-- Your content goes here -->
+            </div>
+        </div>
+    </div>
+
+    <p>d. Delete the Amazon EC2 instances that were launched with your cluster:</p>
+    <ul>
+        <li>Enter the Amazon EC2 console</li>
+        <li>In the left-hand panel, select Instances.</li>
+        <li>Select the checkbox next to the instance named ECS Instance - EC2ContainerService-default.</li>
+        <li>Select Actions > Instance State > Terminate.</li>
+    </ul>
+    <img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-7d-china-rebranded.14a7d8c42c1e286e27083a04ef1f4287091ec02f.png" alt="deploy-docker-container-7d-china-rebranded.14a7d8c42c1e286e27083a04ef1f4287091ec02f.png" width="700" height="500">
+
+    <hr class="lb-divider">
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 2px; padding-bottom: 0px;">
+        <div class="lb-col lb-tiny-24 lb-mid-16">
+            <div class="lb-txt-16 lb-rtxt">
+                <!-- Your content goes here -->
+            </div>
+        </div>
+    </div>
+
+    <p>e. Delete your load balancers:</p>
+    <ul>
+        <li>On the left panel, select Load Balancers.</li>
+        <li>Select the checkbox next to the load balancer you created for your service (it should start with EC2Contai-EcsElast).</li>
+        <li>Right-click and select Delete.</li>
+    </ul>
+    <img src="assets/usecases/Deploy-Docker-Containers-on-Amazon-Deploy-Docker-Containers/deploy-docker-container-7e-china-rebranded.e9a4511b6248c53fdb5e90b1739d01c16f94e2f5.png" alt="deploy-docker-container-7e-china-rebranded.e9a4511b6248c53fdb5e90b1739d01c16f94e2f5.png" width="700" height="500">
+
+
+</div>
+
+<div class="lb-transition-wrapper lb-transition-fade-in lb-active" data-lb-comp="transition-wrapper" data-lb-comp-registered="true">
+    <div class="lb-none-pad lb-grid lb-row lb-row-max-large lb-snap" style="display: flex; align-items: center;">
+        <div class="lb-col lb-tiny-24 lb-mid-24">
+            <div class="lb-bg-left-top-cover lb-border-p lb-small-pad lb-box" style="padding-left: 20px; padding-bottom: 0px; background-image: url('https://s3.cn-north-1.amazonaws.com.cn/aws-dam-prod/tmt/template/GSRC_Tutorials_Congratulations.08882b89ba8adfe231cdb223e7ccfb462038399f.png');">
+                <h1 id="Congratulations.21" class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-xlarge-align-center lb-txt-none lb-txt-white lb-h1 lb-title"> Congratulations!</h1>
+                <div class="lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 0px; margin-top: 0px;">
+                    <div class="lb-col lb-tiny-24 lb-mid-6">
+                    </div>
+                    <div class="lb-col lb-tiny-24 lb-mid-12" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <div class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-txt-16 lb-rtxt" style="color: #FFFFFF; margin-top: 0px;">
+                            <p style="color: #FFFFFF;">Congratulations! You have learned how to configure, deploy, and delete your Docker-enabled application to Amazon Elastic Container Service (Amazon ECS). Amazon ECS is a highly scalable, high-performance container management service that supports Docker containers and allows you to easily run applications on a managed cluster of Amazon EC2 instances.</p>
+                        </div>
+                    </div>                    
+                    <div class="lb-col lb-tiny-24 lb-mid-6">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

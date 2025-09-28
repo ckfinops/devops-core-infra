@@ -1,0 +1,133 @@
+/* Course Content Module Styles */
+.course-content-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+}
+
+.course-content-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.course-content-title h2 {
+  font-size: 2.5rem;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.course-content-title p {
+  font-size: 1.1rem;
+  color: #718096;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.module-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.module-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.module-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.module-icon {
+  width: 48px;
+  height: 48px;
+  background: #5624d0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.module-icon i {
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.module-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.module-duration {
+  font-size: 0.875rem;
+  color: #718096;
+  margin-top: 0.25rem;
+}
+
+.module-content {
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.module-topics {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.module-topics h4 {
+  font-size: 1rem;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.module-topics ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.module-topics li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  color: #4a5568;
+}
+
+.module-topics li i {
+  color: #5624d0;
+  margin-right: 0.75rem;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .course-content-section {
+    padding: 3rem 1rem;
+  }
+
+  .course-content-title h2 {
+    font-size: 2rem;
+  }
+
+  .modules-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .module-card {
+    padding: 1.5rem;
+  }
+} 

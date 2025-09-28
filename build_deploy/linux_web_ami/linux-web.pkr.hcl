@@ -16,28 +16,30 @@ variable "instance_type" {
 }
 
 variable "ami_name" {
-  default = "al2023-c3finops-web-runtime-{{timestamp}}"
+  default = "al2023-c3ops-runtime-{{timestamp}}"
 }
 
 variable "vpc_id" {
-  default = ""
+  default = "vpc-0305c51d2febe0d64"
 }
 
 variable "subnet_id" {
-  default = "" # private subnet with NAT is recommended
+  default = "subnet-0ab7ef12823c1b8c3" # private subnet with NAT is recommended
 }
 
 variable "security_group_ids" {
   type    = list(string)
-  default = []
+  default = ["sg-08cf4cea70d7c2508"]
 }
 
 variable "iam_instance_profile" {
-  default = "packer-ec2-s3"
+  default = "c3ops-ec2-ssm"
 }
 
+#default = "packer-ec2-s3"
+
 variable "application_name" {
-  default = "c3finops-web"
+  default = "c3ops-linux"
 }
 
 variable "application_version" {
@@ -45,7 +47,7 @@ variable "application_version" {
 }
 
 variable "share_account_ids_csv" {
-  default = "" # e.g. "111122223333,444455556666"
+  default = "225989338000" # e.g. "111122223333,444455556666"
 }
 
 variable "arch" {
@@ -53,13 +55,13 @@ variable "arch" {
 }
 
 source "amazon-ebs" "al2023" {
-  region                  = var.aws_region
-  instance_type           = var.instance_type
-  iam_instance_profile    = var.iam_instance_profile
-  ssh_username            = "ec2-user"
-  vpc_id                  = var.vpc_id
-  subnet_id               = var.subnet_id
-  security_group_ids      = var.security_group_ids
+  region                      = var.aws_region
+  instance_type               = var.instance_type
+  iam_instance_profile        = var.iam_instance_profile
+  ssh_username                = "ec2-user"
+  vpc_id                      = var.vpc_id
+  subnet_id                   = var.subnet_id
+  security_group_ids          = var.security_group_ids
   associate_public_ip_address = false
 
   # Discover latest Amazon Linux 2023 AMI
@@ -70,7 +72,7 @@ source "amazon-ebs" "al2023" {
       root-device-type    = "ebs"
       virtualization-type = "hvm"
     }
-    owners      = ["137112412989"] # Amazon
+    owners      = ["225989338000"] # Amazon
     most_recent = true
   }
 
@@ -87,21 +89,21 @@ source "amazon-ebs" "al2023" {
 
   # Root volume settings
   launch_block_device_mappings {
-    device_name = "/dev/xvda"
-    volume_type = "gp3"
-    volume_size = 20
+    device_name           = "/dev/xvda"
+    volume_type           = "gp3"
+    volume_size           = 20
     delete_on_termination = true
-    iops = 3000
-    throughput = 125
+    iops                  = 3000
+    throughput            = 125
   }
 
   tags = {
-    Name                = var.ami_name
-    Application         = var.application_name
-    ApplicationVersion  = var.application_version
-    Environment         = "golden"
-    OwnerEmail          = "kesav.kummari@c3ops.in"
-    ManagedBy           = "Packer"
+    Name               = var.ami_name
+    Application        = var.application_name
+    ApplicationVersion = var.application_version
+    Environment        = "golden"
+    OwnerEmail         = "kesav.kummari@c3ops.in"
+    ManagedBy          = "Packer"
   }
 }
 
@@ -133,8 +135,8 @@ build {
       # SSM (preinstalled on AL2023) – ensure running
       "sudo systemctl enable amazon-ssm-agent --now || true",
       # CloudWatch Agent
-      "sudo dnf -y install amazon-cloudwatch-agent",
-      "sudo systemctl enable amazon-cloudwatch-agent || true",
+      # "sudo dnf -y install amazon-cloudwatch-agent",
+      # "sudo systemctl enable amazon-cloudwatch-agent || true",
 
       # Optionally OIDC module (only if you really need it; EPEL on AL2023 ships it)
       "sudo dnf -y install mod_auth_openidc || true",
@@ -147,6 +149,18 @@ build {
       "sudo cp -a /tmp/scripts/. /opt/app/scripts/ || true",
       "sudo cp -a /tmp/ansible/. /opt/app/ansible/ || true",
       "sudo chown -R root:root /opt/app && sudo chmod -R 0755 /opt/app",
+
+      # Pull the Ui Code Artifact from S3 
+      "aws s3 cp s3://c3ops-iac-terraform/ui/c3finops-ui.tar.gz /opt/c3finops-ui.tar.gz",
+
+      # Extract the Ui Code in /opt/ folder
+      "sudo tar xvzf /opt/c3finops-ui.tar.gz",
+      
+      # Move the Ui Code From /opt/ to DocumentRoot
+      "sudo mv /opt/c3finops-ui/* /var/www/html/"
+      
+      # Re-Start the WebServer
+      "sudo systemctl restart httpd",
 
       # Clean up package caches
       "sudo dnf clean all",

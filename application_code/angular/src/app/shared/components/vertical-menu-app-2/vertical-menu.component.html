@@ -1,0 +1,93 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+/>
+<!-- Inside your HTML template -->
+<div class="menu-container">
+  <ul class="menu-items">
+    <li
+      class="menu-item"
+      *ngFor="let menuItem of menuStructure; let menuIndex = index"
+      (click)="menuClick(menuIndex)"
+      (mouseenter)="showSubMenu(menuIndex)"
+      (mouseleave)="hideSubMenu(menuIndex, $event)"
+    >
+      <i
+        class="menu-icon fas"
+        [ngClass]="{
+          'fa-home': menuItem.label === 'Home',
+          'fa-user': menuItem.label === 'Profile',
+          'fa-cog': menuItem.label === 'Settings',
+          'fa-bullseye': menuItem.label === 'Others',
+          highlighted: menuItem.active
+        }"
+      ></i>
+    </li>
+  </ul>
+</div>
+
+<div *ngFor="let menuItem of menuStructure; let menuIndex = index">
+  <div
+    class="sub-menu-card"
+    [ngClass]="menuItem.label"
+    *ngIf="activeSubMenu === menuIndex"
+    (mouseleave)="hideSubMenu(menuIndex, $event)"
+  >
+    <div
+      class="aTV"
+      [ngClass]="menuItem.label"
+      [style.top.px]="topOffsets[menuItem.label]"
+      [style.left.px]="-6"
+    ></div>
+    <ul class="sub-menu">
+      <li class="sub-menu-heading">
+        <b>{{ menuItem.label }}</b>
+      </li>
+      <li
+        class="sub-menu-item"
+        *ngFor="
+          let subMenuItem of menuItem.subMenuItems;
+          let subMenuIndex = index
+        "
+        [class.highlighted]="subMenuItem.active"
+        (click)="
+          subMenuItemClick(menuIndex, subMenuIndex, subMenuItem.routerLink)
+        "
+      >
+        {{ subMenuItem.label }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div
+  class="main-content"
+  [ngClass]="{ expanded: expandMenu && activeSubMenuIndex !== null }"
+>
+  <h1>
+    Main Content Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+    Aliquid ab mollitia asperiores sapiente odio tenetur a natus, quia
+    doloremque itaque similique consectetur! Aliquam corporis totam non iste
+    facilis eos alias. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    Laudantium sed vel quasi perspiciatis ratione provident culpa vitae eius
+    fugiat nobis dolorum tempora quis harum earum porro facilis odit, ducimus
+    quae.
+  </h1>
+  <!-- ... Your main content content ... -->
+</div>
+
+<div class="header-bar">
+  <div class="menu-header">
+    <i
+      class="menu-icon fas"
+      [ngClass]="{ 'fa-bars': !expandMenu, 'fa-times': expandMenu }"
+      (click)="toggleMenu()"
+    ></i>
+  </div>
+  <div class="logo">
+    <img
+      src="https://www.veolia.com/themes/custom/veo_site/build/assets/images/temp/logo-sticky.png"
+      alt="Logo"
+    />
+  </div>
+</div>

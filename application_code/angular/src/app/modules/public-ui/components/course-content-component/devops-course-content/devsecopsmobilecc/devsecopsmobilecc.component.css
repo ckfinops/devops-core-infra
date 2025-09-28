@@ -1,0 +1,125 @@
+/* Your CSS styles go here */
+.course {
+    background-color: #fff;
+    margin: 31px;
+    padding: 13px;
+    border-radius: 8px;
+    box-shadow: 0 4px 4px #00000080;
+    /*border: 1px solid#57504d; */
+  }
+  .course:hover{
+    box-shadow: 0 4px 4px #71cbff;
+  }
+  h1 {
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+    color: black;
+    cursor: pointer;
+    text-align: center;
+    /*text-shadow: 0px 3px 4px rgba(0,0,0,.5); */
+  }
+  
+  .modules {
+    margin-top: 20px;
+    color: black;
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding-bottom: 13px;
+    font-weight: 700;
+  }
+  
+  .module {
+    cursor: pointer;
+  }
+  
+  h3 {
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    margin: 0;
+    padding: 5px 0;
+    font-weight: 600;
+  }
+  
+  .module-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    
+  }
+  
+  .sub-modules {
+    display: none;
+    margin-left: 20px;
+  }
+  
+  .sub-module-list {
+    
+    margin: 0;
+    padding: 0;
+    color: dimgray;
+    font-weight: 600;
+  }
+  
+  /* Remove border for the last item in the module list */
+  .module-list li:last-child {
+    border-bottom: none;
+  }
+  
+  @media (max-width: 768px) {
+    .course-list {
+      margin: 0;
+      padding: 0;
+    }
+  
+    .course-header, .module-header {
+      text-align: left;
+    }
+  }
+  
+  .toggle-icon {
+  float: right;
+  font-weight: bold;
+  cursor: pointer;
+  }
+  
+  .toggle-icon:hover {
+  color: #71cbff; /* Change the color as desired */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .custom-button {
+        text-shadow: 0px 2.5px 4px rgba(0,0,0,.5);
+    }   
+  }
+  
+  .custom-button{
+    background-color: #172342;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 26px;
+    transition: background-color .3s,transform .3s,box-shadow .3s;
+    text-shadow: 0px 5px 4px rgba(0,0,0,.5);
+    box-shadow: 0 4px 4px #00000080;
+  }
+  
+  .custom-button:hover {
+    box-shadow: none;
+    transform: scale(.9);
+  }
+  

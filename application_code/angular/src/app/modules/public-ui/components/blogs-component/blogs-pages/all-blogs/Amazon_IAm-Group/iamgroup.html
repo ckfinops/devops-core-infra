@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>IAM user groups</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #f4f4f4;
+            color: #0c0c0c;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #000000;
+
+        }
+
+        ol {
+            color: #000000;
+            padding-left: 20px;
+        }
+
+        p {
+            color: #000000;
+        }
+        a {
+            color: blue; /* Set link color to blue */
+        }
+    </style>
+</head>
+<body>
+    <div style="padding-top: 100px;"></div>
+    <header>
+        <h1>IAM user groups</h1>
+    </header>
+    <div class="container">
+        <section>
+    <ol>
+        <p>An IAM is a collection of IAM users. User groups let you specify permissions for multiple users, which can make it easier to manage the permissions for those users. For example, you could have a user group called Admins and give that user group typical administrator permissions. Any user in that user group automatically has Admins group permissions. If a new user joins your organization and needs administrator privileges you can assign the appropriate permissions by adding the user to the Admins user group. If a person changes jobs in your organization, instead of editing that user's permissions you can remove them from the old user groups and add them to the appropriate new user groups.</p>
+    </ol>
+    <header><img src="assets/blogs/iam-group.png" alt="iam-group.png" width="500" height="300"></header>
+        <h3>To create an IAM user group and attach policies</h3>
+        <ol>
+                <p>1. Sign in to the AWS Management Console and open the IAM console at <a href="https://console.aws.amazon.com/iam/" target="_blank" title="Go to https://console.aws.amazon.com/iam/">https://console.aws.amazon.com/iam/</a></p>
+                <p>2. In the navigation pane, choose User groups and then choose Create group.</p>
+                <p>3. For User group name, type the name of the group.</p>
+                <p>4. In the list of users, select the check box for each user that you want to add to the group.</p>
+                <p>5. In the list of policies, select the check box for each policy that you want to apply to all members of the group.</p>
+                <p>6. Choose Create group.</p>
+        </ol>
+
+            <h3>Characteristics of IAM Group</h3>
+        <ul>
+            <li>A group is a collection of users, and a user can also belong to multiple groups.</li>
+        </ul>
+        <ul>
+            <li>Groups cannot be nested, i.e., a group cannot contain another group.</li>
+        </ul>
+         <ul>
+            <li>No default group that automatically includes all the users in AWS account. If you want a group like this, create a group and then add the users in a group.</li>
+        </ul>
+        <ul>
+            <li>There is a limit to the number of groups that you can have and also have a limit to the number of groups that a user can belong to.</li>
+        </ul>
+        <h3>Benefits of Using IAM User Groups</h3>
+        <ul>
+            <li>Simplified Management: IAM User Groups streamline permission management by allowing you to apply policies to a group of users rather than individual users.</li>
+            <li>Consistent Permissions: Users within the same group automatically inherit the permissions assigned to the group, ensuring consistency.</li>
+            <li>Ease of Scaling: As your organization grows, it's easier to scale permissions by adding users to relevant groups with predefined access levels.</li>
+        </ul>
+
+        <h3>Best Practices for IAM User Groups</h3>
+        <p>When working with IAM User Groups, consider the following best practices:</p>
+        <ul>
+            <li>Naming Conventions: Use meaningful and consistent naming conventions for your groups to easily identify their purpose.</li>
+            <li>Least Privilege Principle: Apply the principle of least privilege by granting only the necessary permissions to each group.</li>
+            <li>Regular Audits: Periodically review and audit group memberships and permissions to ensure they align with your organization's requirements.</li>
+        </ul>
+
+        <p>Start leveraging IAM User Groups today to enhance the security and manageability of your AWS environment. For more details, refer to the official AWS documentation on <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html" target="_blank" title="AWS IAM User Groups Documentation">IAM User Groups</a>.</p>
+
+        <span><button><a _ngcontent-tbw-c76="" class="ks-button ks-button--primary" href="https://cloudbinary.io/blogs" target="_blank"> For More like This </a></button></span>   
+
+            
+

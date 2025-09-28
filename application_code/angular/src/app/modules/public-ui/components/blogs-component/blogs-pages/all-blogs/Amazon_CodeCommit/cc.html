@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>AWS CodeCommit</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #33333300;
+            color: #040404;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #050505;
+            padding-bottom: 10px;
+        }
+
+        p {
+            color: #0e0e0e;
+        }
+
+
+    code {
+      background-color: #f8f8f8;
+      padding: 2px 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="padding-top: 100px;"></div>
+  <header>
+    <h1>AWS CodeCommit</h1>
+  </header>
+
+  <section>
+    <p>
+      AWS CodeCommit is a version control service hosted by Amazon Web Services that you can use to privately store and manage assets (such as documents, source code, and binary files) in the cloud.
+    </p>
+
+    <h2>How does CodeCommit work?</h2>
+    <p>
+      <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html" target="_blank" title="Go to AWS CodeCommit">CodeCommit</a> is familiar to users of Git-based repositories, but even those unfamiliar should find the transition to
+      CodeCommit relatively simple. CodeCommit provides a console for the easy creation of repositories and the listing of
+      existing repositories and branches. In a few simple steps, users can find information about a repository and clone it
+      to their computer, creating a local repo where they can make changes and then push them to the CodeCommit repository.
+      Users can work from the command line on their local machines or use a GUI-based editor.
+    </p>
+    <header><img src="assets/blogs/codecommit-work.png" alt="codecommit-work.png" width="700" height="500"></header>
+  
+  <h2>CodeCommit, Git, and choosing the right AWS service for your needs</h2>
+
+<p>As a Git-based service, CodeCommit is well suited to most version control needs. There are no arbitrary limits on file size, file type, and repository size. However, there are inherent limitations to Git that can negatively affect the performance of certain kinds of operations, particularly over time. You can avoid potential degradation of CodeCommit repository performance by avoiding using it for use cases where other AWS services are better suited to the task. You can also optimize Git performance for complex repositories. Here are some use cases where Git, and therefore CodeCommit, might not be the best solution for you, or where you might need to take additional steps to optimize for Git.
+</p>
+    <h2>Setting up AWS CodeCommit</h2>
+    <p>
+      Setting up AWS CodeCommit involves several steps, including creating a repository, configuring user access and
+      permissions, and connecting to the repository from your development environment. Here's a general guide to help you get
+      started:
+    </p>
+    <h3>Step 1: Sign in to the AWS Management Console</h3>
+    <p>
+      Ensure that you have an AWS account, and sign in to the AWS Management Console.
+    </p>
+
+    <h3>Step 2: Open CodeCommit in the AWS Console</h3>
+    <p>
+      Navigate to the CodeCommit service in the AWS Management Console.
+    </p>
+
+    <h3>Step 3: Create a Repository</h3>
+    <p>
+      In the CodeCommit console, choose "Create repository." Enter a unique repository name and an optional description.
+      Choose "Create repository."
+    </p>
+
+    <h3>Step 4: Set Up IAM Users and Permissions</h3>
+    <p>
+      IAM (Identity and Access Management) is used to control access to CodeCommit repositories. In the IAM console, create
+      IAM users for each developer who needs access to the CodeCommit repository. Attach the managed policy
+      AWSCodeCommitPowerUser to give users the necessary permissions. Alternatively, you can create a custom policy with
+      specific permissions.
+    </p>
+
+    <h3>Step 5: Configure Git Credentials</h3>
+    <p>
+      Configure your Git client to use AWS CodeCommit credentials:
+    </p>   
+    <p>
+      Install the AWS CLI if you haven't already.
+      <p>
+        <p>
+        Run the following command to configure your AWS CLI with your AWS credentials:
+        </p>
+    <pre> 
+aws configure
+    </pre>
+
+    <p>
+     Enter your AWS Access Key ID, Secret Access Key, default region, and output format.
+    </p>
+    <p>
+        Install the Git Credential Helper for AWS CodeCommit to manage Git credentials:
+    </p>
+    <pre>
+git config --global credential.helper '!aws codecommit credential-helper $@'
+
+git config --global credential.UseHttpPath true
+    </pre>
+
+    <h3>Step 6: Clone the Repository</h3>
+    <p>
+      In the CodeCommit console, choose your repository. Copy the repository URL. In your local development environment,
+      open a terminal and navigate to the directory where you want to clone the repository. Run the following command,
+      replacing &lt;repository-url&gt; with the copied repository URL:
+    </p>
+    <pre>
+git clone &lt;repository-url&gt;
+    </pre>
+
+    <h3>Step 7: Start Working with CodeCommit</h3>
+    <p>
+      You can now start working with your CodeCommit repository. Make changes, commit them, and push them to CodeCommit as
+      needed.
+    </p>
+    <pre>
+# Example workflow
+git add .
+git commit -m "Your commit message"
+git push origin master
+    </pre>
+    
+    <h2>Pricing</h2>
+    
+<p>Anyone with an AWS account can get started with AWS CodeCommit for free. Your account gets 5 active users per month for free (within limits), after which you pay $1.00 per additional active user per month. There are no upfront fees or commitments.
+</p>
+<p>This AWS Free Tier offer for AWS CodeCommit is available to both new and existing AWS customers indefinitely, and does not expire at the end of the standard 12-month Free Tier term.
+</p>
+
+<h2>Conclusion</h2>
+<P>AWS CodeCommit emerges as a robust solution in the realm of version control, seamlessly integrating Git workflows with the secure and scalable environment provided by Amazon Web Services. By following the straightforward setup steps outlined in this guide, developers can efficiently manage repositories, collaborate effectively, and integrate CodeCommit into comprehensive CI/CD pipelines. As you navigate your CodeCommit journey, exploring additional features and adhering to best practices will further enhance your development processes. Whether you're a seasoned developer or new to coding, AWS CodeCommit empowers you to elevate your version control experience, fostering collaboration and ensuring the success of your software projects.
+</P>
+
+<span><button><a _ngcontent-tbw-c76="" class="ks-button ks-button--primary" href="https://cloudbinary.io/blogs" target="_blank"> For More like This </a></button></span>   
+
+  </section>
+</body>
+
+</html>

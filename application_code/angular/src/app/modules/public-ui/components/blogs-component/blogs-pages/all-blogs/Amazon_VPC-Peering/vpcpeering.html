@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Amazon VPC Peering</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        h1 {
+            color: #0c0c0c;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .code-block {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .important-text {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .section-title {
+            color: #333;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        .highlight {
+            background-color: #ffffcc;
+            padding: 5px;
+            border-radius: 3px;
+        }
+
+        .note {
+            color: #888;
+            font-style: italic;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="padding-top: 100px;"></div>
+    <h1>Amazon VPC - Peering</h1>
+<section></section>
+    <p>A virtual private cloud (VPC) is a virtual network dedicated to your AWS account. It is logically isolated from other virtual networks in the AWS Cloud. You can launch AWS resources, such as Amazon EC2 instances, into your VPC.</p>
+
+    <p>A VPC peering connection is a networking connection between two VPCs that enables you to route traffic between them using private IPv4 addresses or IPv6 addresses. Instances in either VPC can communicate with each other as if they are within the same network. You can create a VPC peering connection between your own VPCs, or with a VPC in another AWS account. The VPCs can be in different Regions (also known as an inter-Region VPC peering connection).</p>
+    <img src="assets/blogs/peering.png" alt="peering.png" width="500" height="200">
+    <div class="code-block">
+        <p><span class="important-text">Important:</span> AWS uses the existing infrastructure of a VPC to create a VPC peering connection; it is neither a gateway nor a VPN connection, and does not rely on a separate piece of physical hardware.</p>
+    </div>
+    
+    <p>A VPC peering connection helps you to facilitate the transfer of data. For example, if you have more than one AWS account, you can peer the VPCs across those accounts to create a file sharing network. You can also use a VPC peering connection to allow other VPCs to access resources you have in one of your VPCs.</p>
+    <p>When you establish peering relationships between VPCs across different AWS Regions, resources in the VPCs (for example, EC2 instances and Lambda functions) in different AWS Regions can communicate with each other using private IP addresses, without using a gateway, VPN connection, or network appliance. The traffic remains in the private IP space. All inter-Region traffic is encrypted with no single point of failure, or bandwidth bottleneck. Traffic always stays on the global AWS backbone, and never traverses the public internet, which reduces threats, such as common exploits, and DDoS attacks. Inter-Region VPC peering provides a simple and cost-effective way to share resources between regions or replicate data for geographic redundancy.</p>
+    <div class="section-title">Benefits of VPC Peering</div>
+    <ul>
+        <li>Facilitates the transfer of data between VPCs.</li>
+        <li>Allows communication between instances in different VPCs as if they are in the same network.</li>
+        <li>Supports peering across different AWS Regions for global connectivity.</li>
+        <li>No single point of failure or bandwidth bottleneck.</li>
+    </ul>
+
+    <div class="section-title">Pricing for VPC Peering</div>
+    <p>There is no charge to create a VPC peering connection. All data transfer over a VPC peering connection that stays within an Availability Zone (AZ) is free. Charges apply for data transfer over VPC peering connections that cross Availability Zones and Regions.</p>
+
+  
+</body>
+
+</html>

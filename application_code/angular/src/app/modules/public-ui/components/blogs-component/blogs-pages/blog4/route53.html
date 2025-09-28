@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Route 53 </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+
+       body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 100px;
+    padding: 0 20px; /* Add padding to the left and right */
+    color: #333;
+}
+
+h1 {
+    color: #333;
+    text-align: center; /* Center the h1 element */
+}
+img {
+    display: block; /* Make sure the image is treated as a block element */
+    margin: auto; /* Center the image */
+}
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        ol {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        strong {
+            color: #555;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Amazon Route 53</h1>
+    <p>Amazon <a href="https://aws.amazon.com/route53/" target="_blank" rel="noopener noreferrer"> Route 53</a> is a highly available and scalable Domain Name System (DNS) web service. You can use Route 53 to perform three main functions in any combination: domain registration, DNS routing, and health checking.</p>
+
+    <ol>
+        <li><strong>Register domain names</strong><br>Your website needs a name, such as <code>example.com</code>. Route 53 lets you register a name for your website or web application, known as a domain name.</li>
+
+        <li><strong>Route internet traffic to the resources for your domain</strong><br>When a user opens a web browser and enters your domain name (<code>example.com</code>) or subdomain name (<code>acme.example.com</code>) in the address bar, Route 53 helps connect the browser with your website or web application.</li>
+
+        <li><strong>Check the health of your resources</strong><br>Route 53 sends automated requests over the internet to a resource, such as a web server, to verify that it's reachable, available, and functional. You can also choose to receive notifications when a resource becomes unavailable and choose to route internet traffic away from unhealthy resources.</li>
+    </ol>
+    <img src="assets/blogs/route53.jpg" alt="Amazon-Route-53.jpg" width="700" height="400">
+
+    <hr>
+    <h2>Amazon Route 53 features</h2>
+
+    <h2>1. Route 53 Resolver</h2>
+    <p>Amazon Route 53 Resolver responds recursively to DNS queries from AWS resources for public records, Amazon VPC-specific DNS names, and Amazon Route 53 private hosted zones, and is available by default in all VPCs.</p>
+
+    <p><strong>Note:</strong> Amazon Route 53 Resolver was previously called Amazon DNS server, but was renamed when Resolver rules, and inbound and outbound endpoints were introduced. For more information, see Amazon DNS server in the Amazon Virtual Private Cloud User Guide.</p>
+
+    <p>An Amazon VPC connects to a Route 53 Resolver at a VPC+2 IP address. This VPC+2 address connects to a Route 53 Resolver within an Availability Zone.</p>
+
+    <p>A Route 53 Resolver automatically answers DNS queries for:</p>
+    <ul>
+        <li>Local VPC domain names for EC2 instances (for example, <code>ec2-192-0-2-44.compute-1.amazonaws.com</code>).</li>
+        <li>Records in private hosted zones (for example, <code>acme.example.com</code>).</li>
+        <li>For public domain names, Route 53 Resolver performs recursive lookups against public name servers on the internet.</li>
+    </ul>
+
+    <hr>
+
+    <h2>2. Route 53 Resolver on Outposts endpoints</h2>
+    <p>With Route 53 Resolver DNS Firewall, you can filter and regulate outbound DNS traffic for your virtual private cloud (VPC). To do this, you create reusable collections of filtering rules in DNS Firewall rule groups, associate the rule groups to your VPC, and then monitor activity in DNS Firewall logs and metrics. Based on the activity, you can adjust the behavior of DNS Firewall accordingly.</p>
+
+    <p>DNS Firewall provides protection for outbound DNS requests from your VPCs. These requests route through Resolver for domain name resolution. A primary use of DNS Firewall protections is to help prevent DNS exfiltration of your data. DNS exfiltration can happen when a bad actor compromises an application instance in your VPC and then uses DNS lookup to send data out of the VPC to a domain that they control. DNS Firewall, you can monitor and control the domains that your applications can query.</p>
+
+    <h2>3. Route 53 Resolver DNS Firewall</h2>
+    <p>Route 53 Resolver DNS Firewall lets you control access to sites and block DNS-level threats for DNS queries going out from your VPC through the Route 53 Resolver. With DNS Firewall, you define domain name filtering rules in rule groups that you associate with your VPCs. You can specify lists of domain names to allow or block, and you can customize the responses for the DNS queries that you block.</p>
+
+    <p>DNS Firewall only filters on the domain name. It does not resolve that name to an IP address to be blocked. Additionally, DNS Firewall filters DNS/UDP traffic, but it doesn't filter other application layer protocols, such as HTTPS, SSH, TLS, FTP, and so on.</p>
+
+    <h2>4. Route 53 Application Recovery Controller: Readiness Check</h2>
+    <p>This chapter explains how to model your application in Amazon Route 53 Application Recovery Controller by creating a recovery group and cells, and then how to add readiness checks and readiness scopes so that Route 53 ARC can audit readiness for your application.</p>
+
+    <p>After you create readiness checks, you can monitor the readiness status of your resources. Readiness checks help you to ensure that your standby application replica and its resources match your production replica on an ongoing basis, reflecting the capacity, routing policies, and other configuration details of your production application. If it doesn't, you can add capacity or change a configuration so that the replicas are aligned again.</p>
+    
+    <h2>5. Route 53 Application Recovery Controller: Routing Control</h2>
+    <p>This chapter explains how to model your application in Amazon Route 53 Application Recovery Controller by creating a recovery group and cells, and then how to add readiness checks and readiness scopes so that Route 53 ARC can audit readiness for your application.</p>
+
+    <p>After you create readiness checks, you can monitor the readiness status of your resources. Readiness checks help you to ensure that your standby application replica and its resources match your production replica on an ongoing basis, reflecting the capacity, routing policies, and other configuration details of your production application. If it doesn't, you can add capacity or change a configuration so that the replicas are aligned again.</p>
+
+    <h2>6. Route 53 Application Recovery Controller: Safety Rules</h2>
+    <p>To fail over traffic to application replicas in Amazon Route 53 Application Recovery Controller, you use routing controls that are integrated with a specific kind of health check in Amazon Route 53. Routing controls are simple on-off switches that enable you to switch your client traffic from one replica to another. The traffic rerouting is accomplished by routing control health checks that are set up with Amazon Route 53 DNS records. For example, DNS failover records, associated with domain names that front your application replicas. This chapter explains how routing control works, how to set up routing control components, and how to use them to reroute traffic for failover.</p>
+
+    <p>After you create routing controls and routing control health checks, you can create safety rules to help prevent unintentional recovery automation side effects. You can update routing control states to reroute traffic, individually or in batches, by using the AWS CLI or API actions (recommended), or by using the AWS Management Console.</p>
+
+    <h2>7. Traffic Flow</h2>
+    <p>Managing related records in a hosted zone can be challenging in the following circumstances:</p>
+    <ul>
+        <li>You have a lot of resources that perform the same operation, such as web servers that serve traffic for the same domain.</li>
+        <li>You want to create a complex tree of records using alias records and a combination of Route 53 routing policies, such as latency, failover, and weighted. You can create records one at a time, but it's hard to keep track of the relationships among the records when you're reviewing the settings in the Route 53 console. Traffic flow greatly simplifies the process of creating and maintaining records in large and complex configurations.</li>
+    </ul>
+
+    <h2>8. Latency Based Routing</h2>
+    <p>We are excited to announce Latency Based Routing (LBR) for Amazon Route 53, AWS’s highly reliable cost-effective DNS service. LBR, one of Amazon Route 53’s most requested features, helps you improve your application’s performance for a global audience. LBR works by routing your customers to the AWS endpoint (e.g. EC2 instances, Elastic IPs or ELBs) that provides the fastest experience based on actual performance measurements of the different AWS regions where your application is running.</p>
+    <p>You can learn more about LBR from Jeff Barr's blog post on Route 53's Latency Based Routing feature, by reviewing the Amazon Route 53 Developer Guide, or by visiting the <a href="https://aws.amazon.com/route53/" target="_blank" rel="noopener noreferrer">Amazon Route 53 product page</a>.</p>
+
+    <h2>9. IP-based Routing</h2>
+    <p>Today, AWS announced the launch of IP-based routing for Amazon Route 53, AWS’s Domain Name System (DNS) cloud service. Route 53 provides customers with multiple routing options, such as geolocation routing, geoproximity routing, latency-based routing, and weighted routing to route their end users to optimal endpoints. With the addition of IP-based routing, customers are now additionally empowered to fine-tune their DNS routing approach based on the Classless Inter-Domain Routing (CIDR) block that the query-originating IP address belongs to, allowing them to leverage knowledge of their end user base to optimize performance or network transit costs.</p>
+    <p>Route 53 IP-based routing is now generally available in all AWS commercial regions and in AWS China. For information about how to use this feature, please visit <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html" target="_blank" rel="noopener noreferrer">Choosing a routing policy in the Route 53 documentation</a> and the <a href="https://aws.amazon.com/blogs/networking-and-content-delivery/amazon-route-53-adds-ip-based-routing/" target="_blank" rel="noopener noreferrer">IP-based routing announcement in the AWS Networking and Content Delivery blog</a>. To learn more about pricing, visit the <a href="https://aws.amazon.com/route53/pricing/" target="_blank" rel="noopener noreferrer">Route 53 pricing page</a>.</p>
+
+    <h2>10. Geo DNS</h2>
+    <p>Route 53's Geo DNS support lets you balance load by directing requests to specific endpoints based on the geographic location from which the request originates. Geo DNS makes it possible to customize localized content, such as presenting detail pages in the right language or restricting distribution of content to only the markets you have licensed. Geo DNS also lets you balance load across endpoints in a predictable, easy-to-manage way, ensuring that each end-user location is consistently routed to the same endpoint.</p>
+
+    <p>Geo DNS provides three levels of geographic granularity: continent, country, and state, and Geo DNS also provides a global record which is served in cases where an end user's location doesn't match any of the specific Geo DNS records you have created. You can also combine Geo DNS with other routing types, such as Latency Based Routing and DNS Failover, using Route 53's Alias feature in order to enable a variety of low-latency and fault-tolerant architectures.</p>
+     
+    <h2>Amazon Route 53 Resolver</h2>
+    <p><strong>1. Resolve hybrid cloud DNS queries</strong></p>
+    <p>Resolve DNS queries locally on AWS Outposts or create Route 53 endpoints and conditional forwarding rules to resolve DNS namespaces between on-premises data centers and Amazon VPCs.</p>
+
+    <p><strong>2. Secure DNS traffic</strong></p>
+    <p>Define firewall rules using Amazon Route 53 Resolver DNS Firewall to inspect and block DNS queries from custom and pre-defined domain name lists.</p>
+
+    <p><strong>3. Configure with flexibility</strong></p>
+    <p>Manage internal DNS resource hostnames and customize traffic flow for granular control over your routing with Amazon Route 53 Private DNS.</p>
+</body>
+
+</html>

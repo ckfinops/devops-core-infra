@@ -33,8 +33,10 @@ variable "security_group_ids" {
 }
 
 variable "iam_instance_profile" {
-  default = "packer-ec2-s3"
+  default = "c3ops-ec2-ssm"
 }
+
+#default = "packer-ec2-s3"
 
 variable "application_name" {
   default = "c3ops-windows"
@@ -118,15 +120,15 @@ build {
   sources = ["source.amazon-ebs.win2022"]
 
   # Copy your PowerShell scripts and (reference) Ansible playbooks
-  provisioner "file" {
-    source      = "win-scripts/"
-    destination = "C:/Temp/win-scripts"
-  }
+  # provisioner "file" {
+  #   source      = "win-scripts/"
+  #   destination = "C:/Temp/win-scripts"
+  # }
 
-  provisioner "file" {
-    source      = "ansible/"
-    destination = "C:/Temp/ansible"
-  }
+  # provisioner "file" {
+  #   source      = "ansible/"
+  #   destination = "C:/Temp/ansible"
+  # }
 
   # Install runtime prerequisites
   provisioner "powershell" {
@@ -159,15 +161,15 @@ build {
       # Create standard folders
       "New-Item -ItemType Directory -Force -Path C:\\Ops\\scripts | Out-Null",
       "New-Item -ItemType Directory -Force -Path C:\\Ops\\ansible | Out-Null",
-      "Copy-Item -Path C:\\Temp\\win-scripts\\* -Destination C:\\Ops\\scripts -Recurse -Force -ErrorAction SilentlyContinue",
-      "Copy-Item -Path C:\\Temp\\ansible\\* -Destination C:\\Ops\\ansible -Recurse -Force -ErrorAction SilentlyContinue",
+    #"Copy-Item -Path C:\\Temp\\win-scripts\\* -Destination C:\\Ops\\scripts -Recurse -Force -ErrorAction SilentlyContinue",
+    #"Copy-Item -Path C:\\Temp\\ansible\\* -Destination C:\\Ops\\ansible -Recurse -Force -ErrorAction SilentlyContinue",
 
       # Basic IIS default page (optional)
       "Set-Content -Path 'C:\\inetpub\\wwwroot\\health.html' -Value '<html><body><h3>OK</h3></body></html>'",
 
       # Cleanup
-      "Remove-Item -Recurse -Force C:\\Temp\\win-scripts -ErrorAction SilentlyContinue",
-      "Remove-Item -Recurse -Force C:\\Temp\\ansible -ErrorAction SilentlyContinue",
+      # "Remove-Item -Recurse -Force C:\\Temp\\win-scripts -ErrorAction SilentlyContinue",
+      # "Remove-Item -Recurse -Force C:\\Temp\\ansible -ErrorAction SilentlyContinue",
     ]
   }
 

@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Binary - Master DevOps on Multi-Cloud</title>
+    <link rel="stylesheet" href="page1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <section class="hero-section">
+        <div class="container-row">
+            <div class="container content-container">
+                <h1 class="main-heading">Build, Break, Fix, Learn..</h1>
+                <p class="sub-heading">
+                    Real engineers learn DevOps by doing — and that’s exactly how we teach.</p>
+
+                <!-- <p class="sub-heading">
+                    Learn in-demand cloud skills from industry experts and get certified on AWS, Azure, and Google Cloud Platform.</p> -->
+    
+                
+                <div class="cloud-logos">
+                    <div class="cloud-logo aws-logo">
+                        <i class="fab fa-aws"></i>
+                        <span>AWS</span>
+                    </div>
+                    <div class="cloud-logo azure-logo">
+                        <i class="fab fa-microsoft"></i>
+                        <span>Azure</span>
+                    </div>
+                    <div class="cloud-logo gcp-logo">
+                        <i class="fab fa-google"></i>
+                        <span>GCP</span>
+                    </div>
+                </div>
+                
+                <!-- Upcoming Demo Banner -->
+                <div class="demo-banner">
+                    <div class="demo-content">
+                        <div class="demo-badge">
+                            <i class="fas fa-calendar-alt"></i>
+                            Upcoming Demo
+                        </div>
+                        <h3 class="demo-title">New Batch - Ai-Powered DevOps</h3>
+                        <div class="demo-details">
+                            <div class="demo-info">
+                                <i class="far fa-calendar"></i>
+                                <span>Date: 4 Sep 2025</span>
+                            </div>
+                            <div class="demo-info">
+                                <i class="far fa-clock"></i>
+                                <span>Time: 7:30 AM IST</span>
+                            </div>
+                            <div class="demo-info">
+                                <i class="fas fa-video"></i>
+                                <span>Platform: Zoom</span>
+                            </div>
+                            <div class="demo-info">
+                                <a href="https://us02web.zoom.us/meeting/register/vIiS1ASyTJOKXKh3G2ML7Q" class="join-button" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Join Demo Session
+                                </a>
+                            </div>
+                            <!-- <div class="demo-info">
+                                <i class="fas fa-users"></i>
+                                <span>Registrations: <span class="registration-count">12/25 per batch</span></span>
+                            </div> -->
+                        </div>
+                        <!-- <div class="countdown-timer">
+                            <div class="timer-item">
+                                <div class="timer-number" id="days">3</div>
+                                <div class="timer-label">Days</div>
+                            </div>
+                            <div class="timer-item">
+                                <div class="timer-number" id="hours">92</div>
+                                <div class="timer-label">Hours</div>
+                            </div>
+                            <div class="timer-item">
+                                <div class="timer-number" id="minutes">5520</div>
+                                <div class="timer-label">Minutes</div>
+                            </div>
+                            <div class="timer-item">
+                                <div class="timer-number" id="seconds">331,200</div>
+                                <div class="timer-label">Seconds</div>
+                            </div>
+                        </div> -->
+
+                    </div>
+                </div>
+                
+                <script>
+                    // Set the date for June 4th, 2025 at 8 PM IST
+                    const demoDate = new Date('June 4, 2025 20:00:00 GMT+0530');
+                    
+                    function updateCountdown() {
+                        const now = new Date();
+                        const diff = demoDate - now;
+                        
+                        console.log('Time difference:', diff); // Debug log
+                        
+                        if (diff <= 0) {
+                            // If the demo date has passed
+                            document.getElementById('days').textContent = '00';
+                            document.getElementById('hours').textContent = '00';
+                            document.getElementById('minutes').textContent = '00';
+                            document.getElementById('seconds').textContent = '00';
+                            return;
+                        }
+                        
+                        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                        
+                        console.log('Time remaining:', { days, hours, minutes, seconds }); // Debug log
+                        
+                        // Update the timer elements with formatted numbers
+                        document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                    }
+                    
+                    // Make sure the script runs after the DOM is fully loaded
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Update countdown every second
+                        setInterval(updateCountdown, 1000);
+                        updateCountdown(); // Initial call
+                    });
+                </script>
+                
+                <upcoming-batches></upcoming-batches>
+                
+                <!-- Course Summaries Section -->
+                <div class="course-summaries">
+                    <h2 class="section-title">Our Specialized Courses</h2>
+                    <p class="section-subtitle">Choose your path to DevOps excellence with our specialized training programs</p>
+                    
+                    <div class="course-summaries-grid">
+                        <!-- AWS DevOps Course Summary -->
+                        <div class="course-summary-card aws-devops">
+                            <div class="course-header">
+                                <div class="course-icon">
+                                    <i class="fab fa-aws"></i>
+                                </div>
+                                <div class="course-title">
+                                    <h3>AWS DevOps</h3>
+                                    <span class="course-badge">Most Popular</span>
+                                </div>
+                            </div>
+                            <div class="course-content">
+                                <p class="course-description">Master AWS services, CI/CD pipelines, containerization, and infrastructure as code. Get AWS certified and build a career in cloud computing.</p>
+                                <div class="course-highlights">
+                                    <div class="highlight-item">
+                                        <i class="fas fa-cloud"></i>
+                                        <span>AWS Services</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <i class="fas fa-code-branch"></i>
+                                        <span>CI/CD Pipelines</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <i class="fas fa-cube"></i>
+                                        <span>Containerization</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <i class="fas fa-code"></i>
+                                        <span>Infrastructure as Code</span>
+                                    </div>
+                                </div>
+                                <div class="course-actions">
+                                    <a href="/aws-devops" class="course-btn primary">View Course</a>
+                                    <a href="https://wa.me/919392743006?text=Hi, I'm interested in your AWS DevOps course. Can you provide me with more details?" class="course-btn secondary">
+                                        <i class="fab fa-whatsapp"></i>
+                                        Get Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Azure DevOps Course Summary -->
+                        <div class="course-summary-card azure-devops">
+                            <div class="course-header">
+                                <div class="course-icon">
+                                    <i class="fab fa-microsoft"></i>
+                                </div>
+                                <div class="course-title">
+                                    <h3>Azure DevOps</h3>
+                                    <span class="course-badge">Enterprise Ready</span>
+                                </div>
+                            </div>
+                            <div class="course-content">
+                                <p class="course-description">Learn Azure services, CI/CD pipelines, containerization, and infrastructure as code. Get Azure certified and build a career in cloud computing.</p>
+                                <div class="course-highlights">
+                                    <div class="highlight-item">
+                                        <i class="fas fa-cloud"></i>
+                                        <span>Azure Services</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <i class="fas fa-code-branch"></i>
+                                        <span>Azure Pipelines</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <i class="fas fa-cube"></i>
+                                        <span>Containerization</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <i class="fas fa-code"></i>
+                                        <span>ARM Templates & Bicep</span>
+                                    </div>
+                                </div>
+                                <div class="course-actions">
+                                    <a href="/azure-devops" class="course-btn primary">View Course</a>
+                                    <a href="https://wa.me/919392743006?text=Hi, I'm interested in your Azure DevOps course. Can you provide me with more details?" class="course-btn secondary">
+                                        <i class="fab fa-whatsapp"></i>
+                                        Get Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- GitOps Course Summary -->
+                        <div class="course-summary-card gitops">
+                            <div class="course-header">
+                                <div class="course-icon">
+                                    <i class="fab fa-git-alt"></i>
+                                </div>
+                                <div class="course-title">
+                                    <h3>GitOps</h3>
+                                    <span class="course-badge">Future of DevOps</span>
+                                </div>
+                            </div>
+                            <div class="course-content">
+                                <p class="course-description">Learn GitOps methodology, ArgoCD, Flux, and automated deployment practices. Master the future of DevOps with Git as the single source of truth.</p>
+                                <div class="course-highlights">
+                                    <div class="highlight-item">
+                                        <i class="fas fa-code-branch"></i>
+                                        <span>GitOps Methodology</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <i class="fas fa-sync-alt"></i>
+                                        <span>Automated Deployment</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <span>Security & Compliance</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <i class="fas fa-chart-line"></i>
+                                        <span>Monitoring & Observability</span>
+                                    </div>
+                                </div>
+                                <div class="course-actions">
+                                    <a href="/gitops" class="course-btn primary">View Course</a>
+                                    <a href="https://wa.me/919392743006?text=Hi, I'm interested in your GitOps course. Can you provide me with more details?" class="course-btn secondary">
+                                        <i class="fab fa-whatsapp"></i>
+                                        Get Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="expert-section">
+                    <h3 class="expert-title">Industry Experts</h3>
+                    <p class="expert-subtitle">Learn from the Best in the Industry</p>
+                    <div class="expert-logos">
+                        <div class="expert-logo">
+                            <i class="fas fa-cloud"></i>
+                            <span>Cloud Architects</span>
+                            <p class="expert-detail">15+ years</p>
+                        </div>
+                        <div class="expert-logo">
+                            <i class="fas fa-cogs"></i>
+                            <span>DevOps Leaders</span>
+                            <p class="expert-detail">Ex-Microsoft & AWS</p>
+                        </div>
+                        <div class="expert-logo">
+                            <i class="fas fa-chart-line"></i>
+                            <span>FinOps</span>
+                            <p class="expert-detail">Cloud Cost Optimization</p>
+                        </div>
+                    </div>
+                    <div class="expert-credentials">
+                        <div class="credential">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Certified Solutions Architects</span>
+                        </div>
+                        <div class="credential">
+                            <i class="fas fa-check-circle"></i>
+                            <span>DevOps Engineers</span>
+                        </div>
+                        <div class="credential">
+                            <i class="fas fa-check-circle"></i>
+                            <span>FinOps Certified Engineers</span>
+                        </div>
+                    </div>
+                    <p class="expert-description">Learn directly from industry veterans who have led cloud transformations at Fortune 500 companies. Our experts bring real-world experience in cloud architecture, DevOps practices, and security implementations.</p>
+                </div>
+                
+                <!-- <div class="role-storytelling">
+                    <h2 class="role-title">Choose Your Path</h2>
+                    
+                    <div class="role-card">
+                        <div class="role-icon cloud-engineer"></div>
+                        <div class="role-content">
+                            <h4>Cloud Engineer</h4>
+                            <p>Design and implement cloud infrastructure solutions. Master AWS, Azure, and GCP services to build scalable, secure applications.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="role-card">
+                        <div class="role-icon devops"></div>
+                        <div class="role-content">
+                            <h4>DevOps Engineer</h4>
+                            <p>Bridge development and operations with CI/CD pipelines, automation, and infrastructure as code. Streamline software delivery.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="role-card">
+                        <div class="role-icon sre"></div>
+                        <div class="role-content">
+                            <h4>Site Reliability Engineer (SRE)</h4>
+                            <p>Ensure system reliability and performance. Implement monitoring, logging, and incident response strategies for production systems.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="role-card">
+                        <div class="role-icon finops"></div>
+                        <div class="role-content">
+                            <h4>FinOps Engineer</h4>
+                            <p>Optimize cloud costs and financial operations. Master budgeting, forecasting, and cost allocation strategies to maximize cloud ROI.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-content-section">
+                    <h2 class="section-title">Course Content</h2>
+                    <p class="section-subtitle">Comprehensive curriculum covering all essential aspects of cloud and DevOps</p>
+                    
+                    <div class="module-grid">
+                        <div class="module">
+                            <div class="module-header">
+                                <div class="module-icon">
+                                    <i class="fas fa-cloud"></i>
+                                </div>
+                                <div class="module-title">
+                                    <h3>OS Module</h3>
+                                    <span class="module-duration">1 Week</span>
+                                </div>
+                            </div>
+                            <div class="module-content">
+                                <p class="module-description">Master the basics of cloud computing and infrastructure management.</p>
+                                <ul class="topics-list">
+                                    <li>OS - Windows | Unix | Linux</li>
+                                    <li>Basic & Advanced Commands</li>
+                                    <li>Boot Process - Runlevels</li>
+                                    <li>File System - Permissions</li>
+                                    <li>User & Group Mgmt</li>
+                                    <li>Controlling Services</li>
+                                    <li>Log Mgmt & Package Mgmt</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="module">
+                            <div class="module-header">
+                                <div class="module-icon">
+                                    <i class="fas fa-code-branch"></i>
+                                </div>
+                                <div class="module-title">
+                                    <h3>DevOps Practices</h3>
+                                    <span class="module-duration">3 weeks</span>
+                                </div>
+                            </div>
+                            <div class="module-content">
+                                <p class="module-description">Learn modern DevOps practices and tools for efficient software delivery.</p>
+                                <ul class="topics-list">
+                                    <li>Git & GitHub</li>
+                                    <li>Jenkins</li>
+                                    <li>SonarQube</li>
+                                    <li>Jfrog Artifactory</li>
+                                    <li>Ansible</li>
+                                    <li>Docker</li>
+                                    <li>Kubernetes</li>
+                                    <li>CI/CD Pipeline</li>
+                                    <li>Monitoring & Alerting</li>
+                                    <li>Deployment Strategies</li>
+                                    <li>Migration Strategies</li>
+                                    <li>Cloud Native DevOps CI/CD Pipelines</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="module">
+                            <div class="module-header">
+                                <div class="module-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="module-title">
+                                    <h3>Cloud Providers</h3>
+                                    <span class="module-duration">4 weeks</span>
+                                </div>
+                            </div>
+                            <div class="module-content">
+                                <p class="module-description">Learn to provision cloud resources using GUI, CLI, Python, Ansible and Terraform</p>
+                                <ul class="topics-list">
+                                    <li>AWS</li>
+                                    <li>Azure</li>
+                                    <li>GCP</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="module">
+                            <div class="module-header">
+                                <div class="module-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="module-title">
+                                    <h3>Shell & Python Scripting</h3>
+                                    <span class="module-duration">3 weeks</span>
+                                </div>
+                            </div>
+                            <div class="module-content">
+                                <p class="module-description">Optimize cloud costs and implement financial operations best practices.</p>
+                                <ul class="topics-list">
+                                    <li>Shell Scripting</li>
+                                    <li>Python Scripting</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="module">
+                            <div class="module-header">
+                                <div class="module-icon">
+                                    <i class="fas fa-cube"></i>
+                                </div>
+                                <div class="module-title">
+                                    <h3>Cloud Native Projects</h3>
+                                    <span class="module-duration">10 Projects</span>
+                                </div>
+                            </div>
+                            <div class="module-content">
+                                <p class="module-description">Build real-world cloud native applications using modern technologies.</p>
+                                <ul class="topics-list">
+                                    <li>Provision Cloud Infrastructure(1 Tier, 2 Tier, 3 Tier) using Terraform</li>
+                                    <li>Provision Cloud Infrastructure(1 Tier, 2 Tier, 3 Tier) using Biceps</li>
+                                    <li>Provision Cloud Infrastructure(1 Tier, 2 Tier, 3 Tier) using CloudFormation</li>
+                                    <li>Cloud Native Java Spring Boot CI/CD Pipeline</li>
+                                    <li>Cloud Native React JS CI/CD Pipeline</li>
+                                    <li>Cloud Native Node JS CI/CD Pipeline</li>
+                                    <li>Cloud Native Python Flask CI/CD Pipeline</li>
+                                    <li>Cloud Native Python Django CI/CD Pipeline</li>
+                                    <li>Cloud Native PHP Laravel CI/CD Pipeline</li>
+                                    <li>Cloud Native Wordpress CI/CD Pipeline</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="module">
+                            <div class="module-header">
+                                <div class="module-icon">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <div class="module-title">
+                                    <h3>DevOps Projects</h3>
+                                    <span class="module-duration">7 Projects</span>
+                                </div>
+                            </div>
+                            <div class="module-content">
+                                <p class="module-description">Implement end-to-end DevOps solutions with industry best practices.</p>
+                                <ul class="topics-list">
+                                    <li>Java Spring Boot CI/CD Pipeline</li>
+                                    <li>React JS CI/CD Pipeline</li>
+                                    <li>Node JS CI/CD Pipeline</li>
+                                    <li>Python Flask CI/CD Pipeline</li>
+                                    <li>Python Django CI/CD Pipeline</li>
+                                    <li>PHP Laravel CI/CD Pipeline</li>
+                                    <li>Wordpress CI/CD Pipeline</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="why-choose-us">
+                    <h2 class="section-title">Why Choose Us?</h2>
+                    <p class="section-subtitle">Experience the difference with our comprehensive learning approach</p>
+                    
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Industry-Led Curriculum</h3>
+                            <p>Course content designed by cloud experts with 15+ years of experience at top tech companies</p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3>Hands-on Projects</h3>
+                            <p>Build 6 real-world projects using industry-standard tools and best practices</p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>1:1 Mentorship</h3>
+                            <p>Get personalized guidance from experienced mentors throughout your learning journey</p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <h3>Certification Support</h3>
+                            <p>Comprehensive preparation for AWS, Azure, and GCP certifications</p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <h3>Career Support</h3>
+                            <p>Resume building, interview preparation, and job placement assistance</p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3>Flexible Learning</h3>
+                            <p>Learn at your own pace with lifetime access to course materials</p>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <div class="tools-platforms">
+                    <h2 class="section-title">Tools & Platforms</h2>
+                    <p class="section-subtitle">Master industry-standard tools used by top tech companies</p>
+                    
+                    <div class="tools-grid">
+                        <div class="tool-category">
+                            <h3 class="category-title">Cloud Platforms</h3>
+                            <div class="tools-list">
+                                <div class="tool-item">
+                                    <i class="fab fa-aws"></i>
+                                    <span>AWS</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fab fa-microsoft"></i>
+                                    <span>Azure</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fab fa-google"></i>
+                                    <span>GCP</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fas fa-database"></i>
+                                    <span>OCI</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-category">
+                            <h3 class="category-title">DevOps Tools</h3>
+                            <div class="tools-list">
+                                <div class="tool-item">
+                                    <i class="fab fa-github"></i>
+                                    <span>GitHub</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fab fa-jenkins"></i>
+                                    <span>Jenkins</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fab fa-docker"></i>
+                                    <span>Docker</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fab fa-kubernetes"></i>
+                                    <span>Kubernetes</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-category">
+                            <h3 class="category-title">Infrastructure as Code</h3>
+                            <div class="tools-list">
+                                <div class="tool-item">
+                                    <i class="fas fa-code"></i>
+                                    <span>Terraform</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fas fa-cloud"></i>
+                                    <span>CloudFormation</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fas fa-cogs"></i>
+                                    <span>Ansible</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fab fa-microsoft"></i>
+                                    <span>Azure Bicep</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-category">
+                            <h3 class="category-title">Monitoring & Logging</h3>
+                            <div class="tools-list">
+                                <div class="tool-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Prometheus</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <span>Grafana</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fas fa-cloud"></i>
+                                    <span>CloudWatch</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <span>New Relic</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-category">
+                            <h3 class="category-title">Security & Compliance</h3>
+                            <div class="tools-list">
+                                <div class="tool-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Vault</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fas fa-lock"></i>
+                                    <span>SonarQube</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fas fa-user-shield"></i>
+                                    <span>Aqua Security</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fas fa-bug"></i>
+                                    <span>Black Duck</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-category">
+                            <h3 class="category-title">Data & Analytics</h3>
+                            <div class="tools-list">
+                                <div class="tool-item">
+                                    <i class="fas fa-database"></i>
+                                    <span>MongoDB</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fas fa-table"></i>
+                                    <span>PostgreSQL</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fas fa-chart-pie"></i>
+                                    <span>Tableau</span>
+                                </div>
+                                <div class="tool-item">
+                                    <i class="fas fa-brain"></i>
+                                    <span>TensorFlow</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="happy-students">
+                    <h2 class="section-title">Happy Students Speak</h2>
+                    <p class="section-subtitle">Hear from our successful graduates who transformed their careers</p>
+                    
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <!-- <div class="testimonial-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Sohail Ulla">
+                                </div> -->
+                                <div class="testimonial-info">
+                                    <h4>Sohail Ulla</h4>
+                                    <p>Cloud Engineer at TechCorp</p>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="testimonial-content">
+                                <p>"The course structure was excellent, and the hands-on projects gave me the confidence to tackle real-world challenges. Within 3 months of completing the course, I landed my dream job with a significant salary increase."</p>
+                            </div>
+                            <div class="testimonial-footer">
+                                <div class="certification-badge">
+                                    <i class="fas fa-award"></i>
+                                    <span>AWS Certified Solutions Architect</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <!-- <div class="testimonial-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Rajitha Varma">
+                                </div> -->
+                                <div class="testimonial-info">
+                                    <h4>Rajitha Varma</h4>
+                                    <p>DevOps Engineer at InnovateTech</p>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="testimonial-content">
+                                <p>"The mentorship program was invaluable. My mentor helped me prepare for interviews and provided guidance on building a strong portfolio. The community support is amazing, and I'm still connected with my batchmates."</p>
+                            </div>
+                            <div class="testimonial-footer">
+                                <div class="certification-badge">
+                                    <i class="fas fa-award"></i>
+                                    <span>Azure DevOps Engineer</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <!-- <div class="testimonial-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Omesh Reddy">
+                                </div> -->
+                                <div class="testimonial-info">
+                                    <h4>Omesh Reddy</h4>
+                                    <p>SRE at CloudTech Solutions</p>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="testimonial-content">
+                                <p>"The course content is cutting-edge and aligned with industry standards. The live projects helped me build a strong portfolio that impressed recruiters. I received multiple job offers within weeks of completing the course."</p>
+                            </div>
+                            <div class="testimonial-footer">
+                                <div class="certification-badge">
+                                    <i class="fas fa-award"></i>
+                                    <span>Google Cloud Professional</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <!-- <div class="testimonial-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Parimala">
+                                </div> -->
+                                <div class="testimonial-info">
+                                    <h4>Parimala</h4>
+                                    <p>FinOps Engineer at FinanceCorp</p>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="testimonial-content">
+                                <p>"The FinOps module was a game-changer for my career. I learned practical cost optimization strategies that I now implement daily. The hands-on labs with real cloud environments gave me the confidence to tackle complex financial challenges."</p>
+                            </div>
+                            <div class="testimonial-footer">
+                                <div class="certification-badge">
+                                    <i class="fas fa-award"></i>
+                                    <span>FinOps Certified Practitioner</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Happy Students</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number">4.9/5</span>
+                                <span class="stat-label">Student Rating</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number">90%</span>
+                                <span class="stat-label">Career Growth</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <app-home-faq></app-home-faq>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            const otherAnswer = otherItem.querySelector('.faq-answer');
+                            otherAnswer.style.maxHeight = '0';
+                        }
+                    });
+                    
+                    // Toggle current item
+                    if (!isActive) {
+                        item.classList.add('active');
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    } else {
+                        item.classList.remove('active');
+                        answer.style.maxHeight = '0';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

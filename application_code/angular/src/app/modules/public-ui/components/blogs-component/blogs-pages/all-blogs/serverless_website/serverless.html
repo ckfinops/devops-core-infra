@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Deploying a Serverless Website on AWS</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5; 
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2em auto;
+            padding: 1em;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        ol {
+            list-style: none;
+            counter-reset: step;
+        }
+
+        li {
+            counter-increment: step;
+            margin-bottom: 1em;
+        }
+
+        li::before {
+            content: counter(step);
+            background: #333;
+            color: white;
+            border-radius: 50%;
+            margin-right: 0.5em;
+            padding: 0.3em 0.5em;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        code {
+            background-color: #f5f5f5;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+<div style="padding-top: 100px;"></div>
+    <header>
+        <h1 style="color: white;">Deploying a Serverless Website on AWS</h1>
+    </header>
+
+    <main>
+        
+        <h2>Step 1: Set Up an AWS Account</h2>
+        <p>Before diving into serverless deployment, ensure you have an AWS account. If you don't have one, sign up for
+            an account on the AWS website. Once you have an account, access the AWS Management Console.</p>
+            <img src="assets/blogs/aws_serverless.jpeg" alt="aws_serverless.jpeg" width="800" height="500">
+
+        <h2>Step 2: Create S3 Bucket, Lambda Function, and Integrate with API Gateway</h2>
+        <ol>
+                <h3>1. Create an S3 Bucket:</h3>
+                <p>Set up an S3 bucket to store your website assets such as images, HTML, and CSS files.</p>
+            
+                <h3>2. Create a Lambda Function:</h3>
+                <p>Develop a Lambda function to handle dynamic functionality on your serverless website.</p>
+            
+                <h3>3. Integrate with API Gateway:</h3>
+                <p>Connect your Lambda function to API Gateway to manage incoming requests and enable communication
+                    between clients and your serverless backend.</p>
+           
+        </ol>
+
+        <h2>Step 3: Access an Image from the S3 Bucket</h2>
+        <ol>
+                <h3>1. Update Lambda Function:</h3>
+                <p>Modify your Lambda function code to access an image stored in the S3 bucket.</p>
+            
+                <h3>2. Test Lambda Function:</h3>
+                <p>Verify that your Lambda function can successfully retrieve the image from the S3 bucket.</p>
+            
+        </ol>
+
+        <h2>Step 4: Create a CloudFront Distribution</h2>
+        <ol>
+                <h3>1. Set Up a CloudFront Distribution:</h3>
+                <p>Establish a CloudFront distribution to act as a content delivery network (CDN) for your website,
+                    improving performance and reducing latency.</p>
+           
+                <h3>2. Configure CloudFront with S3 Origin:</h3>
+                <p>Connect your CloudFront distribution to the S3 bucket, ensuring it serves as the origin for your
+                    website content.</p>
+           
+                <h3>3. Test Your CloudFront Distribution:</h3>
+                <p>Access your website through the CloudFront URL and monitor metrics to ensure efficient content
+                    delivery.</p>
+           
+        </ol>
+
+        <h2>Step 5: Prevent Direct Access to S3</h2>
+        <ol>
+                <h3>1. Update S3 Bucket Policy:</h3>
+                <p>Enhance security by configuring your S3 bucket policy to allow access only through your CloudFront
+                    distribution.</p>
+           
+                <h3>2. Invalidate CloudFront Cache:</h3>
+                <p>Invalidate the CloudFront cache to ensure it fetches the latest content from the S3 bucket.</p>
+            
+        </ol>
+
+        <h2>Step 6: Access the Image via CloudFront</h2>
+        <ol>
+                <h3>1. Test Access Control:</h3>
+                <p>Confirm that direct access to the S3 URL is denied, and images can only be accessed through the
+                    CloudFront distribution.</p>
+            
+                <h3>2. Ensure Seamless Access:</h3>
+                <p>Verify that accessing images via the CloudFront distribution remains seamless, providing an
+                    optimized user experience.</p>
+           
+        </ol>
+
+    </main>
+
+</body>
+
+</html>

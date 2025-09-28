@@ -1,0 +1,26 @@
+<div class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-subtitle">Find answers to common questions about our program</p>
+    
+    <div class="faq-grid">
+        <div class="faq-category" *ngFor="let category of faqCategories; let catIndex = index">
+            <h3 class="category-title">{{ category.title }}</h3>
+            <div class="faq-list">
+                <div class="faq-item" *ngFor="let item of category.items; let itemIndex = index" [ngClass]="{'active': item.isActive}">
+                    <div class="faq-question" (click)="toggleFaq(catIndex, itemIndex)">
+                        <h4>{{ item.question }}</h4>
+                        <i class="fas" [ngClass]="{'fa-chevron-up': item.isActive, 'fa-chevron-down': !item.isActive}"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>{{ item.answer }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="faq-cta">
+        <p>Still have questions? We're here to help!</p>
+        <a href="/contactus" class="cta-button">Contact Our Support Team</a>
+    </div>
+</div> 

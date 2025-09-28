@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+<body>
+
+  <div class="container1" style="margin-top: 20px;">
+<h5 style="font-weight: 900; font-size: larger;">Grab Your Course</h5>
+    <form>
+      <div class="radiobtn" >
+          <label>
+        <input  style="    width: 23px;height: 24px;"
+         type="radio" name="batch" [(ngModel)]="selectedBatch" value="regular"> MLOps Engineering on AWS
+      </label>
+      <label>
+        <input
+        style="    width: 23px;height: 24px;"
+        type="radio" name="batch" [(ngModel)]="selectedBatch" value="jobReady"> AWS DevOps Job Ready
+      </label> </div>
+      <hr>
+
+      <div *ngIf="selectedBatch === 'regular'" class="content">
+
+
+        <div class="container">
+          <div class="left-side">
+            <div class="batch-info" style="color: #D0D3D9; font-size: medium;">
+              <i class="fas fa-calendar-alt calendar-icon" style="color: orange;"></i>
+              Next Batch Starts On Sep 6, 2024 Limited Seats Only!!
+            </div>
+            <br>
+            <!-- <div class="price price-crossed">₹ 46,000/-</div> -->
+            <!-- <div class="price">₹ 9,999/-</div><br> -->
+            <!-- <div class="price">₹ 45,000/-</div><br>
+            <div class="mode">Online</div> -->
+            <div class="security-deposit">
+              Register Now!
+            </div>
+            <a href="" class="enroll-button">Enroll Now</a>
+            <!-- <a href="https://razorpay.com/payment-link/plink_NqcOG10BpDQwk8" class="enroll-button">Pay Now</a> -->
+
+          </div>
+
+          <div class="right-side">
+            <div class="perks">
+              <p style="    font-weight: 900;
+              font-size: x-large;
+              margin-bottom: 40px;"></p>
+              <ul style="font-size: medium;">
+                <!-- <li><span class="fas fa-check check-icon"></span> Daily 1 hr</li> -->
+                <li><span class="fas fa-check check-icon"></span> Daily 1 hr</li>
+                <li><span class="fas fa-check check-icon"></span> 30 Days</li>
+                <li><span class="fas fa-check check-icon"></span> </li>
+                <li><span class="fas fa-check check-icon"></span> </li>
+                <!-- <li><span class="fas fa-check check-icon"></span> Naukri & LinkedIn Account Creation & Optimization</li>
+                <li><span class="fas fa-check check-icon"></span> Placement Assistance</li>
+                <li><span class="fas fa-check check-icon"></span> Recruitment and Hiring Details Shared</li> -->
+              </ul>
+              <div class="custom-button-div">
+      <button class="custom-button" (click)="openDialog()">Download Course Content</button>
+      </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="selectedBatch === 'jobReady'" class="content">
+        <div class="container">
+          <div class="left-side">
+            <div class="batch-info" style="color: #D0D3D9; font-size: medium;">
+              <i class="fas fa-calendar-alt calendar-icon" style="color: orange;"></i>
+              Next Batch Starts On Sep 6, 2024 Limited Seats Only!!
+            </div>
+            <br>
+            <!-- <div class="price price-crossed">₹ 69,999/-</div> -->
+            <!-- <div class="price">₹ 36,000/-</div><br> -->
+            <div class="mode">Online</div>
+            <div class="security-deposit">
+              Register Now!
+            </div>
+            <a href="https://us02web.zoom.us/meeting/register/wGdnLrNxRpm2Sa6bq2FBaA" class="enroll-button">Enroll Now</a>
+            <!-- <a href="https://razorpay.com/payment-link/plink_NqcYHA6Lcon5W2" class="enroll-button">Pay Now</a> -->
+          </div>
+
+          <div class="right-side">
+            <div class="perks">
+              <p style="    font-weight: 900;
+              font-size: x-large;
+              margin-bottom: 40px;"></p>
+              <ul style="font-size: medium;">
+                <li><span class="fas fa-check check-icon"></span> Daily 1 hr</li>
+                <li><span class="fas fa-check check-icon"></span> 3 Months</li>
+                <li><span class="fas fa-check check-icon"></span> OS Module (Windows & Linux)</li>
+                <li><span class="fas fa-check check-icon"></span> Shell Scripting</li>
+                <li><span class="fas fa-check check-icon"></span> SQL</li>
+                <li><span class="fas fa-check check-icon"></span> Python</li>
+                <li><span class="fas fa-check check-icon"></span> AWS</li>
+                <li><span class="fas fa-check check-icon"></span> AWS DevOps CI/CD Pipeline</li>
+                <li><span class="fas fa-check check-icon"></span> DevSecOps</li>
+                <!-- <li><span class="fas fa-check check-icon"></span> 6 Months Internship</li>
+                <li><span class="fas fa-check check-icon"></span> AWS Cloud Practitioner Exam Voucher(CLF-C02) </li> -->
+                <li><span class="fas fa-check check-icon"></span> Topic-wise Quiz</li>
+                <li><span class="fas fa-check check-icon"></span> Mock Interviews</li>
+                <li><span class="fas fa-check check-icon"></span> 3 Projects</li>
+                <li><span class="fas fa-check check-icon"></span> Resume Grooming Session</li>
+                <!-- <li><span class="fas fa-check check-icon"></span> Naukri & LinkedIn Account Creation & Optimization</li> -->
+                <li><span class="fas fa-check check-icon"></span> 100% Placement Guidance</li>
+                
+              </ul>
+              <div class="custom-button-div">
+      <button class="custom-button" (click)="openDialog()">Download Course Content</button>
+      </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <!--
+  <div style="visibility: visible; background: url('assets/hybrid-learning/bg3.png') center center / cover no-repeat;">
+    <h2 >Course Fee Details </h2>
+
+  <div class="container">
+    <div class="left-side">
+      <div class="batch-info" style="color: #D0D3D9; font-size: medium;">
+        <h5 style="color: white;">Job Ready Program With Internship</h5>
+        <i class="fas fa-calendar-alt calendar-icon" style="color: orange;"></i>
+        New Batch Starts On 29th Feb 2024 Limited Seats Only!!
+      </div>
+      <br>
+      <div class="price price-crossed">₹ 69,999/-</div>
+      <div class="price">₹ 49,999/-</div>
+      <div class="security-deposit">
+        Register Now  and Save your slot
+      </div> -->
+      <!-- <a href="https://8amcloudbinary.s3.amazonaws.com/AWS_DevOps_With_ShellScripting_Python_20240225.pdf" class="enroll-button">Download Course Content</a>
+
+      <a href="https://wa.me/919100073006" class="enroll-button">Block Your Seat</a>-->
+      <!-- <a href="" class="grab-now-link" style="color: red">Download Course Content</a>
+    </div>
+
+    <div class="right-side">
+
+      <div class="batch-info" style="color: #D0D3D9; font-size: medium;">
+        <h5>AWS DevOps Regular</h5>
+        <i class="fas fa-calendar-alt calendar-icon" style="color: orange;"></i>
+        <span style="color: black;">  Batch Starts On 29th Feb 2024 Limited Seats Only!! </span>
+      </div>
+      <br>
+      <div class="price price-crossed" style="color: red;">₹ 25,999/-</div>
+      <div class="price">₹ 46,000/-</div>
+      <div class="security-deposit">
+        Register Now  and Save your slot
+      </div> -->
+      <!-- <a href="https://8amcloudbinary.s3.amazonaws.com/AWS_DevOps_Regular_20240225.pdf" class="enroll-button">Download Course Content</a>
+
+      <a href="https://wa.me/919100073006" class="enroll-button">Block Your Seat</a>
+      <a href="https://8amcloudbinary.s3.amazonaws.com/AWS_DevOps_Regular_20240225.pdf" class="grab-now-link" style="color: red">Download Course Content</a>
+
+      </div>
+    </div>
+   </div> -->
+
+</body>
+</html>

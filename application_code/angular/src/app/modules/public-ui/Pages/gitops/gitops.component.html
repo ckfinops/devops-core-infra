@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Binary - GitOps Training</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Master GitOps with Cloud Binary. Learn GitOps methodology, ArgoCD, Flux, and automated deployment practices. Get certified and build a career in modern DevOps.">
+    <meta name="keywords" content="GitOps training, ArgoCD, Flux, automated deployment, Kubernetes, DevOps methodology">
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N7R7CTCN');</script>
+    <!-- End Google Tag Manager -->
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7R7CTCN"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <section class="hero-section">
+        <div class="container-row">
+            <div class="content-container">
+                <h1 class="main-heading"><span class="highlight">GitOps</span></h1>
+                
+                <p class="sub-heading">Learn GitOps methodology, ArgoCD, Flux, and automated deployment practices. Master the future of DevOps with Git as the single source of truth.</p>
+                
+                <div class="cta-buttons">
+                    <a href="https://us02web.zoom.us/meeting/register/lWGipbgyS7iOo_oQuvYGOA" class="primary-btn" target="_blank">
+                        <i class="fas fa-play"></i>
+                        Join Free Demo
+                    </a>
+                    <a href="https://wa.me/919392743006?text=Hi, I'm interested in your GitOps course. Can you provide me with more details?" class="secondary-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Get Course Details
+                    </a>
+                </div>
+            </div>
+            
+            <div class="image-container">
+                <img src="assets/intro/gitops-hero.png" alt="GitOps Training" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- DevOps Day-to-Day and Salary Section (Modern UI, GitOps Colors) -->
+    <section class="devops-day-to-day-salary-modern" style="margin: 40px 0;">
+        <style>
+            .devops-day-to-day-salary-modern .section-title {
+                text-align: center;
+                font-size: 2rem;
+                font-weight: 800;
+                color: #24292e;
+                margin-bottom: 2.5rem;
+                letter-spacing: -0.5px;
+            }
+            .devops-day-to-day-salary-modern .devops-flex {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 32px;
+                justify-content: center;
+                align-items: stretch;
+            }
+            .devops-day-to-day-salary-modern .devops-card {
+                background: #fff;
+                border-radius: 18px;
+                box-shadow: 0 4px 24px rgba(36,41,46,0.08);
+                padding: 32px 28px;
+                min-width: 280px;
+                max-width: 420px;
+                flex: 1 1 320px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                border: 1.5px solid #e2e8f0;
+            }
+            .devops-day-to-day-salary-modern ul {
+                padding-left: 20px;
+                margin: 0;
+            }
+            .devops-day-to-day-salary-modern li {
+                margin-bottom: 12px;
+                font-size: 1.08rem;
+                color: #24292e;
+            }
+            .devops-day-to-day-salary-modern .salary-main {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #28a745;
+                margin-bottom: 8px;
+            }
+            .devops-day-to-day-salary-modern .salary-range {
+                color: #ffb900;
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+            .devops-day-to-day-salary-modern .salary-source {
+                font-size: 0.95rem;
+                color: #aaa;
+            }
+            .devops-day-to-day-salary-modern h2 {
+                color: #24292e;
+                font-size: 1.4rem;
+                font-weight: 700;
+                margin-bottom: 1.2rem;
+            }
+            /* Bar Chart Styles */
+            .salary-bar-chart {
+                width: 100%;
+                max-width: 320px;
+                margin: 24px auto 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .salary-bars {
+                display: flex;
+                align-items: flex-end;
+                gap: 18px;
+                height: 120px;
+                width: 100%;
+                justify-content: center;
+            }
+            .salary-bar {
+                width: 38px;
+                border-radius: 8px 8px 0 0;
+                background: linear-gradient(135deg, #28a745 60%, #ffb900 100%);
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                position: relative;
+                transition: height 0.3s;
+            }
+            .salary-bar.low { height: 60px; background: linear-gradient(135deg, #e2e8f0 60%, #28a745 100%); }
+            .salary-bar.avg { height: 90px; background: linear-gradient(135deg, #28a745 60%, #ffb900 100%); }
+            .salary-bar.high { height: 120px; background: linear-gradient(135deg, #ffb900 60%, #24292e 100%); }
+            .salary-bar-label {
+                position: absolute;
+                bottom: -28px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 0.95rem;
+                color: #24292e;
+                font-weight: 600;
+                white-space: nowrap;
+            }
+            .salary-bar-value {
+                position: absolute;
+                top: -28px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 1rem;
+                color: #28a745;
+                font-weight: 700;
+                background: #fff;
+                padding: 2px 8px;
+                border-radius: 6px;
+                box-shadow: 0 2px 8px rgba(36,41,46,0.07);
+            }
+            .devops-day-to-day-salary-modern .devops-card.salary-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                justify-content: flex-start;
+                min-height: 420px;
+                position: relative;
+            }
+            .devops-day-to-day-salary-modern .salary-source {
+                font-size: 0.98rem;
+                color: #888;
+                margin-top: 24px;
+                margin-bottom: 0;
+                align-self: center;
+                position: absolute;
+                bottom: 24px;
+                left: 0;
+                right: 0;
+                text-align: center;
+                width: 100%;
+            }
+            @media (max-width: 900px) {
+                .devops-day-to-day-salary-modern .devops-flex {
+                    flex-direction: column;
+                    gap: 20px;
+                }
+            }
+        </style>
+        <div class="section-title">A Day in the Life of a DevOps Engineer</div>
+        <div class="devops-flex">
+            <div class="devops-card">
+                <h2>Key Responsibilities</h2>
+                <ul>
+                    <li>Monitoring and Observability</li>
+                    <li>CI/CD Pipeline Management</li>
+                    <li>Code Deployment</li>
+                    <li>Automation of Repetitive Tasks</li>
+                    <li>Infrastructure as Code (IaC)</li>
+                    <li>Source Code and Version Control</li>
+                    <li>Security Practices Integration</li>
+                    <li>Incident and Problem Management</li>
+                    <li>Collaboration and Communication</li>
+                    <li>Performance Optimization</li>
+                    <li>Backup and Disaster Recovery Operations</li>
+                    <li>Tool and Environment Configuration</li>
+                </ul>
+            </div>
+            <div class="devops-card salary-card">
+                <h2 style="margin-bottom:18px;">DevOps Engineer<br>Average Salary</h2>
+                <div class="salary-main">$125,937 <span style="font-size:1.1rem; font-weight:400;">/year</span></div>
+                <div class="salary-range">Range: $103,000 – $154,000</div>
+                <div class="salary-bar-chart">
+                    <div class="salary-bars">
+                        <div class="salary-bar low">
+                            <span class="salary-bar-value">$103k</span>
+                            <span class="salary-bar-label">Low</span>
+                        </div>
+                        <div class="salary-bar avg">
+                            <span class="salary-bar-value">$126k</span>
+                            <span class="salary-bar-label">Average</span>
+                        </div>
+                        <div class="salary-bar high">
+                            <span class="salary-bar-value">$154k</span>
+                            <span class="salary-bar-label">High</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="salary-source">Data from Glassdoor</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="components-container">
+        <div class="container mt-5">
+            <h1 class="text-center mb-5 mt-5 pt-5">GitOps Training Course Content</h1>
+
+            <section class="mb-5">
+                <h2 class="mb-4">GitOps Core Concepts</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Concept</th>
+                                <th>Description</th>
+                                <th>Tools & Technologies</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let concept of gitOpsConcepts">
+                                <td><strong>{{concept.category}}</strong></td>
+                                <td>{{concept.description}}</td>
+                                <td>{{concept.tools}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="mb-4">GitOps Tools and Technologies</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Category</th>
+                                <th>Tools / Services to Learn</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let tool of gitOpsTools">
+                                <td><strong>{{tool.category}}</strong></td>
+                                <td>{{tool.tools}}</td>
+                                <td>{{tool.purpose}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="mb-4">GitOps Benefits</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card" *ngFor="let benefit of benefits">
+                        <div class="benefit-icon">
+                            <i [class]="benefit.icon"></i>
+                        </div>
+                        <h3>{{benefit.title}}</h3>
+                        <p>{{benefit.description}}</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        function scrollToTrendingCourses() {
+            const trendingCourses = document.querySelector('#trending-courses');
+            if (trendingCourses) {
+                trendingCourses.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function openWhatsApp() {
+            const message = `Hi, I'm interested in your GitOps course. Can you provide me with more details?`;
+            const whatsappURL = `https://api.whatsapp.com/send/?phone=919100073006&text=${encodeURIComponent(message)}`;
+            window.location.href = whatsappURL;
+        }
+    </script>
+</body>
+</html> 

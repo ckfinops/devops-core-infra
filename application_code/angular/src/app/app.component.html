@@ -1,0 +1,168 @@
+<head>
+  <meta charset="utf-8">
+  <title>Be A DevOps Engineer</title>
+  <base href="/">
+  <link rel="canonical" href="https://www.cloudbinary.in">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B92V5M4QTY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B92V5M4QTY');
+</script>
+
+<meta name="google-site-verification" content="jHWh6nl8Jd_NbAUv5TN9ep1TJz3Qb4qxEkGifqHqFGs" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N7R7CTCN');</script>
+    <!-- End Google Tag Manager -->
+
+      <!-- Meta Tags for SEO -->
+  
+  <meta name="description" content="Boost your career with our expert-led AWS, DevOps, Data Analyst, and Data Science training. We offer classroom and online courses with hands-on labs, real-world projects, and industry-recognized certifications. Learn from professionals, enhance your skills, and stay ahead in the tech industry. Enroll now!">
+  <meta name="keywords" content="EdTech offering AWS, DevOps, Data Analyst, Data Science and FinOps training through classroom, online, and hybrid learning formats, with a focus on certification, hands-on training, technology, and expert mentorship.">
+  <meta name="author" content="Cloud Binary">
+  <meta name="robots" content="index, follow">
+  
+  <!-- OpenGraph meta tags for social media -->
+  <meta property="og:title" content="Be A DevOps Engineer
+🚀 Build the Future. Automate Everything. Deliver Faster.">
+  <meta property="og:description" content="Advance your career with expert-led AWS, DevOps, Data Analyst, and Data Science courses. Learn online or in the classroom with hands-on labs, real-world projects, and industry-recognized certifications.">
+  <meta property="og:image" content="https://www.cloudbinary.in/home">
+  <meta property="og:url" content="https://www.cloudbinary.in">
+
+
+  <!-- Viewport settings -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="assets/intro/newlogo.png">
+</head>
+
+<!-- Main Content -->
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=G-B92V5M4QTY" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="content">
+  <div class="header" *ngIf="!isScreenSmall">
+    <a href="" class="logo_link logo">
+      <img src="assets/intro/newlogo.png" alt="Cloud Binary Logo" class="flogo" />
+    </a>
+
+    <div class="header-right">
+      <a routerLink="/aws-devops"><i class="fab fa-aws"></i> AWS DevOps</a>
+      <a routerLink="/azure-devops"><i class="fab fa-microsoft"></i> Azure DevOps</a>
+      <a routerLink="/gitops" class="gitops-link"><i class="fab fa-git-alt"></i> GitOps</a>
+    <a routerLink="/finops" class="finops-link"><i class="fas fa-dollar-sign"></i>FinOps</a>
+      <a [routerLink]="['/contactus']" routerLinkActive="router-link-active"><i class="fas fa-envelope"></i> Contact Us</a>
+      <a href="https://wa.me/919392743006" target="_blank" class="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>+91 9392743006
+      </a>
+    </div>
+  </div>
+
+  <div class="header mobile-header" *ngIf="isScreenSmall">
+    <a href="" class="logo_link logo">
+      <img src="assets/intro/CBMV.png" alt="Cloud Binary Logo for Mobile View" class="flogo" />
+    </a>
+    <div class="header-right">
+      <i class="fa fa-bars" (click)="toggleSidenav()"></i>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+
+  <footer-col></footer-col>
+</div>  
+
+<!-- Sidenav -->
+<div class="header__backdrop" [class.open]="sidenavOpen" (click)="closeSidenav()"></div>
+<div class="sidenav" [class.open]="sidenavOpen">
+  <a routerLink="/aws-devops" (click)="closeSidenav()"><i class="fab fa-aws"></i> AWS DevOps</a>
+  <a routerLink="/azure-devops" (click)="closeSidenav()"><i class="fab fa-microsoft"></i> Azure DevOps</a>
+  <a routerLink="/gitops" (click)="closeSidenav()" class="gitops-link"><i class="fab fa-git-alt"></i> GitOps</a>
+  <a routerLink="/finops" class="finops-link"><i class="fas fa-dollar-sign"></i>FinOps</a>
+
+  <a [routerLink]="['/contactus']" routerLinkActive="router-link-active" (click)="closeSidenav()"><i class="fas fa-envelope"></i> Contact Us</a>
+  <a href="https://wa.me/919392743006" target="_blank" class="whatsapp-button">
+    <i class="fab fa-whatsapp"></i>+91 9392743006
+  </a>
+  <!-- <a routerLink="/aifinops" (click)="closeSidenav()">AIFinOps</a> -->
+</div>
+<a href="https://wa.me/919100073006" class="floating" target="_blank">
+  <i class=" float-button"></i> <img width="80%" src="assets/icon-images/web.webp" alt="Cloud Binary Favicon">
+</a>
+
+
+
+
+<!-- <app-button-chooser
+  buttonStyle="button1"
+  buttonName="Basic Button"
+  (click)="abc()"
+></app-button-chooser>
+
+<app-button-chooser
+  buttonStyle="button2"
+  buttonName="Gradient Button"
+  (click)="abc()"
+></app-button-chooser>
+
+<app-button-chooser
+  buttonStyle="button4"
+  buttonName="Outline Button"
+  (click)="abc()"
+></app-button-chooser>
+
+<app-button-chooser
+  buttonStyle="button5"
+  buttonName="Icon Button"
+  (click)="abc()"
+></app-button-chooser>
+<app-button-chooser
+  buttonStyle="button6"
+  buttonName="Animated Button"
+  (click)="abc()"
+></app-button-chooser>
+<app-button-chooser
+  buttonStyle="button7"
+  buttonName="box-shadow"
+  (click)="abc()"
+></app-button-chooser>
+<app-button-chooser
+  style="margin: 15px"
+  buttonStyle="button9"
+  buttonName="dual-color"
+  (click)="abc()"
+></app-button-chooser>
+<app-button-chooser
+  style="margin: 15px"
+  buttonStyle="button11"
+  buttonName="liquid-filling"
+  (click)="abc()"
+></app-button-chooser>
+<app-button-chooser
+  style="margin: 15px"
+  buttonStyle="button8"
+  buttonName="gradient-colors"
+  (click)="abc()"
+></app-button-chooser>
+<app-button-chooser
+  buttonStyle="button10"
+  buttonName="border-animation"
+  (click)="abc()"
+></app-button-chooser>
+<app-button-chooser
+  style="margin: 10px"
+  buttonStyle="button12"
+  buttonName="border-animation2"
+  (click)="abc()"
+></app-button-chooser> -->

@@ -307,15 +307,15 @@ resource "aws_instance" "c3finops_web" {
   }
 
   #user_data = file("${path.module}/user_dev.txt") 
-  #user_data     = "${data.template_file.c3finops_web_user_data.rendered}"
+  user_data     = "${data.template_file.c3finops_web_user_data.rendered}"
   
 
-  user_data = templatefile("${path.module}/templates/app-userdata.sh.tmpl", {
-    region         = var.region
-    api_bucket     = var.api_bucket
-    api_key        = var.api_key
-    tomcat_version = var.tomcat_version
-  })
+  # user_data = templatefile("${path.module}/templates/app-userdata.sh.tmpl", {
+  #   region         = var.region
+  #   api_bucket     = var.api_bucket
+  #   api_key        = var.api_key
+  #   tomcat_version = var.tomcat_version
+  # })
 
 
   lifecycle {
@@ -382,14 +382,14 @@ resource "aws_instance" "c3finops_app" {
   }
 
   #user_data = file("${path.module}/user_app.txt") 
-  #user_data     = "${data.template_file.c3finops_app_user_data.rendered}"
+  user_data     = "${data.template_file.c3finops_app_user_data.rendered}"
 
-  user_data = templatefile("${path.module}/templates/web-userdata.sh.tmpl", {
-    region         = var.region
-    api_bucket     = var.api_bucket
-    api_key        = var.api_key
-    tomcat_version = var.tomcat_version
-  })
+  # user_data = templatefile("${path.module}/templates/web-userdata.sh.tmpl", {
+  #   region         = var.region
+  #   api_bucket     = var.api_bucket
+  #   api_key        = var.api_key
+  #   tomcat_version = var.tomcat_version
+  # })
 
 
   lifecycle {

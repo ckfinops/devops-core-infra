@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Create IAM User on AWS</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #000000;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #000000;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        ol {
+            color: #000000;
+            padding-left: 20px;
+        }
+
+        p {
+            color: #000000;
+        }
+        a {
+            color: blue; /* Set link color to blue */
+        }
+    </style>
+</head>
+<body>
+    <div style="padding-top: 100px;"></div>
+
+    <header>
+        <h1 style="color: white;">IAM User on AWS</h1>
+    </header>
+
+    <section>
+        <h2>IAM User</h2>
+      <p> An AWS Identity and Access Management (IAM) user is an entity that you create in AWS. The IAM user represents the human user or workload who uses the IAM user to interact with AWS. A user in AWS consists of a name and credentials.
+
+       An IAM user with administrator permissions is not the same thing as the AWS account root user.</p>
+
+       <img src="assets/blogs/iam-user.webp" alt="iam-user.webp" width="170" height="130">
+
+        <h2>Creating IAM User on AWS</h2>
+        
+            <strong>1. Sign in to the AWS Management Console:</strong>
+                <ul>
+                    <li>Open your web browser and go to the AWS Management Console. Sign in with your AWS account credentials.</li>
+                </ul>
+           <strong>2. Navigate to IAM:</strong>
+                <ul>
+                    <li>In the AWS Management Console, search for "IAM" or find it in the "Security, Identity, & Compliance" section. Click on "IAM" to open the IAM dashboard.</li>
+                </ul>
+            
+            <strong>3. Access the Users Page:</strong>
+                <ul>
+                    <li>In the IAM dashboard, click on "Users" in the left navigation pane to access the Users page.</li>
+                </ul>
+            
+            <strong>4. Create a New User:</strong>
+                <ul>
+                    <li>Click on the "Add user" button to start the user creation process.</li>
+                </ul>
+            
+           <strong>5. Enter User Details:</strong>
+                <ul>
+                    <li>Enter a username for the new IAM user.</li>
+                    <li>Choose the type of access for the user: Programmatic access, AWS Management Console access, or both.</li>
+                    <li>If you choose "Programmatic access," the user will get API access. If you choose "AWS Management Console access," you need to set a password for the user.</li>
+                </ul>
+            
+            <strong>6. Set Permissions</strong>
+                <ul>
+                    <li>Choose the way you want to set permissions for the user. You can add the user to an existing group with predefined permissions or attach policies directly.</li>
+                    <li>Policies define what actions the user is allowed to perform.</li>
+                </ul>
+            
+            <strong>7. Add Tags (Optional):</strong>
+                <ul>
+                    <li>You can add tags to the user for better organization and management. Tags are key-value pairs.</li>
+                </ul>
+            
+            <strong>8. Review and Create:</strong>
+                <ul>
+                    <li>Review the user details, permissions, and settings. If everything looks correct, click on the "Create user" button.</li>
+                </ul>
+            
+            <strong>9. Access Key (Optional for Programmatic Access):</strong>
+                <ul>
+                    <li>If you selected "Programmatic access," you will be prompted to download the user's access key. Make sure to securely store the access key and secret key because you won't be able to retrieve the secret key again.</li>
+                </ul>
+            
+            <strong>10. Finish:</strong>
+                <ul>
+                    <li>Once the user is created, you'll see a confirmation screen. Take note of the user details and access credentials.</li>
+                    <li>Congratulations, you've successfully created an IAM user! This user now has the specified permissions and can be used to interact with AWS resources based on the assigned policies. Always follow the principle of least privilege, granting users only the permissions they need to perform their tasks.</li>
+                </ul>
+
+                <strong>Topics</strong>
+                <li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_consoleCreating" target="_blank" title="Go to IAM users (console)">Creating IAM users (console)</a></li>
+                <li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_cliwpsapiCreating" target="_blank" title="Go to IAM users (AWS CLI)">Creating IAM users (AWS CLI)</a></li>
+                <li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_api" target="_blank" title="Go to IAM users (AWS CLI)">Creating IAM users (AWS CLI)</a></li>
+            
+
+
+                <article>
+                    <h2>How AWS Identifies an IAM User</h2>
+                    <p>When you create an IAM user in AWS, there are multiple ways to identify that user:</p>
+                    <ul>
+                        <li><strong>Friendly Name:</strong>A "friendly name" for the IAM user, which is the name that you specified when you created the IAM user, such as Richard or Anaya. These are the names you see in the AWS Management Console.</li>
+                        <li><strong>ARN (Amazon Resource Name):</strong>An Amazon Resource Name (ARN) for the IAM user. You use the ARN when you need to uniquely identify the IAM user across all of AWS. For example, you could use an ARN to specify the IAM user as a Principal in an IAM policy for an Amazon S3 bucket. An ARN for an IAM user might look like the following:</li>
+                        arn:aws:iam::account-ID-without-hyphens:user/Richard  
+                        <li><strong>Unique Identifier:</strong> A unique identifier for the IAM user. This ID is returned only when you use the API, Tools for Windows PowerShell, or AWS CLI to create the IAM user; you do not see this ID in the console.</li>
+                    </ul>
+                </article>
+                <article>
+                    <h2>IAM Users and Accounts</h2>
+                    <p>Each IAM user is associated with one and only one AWS account. Because IAM users are defined within your AWS account, they don't need to have a payment method on file with AWS. Any AWS activity performed by IAM users in your account is billed to your account.</p>
+                </article>
+            
+
+                <span><button><a _ngcontent-tbw-c76="" class="ks-button ks-button--primary" href="https://cloudbinary.io/blogs" target="_blank"> For More like This </a></button></span>   
+
+            
+            </section>
+
+</body>
+</html>

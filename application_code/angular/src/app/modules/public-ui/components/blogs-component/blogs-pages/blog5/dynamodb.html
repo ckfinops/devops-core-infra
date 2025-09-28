@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon DynamoDB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 100px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1, h2 {
+            color: #0c0c0c;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+
+        .link {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="padding-top: 20px; display: flex; justify-content: space-around;">Amazon DynamoDB </h1>
+    <div class="section">
+        
+        <p>
+            Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. DynamoDB lets you offload the administrative burdens of operating and scaling a distributed database so that you don't have to worry about hardware provisioning, setup and configuration, replication, software patching, or cluster scaling. DynamoDB also offers encryption at rest, which eliminates the operational burden and complexity involved in protecting sensitive data. For more information, see DynamoDB encryption at rest.
+        </p>
+        <img src="assets/blogs/dynamodb.jfif" alt="dynamodb.jfif" width="700" height="400">
+        <p>
+            With DynamoDB, you can create database tables that can store and retrieve any amount of data and serve any level of request traffic. You can scale up or scale down your tables' throughput capacity without downtime or performance degradation. You can use the AWS Management Console to monitor resource utilization and performance metrics.
+        </p>
+        <p>
+            DynamoDB provides on-demand backup capability. It allows you to create full backups of your tables for long-term retention and archival for regulatory compliance needs. For more information, see Using On-Demand backup and restore for DynamoDB.
+        </p>
+        <p>
+            You can create on-demand backups and enable point-in-time recovery for your Amazon DynamoDB tables. Point-in-time recovery helps protect your tables from accidental write or delete operations. With point-in-time recovery, you can restore a table to any point in time during the last 35 days.
+        </p>
+        <p>
+            DynamoDB allows you to delete expired items from tables automatically to help you reduce storage usage and the cost of storing data that is no longer relevant. For more information, see Expiring items by using DynamoDB Time to Live (TTL).
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>High Availability and Durability</h2>
+        <p>
+            DynamoDB automatically spreads data and traffic for your tables over a sufficient number of servers to handle throughput and storage requirements. Data is stored on SSDs and replicated across multiple Availability Zones, providing built-in high availability and data durability.
+        </p>
+        <p>
+            You can use global tables to keep DynamoDB tables in sync across AWS Regions.
+        </p>
+        <p>
+            <a class="link" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html" target="_blank">Global tables - multi-Region replication for DynamoDB</a>.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Getting Started with DynamoDB</h2>
+        <p>
+            We recommend that you begin by reading the following sections:
+        </p>
+        <ul>
+            <li><a class="link" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.html" target="_blank">Amazon DynamoDB: How it works</a>—To learn essential DynamoDB concepts.</li>
+            <li><a class="link" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SettingUp.html" target="_blank">Setting up DynamoDB</a>—To learn how to set up DynamoDB (the downloadable version or the web service).</li>
+            <li><a class="link" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AccessingDynamoDB.html" target="_blank">Accessing DynamoDB</a>—To learn how to access DynamoDB using the console, AWS CLI, or API.</li>
+        </ul>
+    </div>
+    <body>
+
+        <h2>From there, you have two options to quickly get started with DynamoDB:</h2>
+    
+        <div class="options-section">
+            <h2>Options:</h2>
+            <ul>
+                <li><a class="link" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStartedDynamoDB.html" target="_blank">Getting started with DynamoDB</a></li>
+                <li><a class="link" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.html" target="_blank">Getting started with DynamoDB and the AWS SDKs</a></li>
+            </ul>
+        </div>
+    
+        <div class="options-section">
+            <h2>Learn more about application development:</h2>
+            <ul>
+                <li><a class="link" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.html" target="_blank">Programming with DynamoDB and the AWS SDKs</a></li>
+                <li><a class="link" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithDynamo.html" target="_blank">Working with tables, items, queries, scans, and indexes</a></li>
+            </ul>
+        </div>
+    
+        <div class="options-section">
+            <h2>Quick recommendations:</h2>
+            <p>To quickly find recommendations for maximizing performance and minimizing throughput costs, see the following:</p>
+            <ul>
+                <li><a class="link" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/best-practices.html" target="_blank">Best practices for designing and architecting with DynamoDB</a></li>
+                <li><a class="link" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html" target="_blank">Adding tags and labels to resources</a></li>
+            </ul>
+        </div>
+    
+        <div class="options-section">
+            <h2>Best practices, how-to guides, and tools:</h2>
+            <p>For best practices, how-to guides, and tools, see <a class="link" href="https://aws.amazon.com/dynamodb/resources/" target="_blank">Amazon DynamoDB resources</a>.</p>
+        </div>
+    
+        <div class="options-section">
+            <h2>AWS Database Migration Service (AWS DMS):</h2>
+            <p>You can use AWS Database Migration Service (AWS DMS) to migrate data from a relational database or MongoDB to a DynamoDB table. For more information, see the <a class="link" href="https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html" target="_blank">AWS Database Migration Service User Guide</a>.</p>
+            <p>To learn how to use MongoDB as a migration source, see <a class="link" href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html" target="_blank">Using MongoDB as a source for AWS Database Migration Service</a>. To learn how to use DynamoDB as a migration target, see <a class="link" href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html" target="_blank">Using an Amazon DynamoDB database as a target for AWS Database Migration Service</a>.</p>
+        </div>
+    
+    </body>
+
+    <div class="section">
+        <h2>DynamoDB Tutorials</h2>
+        <p>
+            The following tutorials present complete end-to-end procedures to familiarize yourself with DynamoDB. These tutorials can be completed with the free tier of AWS and will give you practical experience using DynamoDB.
+        </p>
+        <ul>
+            <li><a class="link" href="https://aws.amazon.com/tutorials/build-an-application-using-a-no-sql-key-value-data-store/" target="_blank">Build an Application Using a NoSQL Key-Value Data Store</a></li>
+            <li><a class="link" href="https://aws.amazon.com/tutorials/create-nosql-table/" target="_blank">Create and Query a NoSQL Table with Amazon DynamoDB</a></li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
+

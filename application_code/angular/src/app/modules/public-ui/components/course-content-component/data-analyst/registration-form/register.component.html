@@ -1,0 +1,35 @@
+<!-- Button to open the popup -->
+<button type="button" (click)="popupform = !popupform" class="custom-button">
+    Course Content Download
+</button>
+<!-- Popup overlay for the form -->
+<div class="overlay" *ngIf="popupform">
+    <div class="popup">
+        <span class="close-button" (click)="popupform = false" style="font-weight: bold;">X</span>
+        <div class="container">
+            <header>
+                <h1 id="title" style="color: black;">Get Skilled</h1>
+            </header>
+            <form id="survey-form" (ngSubmit)="handleSubmitForm()" #form="ngForm">
+                <div class="form-input">
+                    <label for="name" id="name-label"></label>
+                    <input type="text" id="name" name="name" placeholder="Name" class="form-input-size" required [(ngModel)]="formData.name" />
+                </div>
+                <div class="form-input">
+                    <label for="email" id="email-label"></label>
+                    <input type="email" id="email" name="email" placeholder="Email" class="form-input-size" required [(ngModel)]="formData.email" />
+                </div>
+                <div class="form-input">
+                    <label for="mobile" id="mobile-label"></label>
+                    <input type="tel" id="mobile" name="mobile" placeholder="Mobile number" class="form-input-size" required [(ngModel)]="formData.mobile" pattern="[0-9]*" inputmode="numeric" />
+                </div>
+                <div class="form-input">
+                    <button type="submit" id="submit">Download</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+<!-- Hidden link for PDF download -->
+<a #pdfDownloadLink href="https://8amcloudbinary.s3.amazonaws.com/AWS_DevOps_Regular_CloudBinary_20240125.pdf" style="display: none" download></a>

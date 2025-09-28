@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #0b0b0b;
+        }
+
+        h2 {
+            color: #060606fc;
+        }
+
+        h3 {
+            color: #090909;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border: 1px solid #ddd;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+    <title>AWS Transit Gateway Information</title>
+</head>
+
+<body>
+    <div style="padding-top: 100px;"></div>
+    <div class="container">
+        <h1>AWS Transit Gateway</h1>
+
+        <h2>How it works</h2>
+        <p><a href="https://aws.amazon.com/transit-gateway/" target="_blank" title="Go to AWS Transit Gateway ">AWS Transit Gateway </a>connects your Amazon Virtual Private Clouds (VPCs) and on-premises networks through a central hub. This connection simplifies your network and puts an end to complex peering relationships. Transit Gateway acts as a highly scalable cloud router—each new connection is made only once.</p>
+        <p>AWS Transit Gateway helps you design and implement networks at scale by acting as a cloud router. As your network grows, the complexity of managing incremental connections can slow you down. AWS Transit Gateway connects VPCs and on-premises networks through a central hub.</p>
+        
+        <img src="assets/blogs/gateway.png" alt="gateway.png" width="850" height="450">
+
+        <h2>Use cases</h2>
+        <ul>
+            <li><strong>Deliver applications around the world</strong></li>
+            <li>Build, deploy, and manage applications across thousands of Amazon VPCs without having to manage peering connections or update routing tables.</li>
+            <li><strong>Rapidly move to global scale</strong></li>
+            <li>Share VPCs, Domain Name System (DNS), Microsoft Active Directory, and IPS/IDS across Regions with inter-Region peering.</li>
+            <li><strong>Smoothly respond to spikes in demand</strong></li>
+            <li>Quickly add Amazon VPCs, AWS accounts, virtual private networking (VPN) capacity, or AWS Direct Connect gateways to meet unexpected demand.</li>
+            <li><strong>Host multicast applications on AWS</strong></li>
+            <li>Host multicast applications that scale based on demand, without the need to buy and maintain custom hardware.</li>
+        </ul>
+
+        <h2>AWS Transit Gateway features</h2>
+
+        <h3>Routing</h3>
+        <p>AWS Transit Gateways supports dynamic and static layer 3 routing between Amazon Virtual Private Clouds (VPCs) and VPN. Routes determine the next hop depending on the destination IP address of the packet, and can point to an Amazon VPC or to a VPN connection.</p>
+
+        <h3>Edge connectivity</h3>
+        <p>You can create VPN connections between your AWS Transit Gateway and on-premises gateways using VPN. You can create multiple VPN connections that announce the same prefixes and enable Equal Cost Multipath (ECMP) between these connections. By load-balancing traffic over multiple paths, ECMP can increase the bandwidth.</p>
+
+        <h3>Transit Gateway Connect</h3>
+        <p> AWS Transit Gateway Connect enables native integration of Software-Defined Wide Area Network (SD-WAN) appliances into AWS. Customers can now seamlessly extend their SD-WAN edge into AWS using standard protocols such as Generic Routing Encapsulation (GRE) and Border Gateway Protocol (BGP). It provides customers with added benefits such as improved bandwidth and supports dynamic routing with increased route limits, thus removing the need to set up multiple IPsec VPNs between the SD-WAN appliances and Transit Gateway.</p>
+
+        <h3>Amazon VPC feature interoperability</h3>
+        <p> AWS Transit Gateway enables the resolution of public DNS hostnames to private IP addresses when queried from Amazon VPCs that are also attached to the AWS Transit Gateway.</p>
+        <p>An instance in an Amazon VPC can access a NAT gateway, Network Load Balancer, AWS PrivateLink, and Amazon Elastic File System in other Amazon VPCs that are also attached to the AWS Transit Gateway.
+        </p>
+
+        <h3>Monitoring</h3>
+        <p> AWS Transit Gateway provides statistics and logs that are then used by services such as Amazon CloudWatch and Amazon VPC Flow Logs. You can use Amazon CloudWatch to get bandwidth usage between Amazon VPCs and a VPN connection, packet flow count, and packet drop count. You can also enable Amazon VPC Flow Logs on AWS Transit Gateway so you can capture information on the IP traffic routed through the AWS Transit Gateway.
+        </p>
+
+        <h3>Management</h3>
+        <p>You can use the command-line interface (CLI), AWS Management Console, or AWS CloudFormation to create and manage your AWS Transit Gateway. AWS Transit Gateway provides Amazon CloudWatch metrics, such as the number of bytes sent and received between Amazon VPCs and VPNs, the packet count, and the drop count. In addition, you can use Amazon VPC Flow Logs with AWS Transit Gateway to capture information about the IP traffic going through the AWS Transit Gateway attachment.</p>
+
+        <h3>Peering</h3>
+        <p> With transit gateway peering, you can establish peering connections between transit gateways in the same AWS region or across regions. Peering allows customers to directly route traffic between two transit gateways. Inter-region peering provides you with a simple and cost-effective way to share resources between AWS Regions or replicate data for geographic redundancy. Intra-region peering allows multiple teams within your organization to deploy their own transit gateways and easily interconnect their networks in the same AWS region.
+        </p>
+
+        <h3>Multicast</h3>
+        <p>  With Transit Gateway multicast, you can now easily create and manage multicast groups in the cloud, much easier than deploying and managing legacy hardware on premises. You can scale up and down your multicast solution in the cloud to simultaneously distribute a stream of content to multiple subscribers. With Transit Gateway multicast you have fine-grain control over who can produce and who can consume multicast traffic.
+        </p>
+
+        <h3>Security</h3>
+        <p>AWS Transit Gateway is integrated with Identity and Access Management (IAM), enabling you to manage access to AWS Transit Gateway securely. Using IAM, you can create and manage AWS users and groups, and use permissions to allow and deny their access to the AWS Transit Gateway.</p>
+
+        <h3>Automated provisioning</h3>
+        <p>Once you’ve registered existing AWS Transit Gateways, the Network Manager automatically identifies the Site-to-Site VPN connections and the on-premises resources with which they are associated. The SD-WAN consoles from vendors that have integrated AWS Transit Gateway, such as Cisco, Aruba, Silver Peak, or Aviatrix, automatically provision new AWS Site-to-Site VPN connections in Transit Gateway Network Manager and automate the definition of your on-premises network in Transit Gateway Network Manager. You can also manually define your on-premises network in Transit Gateway Network Manager.</p>
+
+        <h3>SD-WAN Network Manager compatibility</h3>
+        <p>Compatible SD-WAN partners of AWS, such as Cisco, Aruba, Silver Peak, Aviatrix, and Versa have pre-configured AWS Site-to-Site VPNs so that SD-WAN solutions can automate the connection of your remote sites with AWS. With AWS Transit Gateway Network Manager, you get a unified view of your network across AWS and on-premises networks.</p>
+    </div>
+</body>
+
+</html>

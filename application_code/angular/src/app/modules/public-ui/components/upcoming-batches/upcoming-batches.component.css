@@ -1,0 +1,61 @@
+.upcoming-batches-banner {
+  background: linear-gradient(135deg, #5624d0 0%, #4a1fb8 100%);
+  color: white;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.banner-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.banner-text h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+}
+
+.banner-text p {
+  margin: 0.5rem 0 0;
+  opacity: 0.9;
+  color: white;
+}
+
+.join-button {
+  background: white;
+  color: #5624d0;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.join-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .banner-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .banner-text {
+    margin-bottom: 1rem;
+  }
+  
+  .join-button {
+    width: 100%;
+    text-align: center;
+  }
+} 

@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <h1 class="text-center mb-5 mt-5 pt-5">DevOps Engineer Course Content</h1>
+
+  <section class="mb-5">
+    <h2 class="mb-4">Cloud Computing Concepts: DevOps Engineer Services to Learn</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>Category</th>
+            <th>AWS</th>
+            <th>Azure</th>
+            <th>GCP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let service of cloudServices">
+            <td><strong>{{service.category}}</strong></td>
+            <td>{{service.aws}}</td>
+            <td>{{service.azure}}</td>
+            <td>{{service.gcp}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="mb-5">
+    <h2 class="mb-4">DevOps Engineer Topics to Learn</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>Category</th>
+            <th>Tools / Services to Learn</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let topic of devOpsTopics">
+            <td><strong>{{topic.category}}</strong></td>
+            <td>{{topic.tools}}</td>
+            <td>{{topic.purpose}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div> 

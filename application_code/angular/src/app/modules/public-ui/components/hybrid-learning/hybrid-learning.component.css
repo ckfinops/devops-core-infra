@@ -1,0 +1,110 @@
+/* .firstlearn {
+  text-align: center;
+}
+
+.firstlearn h2 {
+  margin: 0 0 20px;
+  font-weight: 600;
+  text-align: center;
+  font-size: 40px;
+}
+
+.firstlearn h2 span {
+  color: #1554bb;
+}
+
+.firstlearn p {
+  color: #707070;
+  font-size: 14px;
+  margin: 0 30px;
+}
+
+.firstlearn .row {
+  position: relative;
+}
+
+.or {
+  position: absolute;
+  right: 50%;
+  top: 50px;
+  bottom: 50px;
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+.pad_t8_b5 .or span {
+  color: #f9c420;
+}
+.or span {
+  display: block;
+  color: #389df9;
+  padding: 10px 0;
+  position: absolute;
+  font-weight: 600;
+  top: 48%;
+  background: #fff;
+  font-size: 25px;
+  left: -19px;
+  z-index: 2;
+}
+
+.pad_t8_b5 .or:after {
+  background: #d0d0d0;
+}
+
+.or:after {
+  width: 2px;
+  position: absolute;
+  top: 50px;
+  bottom: 50px;
+  opacity: 0.3;
+  content: "";
+  background: #b3b3b3;
+}
+
+.or.wow.fadeInUp.animated.animated.animated {
+  width: unset;
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .pad_t8_b5 .or {
+    display: none;
+    visibility: hidden;
+    span {
+      display: none;
+    }
+  }
+} */
+
+.firstlearn .col-md-5 img {
+  height: 250px;
+}
+
+.hybrid-learning, .hybrid-learning .firstlearn {
+  padding-top: 0;
+}
+.firstlearn h2,.firstlearn .heading span{
+  font-size: xxx-large;
+  color: #172342;
+  text-shadow: 1px 1px 2px black  !important;
+}
+
+@media screen and (max-width: 768px) {
+  .firstlearn h2,.firstlearn .heading span{
+  font-size: 30px;
+  }
+}
+/* styles.css */
+.hybrid-learning p {
+  color: black;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 589;
+}
+.hybrid-learning h3{
+  color: #172342;
+}

@@ -1,0 +1,35 @@
+<!-- First Course -->
+
+<hr>
+<h3 class="heading-3 wow fadeInUp animated animated" style="padding: 10px; background: steelblue; color: white;"> Course Content </h3>
+<hr>
+<div class="course" *ngFor="let course of courses; let i = index">
+  <h1 class="course-title" (click)="toggleCourseModules(i)">
+    {{ course.title }}
+    <span class="toggle-icon">{{ isCourseVisible[i] ? '-' : '+' }}</span>
+  </h1>
+  <div class="modules" [id]="'modules' + i" [ngStyle]="{ 'display': isCourseVisible[i] ? 'block' : 'none' }">
+    <h2>Modules</h2>
+    <ul class="module-list">
+      <li *ngFor="let module of course.modules; let j = index">
+        <div class="module">
+          <h3 (click)="toggleModuleSubmodules(i, j)">
+            {{ module.title }}
+            <span class="toggle-icon">{{ isModuleVisible[i][j] ? '-' : '+' }}</span>
+          </h3>
+          <div class="sub-modules" [ngStyle]="{ 'display': isModuleVisible[i][j] ? 'block' : 'none' }">
+            <ul class="sub-module-list">
+              <li *ngFor="let subModule of module.submodules">{{ subModule }}</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!--
+<div style="display: flex; justify-content: space-around; padding: 0px;">
+  <button class="custom-button" (click)="openDialog()">Download Course Content</button>
+</div>
+-->

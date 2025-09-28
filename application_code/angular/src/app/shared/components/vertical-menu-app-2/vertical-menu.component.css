@@ -1,0 +1,148 @@
+.menu-container {
+  margin-top: 50px;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding: 5px 10px 0 0px;
+}
+
+.menu-header {
+  padding: 10px;
+  text-align: center;
+}
+
+.menu-icon {
+  font-size: 24px;
+  width: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+.menu-icon:hover {
+  color: yellow;
+}
+
+.menu-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  padding: 15px 10px;
+  margin: 0 -10px 0 0;
+  text-align: center;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.menu-item:hover {
+  background-color: #444;
+}
+
+.sub-menu-card {
+  position: absolute;
+  top: 60px;
+  left: 50px;
+  width: 250px;
+  background-color: #f6f8fc;
+  height: 600px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  z-index: 3;
+}
+
+.sub-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sub-menu-heading {
+  padding: 10px;
+  text-align: center;
+}
+
+.sub-menu-item {
+  padding: 10px;
+  margin: 0 10px;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.sub-menu-item:hover {
+  background-color: #f1f1f1;
+}
+
+.aTV {
+  border: 6px solid;
+  box-shadow: -3px 3px 3px 0 rgba(60, 64, 67, 0.15);
+  content: "";
+  height: 0;
+  position: absolute;
+  transform: rotate(45deg);
+  width: 0;
+  border-color: transparent transparent #eef3fc #eef3fc;
+  left: 64px;
+}
+
+.menu-icon.highlighted {
+  color: yellow;
+}
+
+
+
+.fa-times::before {
+  content: "\f00d";
+}
+
+.main-content {
+  margin-top: 60px;
+  margin-left: 70px;
+  transition: margin-left 0.5s;
+  margin-right: 10px;
+}
+
+.expanded {
+  margin-left: 331px;
+}
+
+.header-bar {
+  height: 50px;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.fas {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.fa-home:before {
+  content: "\f015";
+}
+
+.fa-user:before {
+  content: "\f007";
+}
+
+.fa-cog:before {
+  content: "\f013";
+}
+
+.highlighted.sub-menu-item {
+  background-color: #e5e5e5;
+}

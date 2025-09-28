@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8; /* Light Grey Color */
+        }
+        
+                header {
+                    margin-top: 200px;
+                    max-width: 1500px;
+                    color: #fff;
+                    padding: 20px;
+                    background-color: #6495ED;
+                    border-radius: 8px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    text-align: center; /* Center content horizontally */
+                }
+        
+                section {
+                    max-width: 1150px;
+                    margin: 20px auto;
+                    padding: 20px;
+                    background-color: #ffffff;
+                    border-radius: 8px;
+                    box-shadow: 0 0 10px rgba(23, 18, 93, 0.1);
+                }
+        
+                h2 {
+            color: #050505;
+        
+            font-size: 1.0em;
+            margin-bottom: 10px;
+        
+        }
+        
+        code {
+                    display: block;
+                    background-color: #f4f4f4;
+                    padding: 10px;
+                    margin-bottom: 15px;
+                }
+        
+                .or {
+                    font-weight: bold;
+                    margin: 0 10px; /* Adjusted margin */
+                }
+        
+                pre {
+                    font-family: 'Arial', monospace;
+                    background-color: #f8f8f8;
+                    padding: 10px;
+                    border: 1px solid #ddd;
+                    overflow-x: auto;
+                }
+        
+                p {
+                    color: #0e0e0e;
+                }
+        
+                ol {
+                    color: #111010;
+                    padding-left: 20px;
+                }
+        
+                a {
+                    color: #0066cc;
+                    text-decoration: none;
+                }
+        
+                th {
+                    background-color: #f2f2f2;
+                }
+        
+          
+        
+                    .lb-h1 {
+                        /* Add styles for the h1 element */
+                        text-align: center; /* Center-align the heading */
+                    }
+        
+                    .center-image {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh; /* Optional: Adjust the height as needed */
+                }
+        
+        
+                body {
+                                        font-family: Arial, sans-serif;
+                                        margin: 20px;
+                                    }
+                            
+                                    li {
+                                        margin-bottom: 10px;
+                                    }
+                            
+                                    .free-tier {
+                                        background-color: #f0f8ff;
+                                        padding: 10px;
+                                        border-radius: 5px;
+                                    }       
+            </style>
+    <title>AWS Single Sign On(SSO)</title>
+</head>
+<body>
+
+
+    <div class="lb-transition-wrapper lb-transition-fade-in lb-active" data-lb-comp="transition-wrapper" data-lb-comp-registered="true">
+        <div class="lb-none-pad lb-grid lb-row lb-row-max-large lb-snap" style="display: flex; align-items: center;">
+            <div class="lb-col lb-tiny-24 lb-mid-24">
+                <div class="lb-bg-left-top-cover lb-border-p lb-small-pad lb-box" style="padding-top: 106px; padding-left: 180px; padding-right: 180px; padding-bottom: 0px; background-image: url('https://s3.cn-north-1.amazonaws.com.cn/aws-dam-prod/tmt/template/GSRC_Tutorials_Congratulations.08882b89ba8adfe231cdb223e7ccfb462038399f.png'); background-color: #ffffff;">
+                    <h1 id="Congratulations.21" class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-xlarge-align-center lb-txt-none lb-txt-white lb-h1 lb-title">AWS Single Sign On(SSO)</h1>
+                    <div class="lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 0px; margin-top: 0px;">
+                        <div class="lb-col lb-tiny-24 lb-mid-6">
+                        </div>
+                        <div class="lb-col lb-tiny-24 lb-mid-12" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <div class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-txt-16 lb-rtxt" style="color: #0d0d0d; margin-top: 0px;">
+                                <p style="color: #0d0d0d; font-weight: bold;">
+                                    Single Sign-On (SSO) is an authentication process that allows users to access multiple applications with a single set of login credentials, streamlining the user experience and improving security by reducing the need for multiple passwords.
+                            </div>
+                        </div>
+                        <div class="lb-col lb-tiny-24 lb-mid-6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <p><b>AWS Switch Role simplifies user access to different AWS accounts, allowing seamless role assumption across accounts. It streamlines user management and access control with a centralized approach. Secure role switching and a unified dashboard for administrators ensure efficient access management. Integration with identity providers, such as Active Directory, enhances authentication simplicity and security.</b></p>
+    </section>
+
+    <h1 style="text-align: center;">Here’s a simplified tutorial</h1>
+
+
+    <section id="step1">
+        <h2>Step 1: Login to Account-A & Account-B as root user</h2>
+        <ul>
+            <li>Account-A is referred to as the Management/Organization/IAM Account.</li>
+            <li>Account-B is designated as the Dev Environment Account.</li>            
+        </ul>
+    </section>
+    
+    <section id="step2">
+        <h2>Step 2: Go to Account-A and Access AWS Organization</h2>
+        <ol>
+            <li>Click "Create Organization".</li>
+            <li>Click "Add an AWS account".</li>
+            <li>Select "Invite an existing AWS account".</li>
+            <li>Add Account-B Account ID and Click "Send invitation".</li>
+            <li>Go to Account-B and Access AWS Organization.</li>
+            <li>Click on the invitation and "Accept invitation".</li>
+        </ol>
+    </section>
+    
+    <section>
+        <h2>Step 3: Create Single Sign-On User (IAM User)</h2>
+        <ol>
+            <li>Navigate to the IAM dashboard and click on IAM Identity Center.</li>
+            <img src="assets/aws-single-sign-on/IAM_Dashboard.png" alt="IAM-Dashboard.png" width="750" height="475">
+
+            <li>Click on "Users" and then "Add user."</li>
+            <img src="assets/aws-single-sign-on/user.png" alt="user.png" width="750" height="475">
+
+            <li>Enter a username for the IAM user.</li>
+            <img src="assets/aws-single-sign-on/user_name.png" alt="user_name.png" width="750" height="475">
+
+            <li>Choose "Generate a one-time password that you can share with this user."</li>
+            <img src="assets/aws-single-sign-on/selec-one-time password.png" alt="selec-one-time password.png" width="750" height="475">
+
+            <li>Enter the user's email and provide their first and last name.</li>
+            <img src="assets/aws-single-sign-on/user's email.png" alt="user's email.png" width="750" height="475">
+
+            <li>Click on "Next."</li>
+            <img src="assets/aws-single-sign-on/step-3-next.png" alt="step-3-next.png" width="750" height="475">
+
+            <li>Optionally, add the user to a group and click on "Next."</li>
+            <img src="assets/aws-single-sign-on/step-3-next-2.png" alt="step-3-next-2.png" width="750" height="475">
+
+            <li>Review the user details and click on "Add User."</li>
+            <img src="assets/aws-single-sign-on/Review user details and click on Add User.png" alt="Review user details and click on Add User.png" width="400" height="150">
+        </ol>
+
+        <h3>Using Credentials Login to the AWS Portal:</h3>
+        <img src="assets/aws-single-sign-on/Using Credentials Login to the AWS Portal.png" alt="Using Credentials Login to the AWS Portal.png" width="750" height="475">
+
+        <ol>
+            <li>Access the portal URL.</li>
+
+            <li>Provide the IAM username.</li>
+            <li>Use the one-time password generated during User creation.</li>
+            <li>Reset the password as needed.</li>
+        </ol>
+
+        <h3>Post-Login Configuration:</h3>
+        <ul>
+            <li>Now, if you see that there are no applications available, ensure the setup is correct and troubleshoot any potential issues.</li>
+            <img src="assets/aws-single-sign-on/Post-Login Configuration.png" alt="Post-Login Configuration.png" width="750" height="475">
+            <li>This ensures a smooth Single Sign-On experience for the user.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Step 4: Assign User Permissions</h2>
+        <ol>
+            <li>In the IAM Identity Center, go to AWS Accounts.</li>
+            <img src="assets/aws-single-sign-on/select-aws-account.png" alt="select-aws-account.png" width="750" height="475">
+
+            <li>Select the desired AWS account and click on "Assign User Or Group."</li>
+            <img src="assets/aws-single-sign-on/select-account-click-assign-user-or-group.png" alt="select-account-click-assign-user-or-group.png" width="750" height="475">
+
+            <li>Choose the user you created and click on "Next."</li>
+            <img src="assets/aws-single-sign-on/Choose the user you created and click Next.png" alt="Choose the user you created and click Next.png" width="750" height="475">
+
+            <li>Select permissions, such as "Administrator access" and "Power user access."</li>
+            <img src="assets/aws-single-sign-on/Select permissions.png" alt="Select permissions.png" width="750" height="475">
+
+            <li>Click on "Next."</li>
+            <img src="assets/aws-single-sign-on/step-4-next.png" alt="step-4-next.png" width="750" height="475">
+
+            <li>Review and submit the assignment to the account name.</li>
+            <img src="assets/aws-single-sign-on/Review and submit the assignment.png" alt="Review and submit the assignment.png" width="750" height="475">
+
+            <li>Click on "Submit."</li>
+            <img src="assets/aws-single-sign-on/step-4-submit.png" alt="step-4-submit.png" width="750" height="475">
+        </ol>
+
+        <h3>Review and Access:</h3>
+        <ol>
+            <li>After the assignment is complete, log in to the AWS portal.</li>
+            <li>Select the AWS account, and you should see your account listed.</li>
+            <img src="assets/aws-single-sign-on/Select the AWS account.png" alt="Select the AWS account.png" width="750" height="475">
+
+            <li>Click on Account and Select "Management Console."</li>
+            <img src="assets/aws-single-sign-on/select-management-Console.png" alt="select-management-Console.png" width="750" height="475">
+
+        </ol>
+
+        <h3>Accessing the Account:</h3>
+            <p>You are now logged into the account. You can use various AWS services.</p>
+            <img src="assets/aws-single-sign-on/now logged into the account.png" alt="now logged into the account.png" width="750" height="475">
+
+            <code>
+                Note: Due to the attached permissions ("Administrator access" and "Power user access"), you have the necessary privileges.
+            </code>
+    </section>
+
+    <div class="lb-transition-wrapper lb-transition-fade-in lb-active" data-lb-comp="transition-wrapper" data-lb-comp-registered="true">
+        <div class="lb-none-pad lb-grid lb-row lb-row-max-large lb-snap" style="display: flex; align-items: center;">
+            <div class="lb-col lb-tiny-24 lb-mid-24">
+                <div class="lb-bg-left-top-cover lb-border-p lb-small-pad lb-box" style="padding-left: 20px; padding-bottom: 0px; background-image: url('https://s3.cn-north-1.amazonaws.com.cn/aws-dam-prod/tmt/template/GSRC_Tutorials_Congratulations.08882b89ba8adfe231cdb223e7ccfb462038399f.png');">
+                    <h1 id="Congratulations.21" class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-xlarge-align-center lb-txt-none lb-txt-white lb-h1 lb-title"> Congratulations!</h1>
+                    <div class="lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 0px; margin-top: 0px;">
+                        <div class="lb-col lb-tiny-24 lb-mid-6">
+                        </div>
+                        <div class="lb-col lb-tiny-24 lb-mid-12" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <div class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-txt-16 lb-rtxt" style="color: #FFFFFF; margin-top: 0px;">
+                                <p style="color: #FFFFFF;">
+                                    Congratulations on successfully implementing Single Sign-On (SSO) for your applications! 🎉 This accomplishment signifies a major step in improving user authentication, simplifying access, and enhancing security in your cloud environment. Best wishes for continued success as you streamline user experiences and fortify your system's security through SSO. Well done! 👏🚀
+                            <div class="lb-col lb-tiny-24 lb-mid-6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

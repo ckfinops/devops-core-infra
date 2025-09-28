@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Provisioning Amazon RDS From MYSQL</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #0a0a0a;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4285f4;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        ol {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        code {
+            background-color: #f5f5f5;
+            padding: 2px 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        footer {
+            background-color: #4285f4;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div style="padding-top: 100px;"></div>
+    <header>
+        <h1>Provisioning Amazon RDS From MYSQL</h1>
+    </header>
+        <ol>
+            <li><p>Sign into AWS Management Console.</p></li>
+            <li><p>Open the RDS console.</p></li>
+            <li><p>In the upper-right corner, choose the region where you wish to create your instance.</p></li>
+            <li><p>In the navigation pane, click on ‘Databases’.</p></li>
+            <li><p>Click on ‘Create database’.</p></li>
+            <img> src="mysql.png" alt="mysql.png" width="500" height="350" 
+            <li><p>Make sure ‘Standard create’ is chosen, then click on MySQL (or the database which you wish to create an RDS database instance).</p></li>
+            <li><p>In the ‘Templates’ tab, click on the ‘Dev/Test’ option.</p></li>
+            <li><p>In the ‘Setting’ tab, set the following values:</p>
+                <ul>
+                    <li>DB instance identifier</li>
+                    <li>Master username</li>
+                    <li>Auto Generate a password</li>
+                    <li>Master password</li>
+                    <li>Confirm password</li>
+                </ul>
+            </li>
+            <li><p>In the ‘DB instance size’ option, give a value for the following variables:</p>
+                <ul>
+                    <li>DB instance performance types</li>
+                    <li>DB instance class</li>
+                </ul>
+            </li>
+            <li><p>In the ‘Storage’ and ‘Availability & durability’ section, leave the default values as is.</p></li>
+            <li><p>In the ‘Connectivity’ section, click on the ‘Additional connectivity configuration’ and set the below values in it:</p>
+                <ul>
+                    <li>Virtual Private Cloud (VPC)</li>
+                    <li>Subnet group</li>
+                    <li>Publicly accessible- No</li>
+                    <li>VPC security groups</li>
+                    <li>Availability zone- No preference</li>
+                    <li>Database port- 3306</li>
+                </ul>
+            </li>
+            <li><p>Click on the ‘Additional configuration’tab, and provide a name for the ‘Initial database name’ variable. The default settings for other options need to be kept the same.</p></li>
+            <li><p>Now click on ‘Create database’.</p></li>
+            <li><p>It takes a few minutes for the instance to get created. It can be seen in the ‘Databases’ list as ‘Creating’.</p></li>
+            <li><p>Once it is created, it shows as ‘Available’.</p></li>
+            <li><p>The ‘Endpoint’ and ‘Port’ of the database instance can be viewed in the ‘Connectivity & security’ section.</p></li>
+        </ol>
+    
+</body>
+</html>

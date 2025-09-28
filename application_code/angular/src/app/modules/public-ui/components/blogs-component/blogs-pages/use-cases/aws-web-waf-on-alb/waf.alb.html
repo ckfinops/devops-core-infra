@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy AWS WAF on ALB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+    <style>
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8; /* Light Grey Color */
+}
+
+        header {
+            max-width: 1500px;
+            color: #fff;
+            padding: 20px;
+            background-color: #6495ED;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center content horizontally */
+        }
+
+        section {
+            max-width: 1150px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(23, 18, 93, 0.1);
+        }
+
+        h2 {
+    color: #050505;
+
+    font-size: 1.0em;
+    margin-bottom: 10px;
+
+}
+
+code {
+            display: block;
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .or {
+            font-weight: bold;
+            margin: 0 10px; /* Adjusted margin */
+        }
+
+        pre {
+            font-family: 'Arial', monospace;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+
+        p {
+            color: #0e0e0e;
+        }
+
+        ol {
+            color: #111010;
+            padding-left: 20px;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+  
+
+            .lb-h1 {
+                /* Add styles for the h1 element */
+                text-align: center; /* Center-align the heading */
+            }
+
+            .center-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Optional: Adjust the height as needed */
+        }
+
+
+        body {
+                                font-family: Arial, sans-serif;
+                                margin: 20px;
+                            }
+                    
+                            li {
+                                margin-bottom: 10px;
+                            }
+                    
+                            .free-tier {
+                                background-color: #f0f8ff;
+                                padding: 10px;
+                                border-radius: 5px;
+                            }       
+    </style>
+
+
+</head>
+<body>
+
+<div class="lb-transition-wrapper lb-transition-fade-in lb-active" data-lb-comp="transition-wrapper" data-lb-comp-registered="true">
+    <div class="lb-none-pad lb-grid lb-row lb-row-max-large lb-snap" style="display: flex; align-items: center;">
+        <div class="lb-col lb-tiny-24 lb-mid-24">
+            <div class="lb-bg-left-top-cover lb-border-p lb-small-pad lb-box" style="padding-top: 100px;padding-left: 180px; padding-right: 180px; padding-bottom: 0px; background-image: url('https://s3.cn-north-1.amazonaws.com.cn/aws-dam-prod/tmt/template/GSRC_Tutorials_Congratulations.08882b89ba8adfe231cdb223e7ccfb462038399f.png'); background-color: #ffffff;">
+                <h1 id="Congratulations.21" class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-xlarge-align-center lb-txt-none lb-txt-white lb-h1 lb-title">Deploy AWS WAF on ALB</h1>
+                <div class="lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 0px; margin-top: 0px;">
+                    <div class="lb-col lb-tiny-24 lb-mid-6">
+                    </div>
+                    <div class="lb-col lb-tiny-24 lb-mid-12" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <div class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-txt-16 lb-rtxt" style="color: #0d0d0d; margin-top: 0px;">
+                            <p style="color: #0d0d0d; font-weight: bold;">
+                                Amazon Elastic Load Balancer (ALB) optimizes traffic distribution. Deploying AWS Web Application Firewall (WAF) enhances security by filtering and monitoring HTTP/HTTPS traffic, adding an extra layer of protection for your applications in AWS.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="lb-col lb-tiny-24 lb-mid-6">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <section>
+        <p><b>
+            Deploying AWS Web Application Firewall (WAF) on an Application Load Balancer (ALB) enhances your security posture by protecting your web applications from common web exploits. AWS WAF allows you to create custom rules to filter and monitor HTTP and HTTPS traffic, mitigating threats and ensuring the integrity of your applications. By integrating WAF with ALB, you add an additional layer of defense against malicious traffic and potential vulnerabilities.
+        </b></p> 
+    </section>
+
+    <div class="center-image">
+        <img src="assets/aws-web-waf-on-alb/AWS WEB-WAF ON ALB.jpg" alt="AWS WEB-WAF ON ALB.jpg" width="1200" height="600">
+    </div>
+
+<h1 style="text-align: center;">Here’s a simplified tutorial</h1>
+
+<section>
+    <h1>Step 1: Create a Virtual Private Cloud (VPC)</h1>
+    <p>Navigate to the VPC Dashboard: In the AWS Management Console, go to the VPC Dashboard.</p>
+    <h2>Create a VPC:</h2>
+    <ol>
+        <li>Click on "Create VPC" and follow the wizard.</li>
+        <img src="assets/aws-web-waf-on-alb/create-vpc.png" alt="create-vpc.png" width="500" height="200">
+        <li>Specify a name for your VPC.</li>
+        <img src="assets/aws-web-waf-on-alb/name-vpc.png" alt="name-vpc.png" width="550" height="300">
+        <li>Define the IP address range (CIDR block).</li>
+        <img src="assets/aws-web-waf-on-alb/CIDR-VPC.png" alt="CIDR-VPC.png" width="550" height="300">
+        <li>Click on "Create VPC".</li>
+        <img src="assets/aws-web-waf-on-alb/click-create-vpc.png" alt="click-create-vpc.png" width="550" height="200">
+    </ol>
+
+    <h2>Creating Public Subnets</h2>
+    <ol>
+        <li>In the VPC Dashboard, click on "Subnets" in the left navigation pane.</li>
+        <img src="assets/aws-web-waf-on-alb/navigate-subnet.png" alt="navigate-subnet.png" width="450" height="225">
+        <li>Click "Create subnet".</li>
+        <img src="assets/aws-web-waf-on-alb/create-subnet.png" alt="create-subnet.png" width="750" height="250">
+        <li>Create the public subnets:</li>
+        <ul>
+            <li>Choose the VPC you just created.</li>
+            <img src="assets/aws-web-waf-on-alb/select-vpc-subnet.png" alt="select-vpc-subnet.png" width="550" height="250">
+            <li>Specify a name.</li>
+            <img src="assets/aws-web-waf-on-alb/name-subnet.png" alt="name-subnet.png" width="550" height="250">
+            <li>Select the availability zone.</li>
+            <img src="assets/aws-web-waf-on-alb/select-1a.png" alt="select-1a.png" width="600" height="250">
+            <li>Enter the CIDR block for the subnet within the VPC CIDR range.</li>
+            <img src="assets/aws-web-waf-on-alb/CIDR-subnet.png" alt="CIDR-subnet.png" width="600" height="250">
+            <li>Click on "Add new subnet".</li>
+            <img src="assets/aws-web-waf-on-alb/add-new-subnet.png" alt="add-new-subnet.png" width="550" height="200">
+            <li>Repeat the process to create the second public subnet in a different availability zone.</li>
+            <img src="assets/aws-web-waf-on-alb/subnet-2.png" alt="subnet-2.png" width="550" height="400">
+            <li>Click on "Create subnet".</li>
+            <img src="assets/aws-web-waf-on-alb/click-create-subnet.png" alt="click-create-subnet.png" width="550" height="200">
+        </ul>
+    </ol>
+
+    <h2>Create an Internet Gateway</h2>
+    <ol>
+        <li>In the VPC Dashboard, click on "Internet Gateways" in the left navigation pane.</li>
+        <img src="assets/aws-web-waf-on-alb/navigate-igw.png" alt="navigate-igw.png" width="400" height="200">
+        <li>Click "Create Internet Gateway". </li>
+        <img src="assets/aws-web-waf-on-alb/create-igw.png" alt="create-igw.png" width="800" height="305">
+        <li>Name Internet gateway.</li>
+        <img src="assets/aws-web-waf-on-alb/name-igw.png" alt="name-igw.png" width="500" height="250">
+        <li>Click on "Create Internet gateway".</li>
+        <img src="assets/aws-web-waf-on-alb/click-create-igw.png" alt="click-create-igw.png" width="550" height="300">
+    </ol>
+
+    <h2>Attach Internet Gateway to VPC</h2>
+    <ol>
+        <li>Select the Internet Gateway you created.</li>
+        <li>Click "Actions," and choose "Attach to VPC."</li>
+        <img src="assets/aws-web-waf-on-alb/attach-vpc.png" alt="attach-vpc.png" width="600" height="200">
+        <li>Select VPC Created.</li>
+        <img src="assets/aws-web-waf-on-alb/select-vpc-igw.png" alt="select-vpc-igw.png" width="550" height="300">
+        <li>Click on Attach internet gateway.</li>
+        <img src="assets/aws-web-waf-on-alb/attach-igw-vpc.png" alt="attach-igw-vpc.png" width="550" height="300">
+    </ol>
+
+    <h2>Create a Public Route Table</h2>
+    <ol>
+        <li>In the VPC Dashboard, click on "Route Tables."</li>
+        <img src="assets/aws-web-waf-on-alb/navigate-routetable.png" alt="click-create-routetable.png" width="400" height="250">
+        <li>Create a new route table.</li>
+        <img src="assets/aws-web-waf-on-alb/create-routetable.png" alt="create-routetable.png" width="750" height="250">
+        <li>Name the route table and Select VPC created.</li>
+        <img src="assets/aws-web-waf-on-alb/name-routetable.png" alt="name-routetable.png" width="550" height="350">
+        <li>Click on "Create".</li>
+        <img src="assets/aws-web-waf-on-alb/click-create-routetable.png" alt="click-create-routetable.png" width="550" height="300">
+
+    </ol>
+
+    <h2>Associate Subnets with Route Table</h2>
+    <ol>
+        <li>Click on Route Table.</li>
+        <li>Click on Subnet associations and Click on Edit Subnet associations.</li>
+        <img src="assets/aws-web-waf-on-alb/subnet-association.png" alt="click-subnet-associations.png" width="800" height="350">
+        <li>Select the both subnets.</li>
+        <img src="assets/aws-web-waf-on-alb/select-two-subnets.png" alt="select-both-subnets.png" width="900" height="400">
+        <li>Click “save associations.”</li>
+        <img src="assets/aws-web-waf-on-alb/save-associations.png" alt="Click-on-save-associations.png" width="900" height="420">
+        <li>Create Route:</li>
+        <ul>
+            <li>Click on “Edit route.”</li>
+            <img src="assets/aws-web-waf-on-alb/edit-routes.png" alt="edit-routes.png" width="900" height="400">
+            <li>Click on “Add Route.”</li>
+            <img src="assets/aws-web-waf-on-alb/add-route.png" alt="add-route.png" width="800" height="305">
+            <li>Edit the routes to include a route to the Internet Gateway (0.0.0.0/0) and select your Internet Gateway.</li>
+            <img src="assets/aws-web-waf-on-alb/internet-gatewaay.png" alt="internet-gatewaay.png" width="900" height="355">
+            <li>Click “save changes.”</li>
+            <img src="assets/aws-web-waf-on-alb/save-changes.png" alt="save-changes.png" width="900" height="305">
+        </ul>
+    </ol>
+</section>
+
+<section>
+    <h1>Step 2: Launch EC2 Instances in Public Subnets</h1>
+    <ol>
+        <li>Navigate to EC2 Dashboard</li>
+        <li>Click "Launch Instance."</li>
+        <img src="assets/aws-web-waf-on-alb/launch-instance.png" alt="launch-instance.png" width="850" height="500">
+        <li>Give a name for the EC2 instance.</li>
+        <img src="assets/aws-web-waf-on-alb/name-ec2-instance.png" alt="name-ec2-instance.png" width="500" height="150">
+        <li>Choose an Amazon Machine Image (AMI) based on your application requirements.</li>
+        <img src="assets/aws-web-waf-on-alb/select-ubuntu.png" alt="select-ubuntu.png" width="700" height="400">
+        <li>Select an instance type based on your needs.</li>
+        <img src="assets/aws-web-waf-on-alb/instance-type.png" alt="instance-type.png" width="600" height="255">
+        <li>Choose an existing key pair or create a new one.</li>
+        <img src="assets/aws-web-waf-on-alb/key-pair.png" alt="key-pair.png" width="600" height="255">
+        <li>In "Network" Click on Edit and Select the VPC you created.</li>
+        <img src="assets/aws-web-waf-on-alb/vpc for instances.png" alt="vpc for instances.png" width="650" height="250">
+        <li>Choose one of the public subnets you created and Auto assign public IP should be "Enable".</li>
+        <img src="assets/aws-web-waf-on-alb/subnet-instance.png" alt="subnet-instance.png" width="650" height="200">
+        <li>Either select an existing security group or create a new one.</li>
+        <li>Ensure the security group allows inbound traffic on the ports your application needs (e.g., HTTP on port 80).</li>
+        <li>Optionally, you can configure other details like IAM role, user data, etc.</li>
+        <li>Click on "Launch Instance</li>
+        <img src="assets/aws-web-waf-on-alb/click-launch-instance.png" alt="click-launch-instance.png" width="350" height="200">
+    </ol>
+            
+                <div>
+                    <h2>Install Apache on server: Amazon Linux</h2>
+                    <code>
+                        sudo yum update -y<br>
+                        sudo yum install httpd -y<br>
+                        sudo service httpd start<br>
+                    </code>
+                </div>
+    
+(OR)
+                <div>
+                    <h2>Install Apache on server: Ubuntu</h2>
+                    <code>
+                        sudo apt-get update<br>
+                        sudo apt-get install apache2 -y<br>
+                        sudo service apache2 start<br>
+                        sudo systemctl enable apache2<br>
+                    </code>
+                </div>
+
+    <h2>Add sample(to check) index.html to /var/www/html on server</h2>
+</section>
+
+
+   <section>
+    <h1>Step 3: Creating Target Group and Application Load Balancer</h1>
+
+    <h2><b>Creating Target Group:</b></h2>
+    <ol>
+        <li>In the AWS Management Console, go to the EC2 Dashboard.</li>
+        <li>In the left navigation pane, click on "Load Balancers" under the "Load Balancing" section and click on the "Target Groups" tab.</li>
+        <li>Click the "Create Target Group" button.</li>
+        <img src="assets/aws-web-waf-on-alb/create-target group.png" alt="create-target group.png" width="850" height="300">
+        <li>Choose the target type. For EC2 instances, select "Instance."</li>
+        <img src="assets/aws-web-waf-on-alb/target type.png" alt="target type.png" width="850" height="450">
+        <li>Name: Enter a name for your Target Group.</li>
+        <img src="assets/aws-web-waf-on-alb/name target group.png" alt="name target group.png" width="800" height="200">
+        <li>Protocol: Choose the protocol used by your targets (e.g., HTTP or HTTPS).</li>
+        <img src="assets/aws-web-waf-on-alb/Protocol.png" alt="Protocol.png" width="800" height="250">
+        <li>Select your VPC You Created.</li>
+        <img src="assets/aws-web-waf-on-alb/vpc target group.png" alt="vpc target group.png" width="800" height="355">
+        <li>Click "Next: Register Targets."</li>
+        <img src="assets/aws-web-waf-on-alb/Click Next.png" alt="Click Next.png" width="800" height="330">
+        <li>In the "Register Targets" section:
+            <ul>
+                <li>Select the instances (targets) you want to include in the target group.</li>
+                <img src="assets/aws-web-waf-on-alb/select-instance-targetgroup.png" alt="select-instance-targetgroup.png" width="870" height="400">
+                <li>Click "Include as Pending below."</li>
+                <img src="assets/aws-web-waf-on-alb/include pending below.png" alt="include pending below.png" width="850" height="500">
+            </ul>
+        </li>
+        <li>Review targets and Click “create target group”</li>
+        <img src="assets/aws-web-waf-on-alb/click create target group.png" alt="click create target group.png" width="850" height="355">
+    </ol>
+
+
+        <h2><b>Creating Application Load Balancer:</b></h2>
+        <ol>
+                <li>Click on "Create Load Balancer".</li>
+                <img src="assets/aws-web-waf-on-alb/create load balancer.png" alt="create load balancer.png" width="850" height="300">
+                <li>In Application Load Balancer Click on "Create".</li>
+                <li>Name: Enter a name for your ALB.</li>
+                <p>Scheme: Choose the load balancer's scheme (internet-facing) and IP Address Type: Choose IPv4.</p>
+                <img src="assets/aws-web-waf-on-alb/name-alb.png" alt="name-alb.png" width="850" height="400">
+                <li>Under Network Mapping Select Your VPC.</li>
+                <img src="assets/aws-web-waf-on-alb/vpc-alb.png" alt="vpc-alb.png" width="850" height="250">
+                <li>In Mapping select your subnets which you Created.</li>
+                <img src="assets/aws-web-waf-on-alb/subnets-alb.png" alt="subnets-alb.png" width="850" height="450">
+                <li>Choose an existing security group or create a new one for your ALB (port: 80 should be allowed).</li>
+                <img src="assets/aws-web-waf-on-alb/security-alb.png" alt="security-alb.png" width="850" height="250">
+                <li>Under Listeners and routing Select the Target group you created.</li>
+                <img src="assets/aws-web-waf-on-alb/listeners-alb.png" alt="listeners-alb.png" width="850" height="400">
+                <li>Check Summary and Click on “Create Load Balancer”.</li>
+                <img src="assets/aws-web-waf-on-alb/click-create-loadbalancer.png" alt="click-create-loadbalancer.png" width="850" height="500">
+        </ol>
+
+<h1>Verify ALB Configuration</h1>
+<ol>
+    <li>Once the ALB is created, go to the "Load Balancers" section and select your ALB to view details.</li>
+    <img src="assets/aws-web-waf-on-alb/click-alb.png" alt="click-alb.png" width="850" height="300">
+    <li>Under the "Listeners" tab, you should see the listener configured during ALB creation.</li>
+    <li>Under the "Description" tab, you can find the DNS name of your ALB.</li>
+    <img src="assets/aws-web-waf-on-alb/DNS-name.png" alt="DNS-name.png" width="800" height="500">
+    <li>Use this DNS name to access your application through internet.</li>
+    <img src="assets/aws-web-waf-on-alb/DNS-Output.png" alt="DNS-Output.png" width="700" height="400">
+
+</ol>
+</section>
+
+<section>
+    <h1>Step 4: Create a Web Application Firewall (WAF)</h1>
+    
+    <h2>Creating IP Set</h2>
+    <ol>
+        <li>In the AWS Management Console, Go to AWS WAF & Shield service.</li>
+        <li>Click on IP Set.</li>
+        <img src="assets/aws-web-waf-on-alb/nagivate-IP-set.png" alt="nagivate-IP-set.png" width="350" height="300">
+        <li>Select the Region and Click on "Create IP set".</li>
+        <img src="assets/aws-web-waf-on-alb/create-IP set.png" alt="create-IP set.png" width="800" height="450">
+        <li>Give your IP Set a name and optionally a description.</li>
+        <img src="assets/aws-web-waf-on-alb/nmae-IP set.png" alt="nmae-IP set.png" width="750" height="200">
+        <li>Check the region you want to create.</li>
+        <li>IP version should be IPV4.</li>
+        <li>Add IP addresses which you want to Block (for example your laptop IP address).</li>
+        <img src="assets/aws-web-waf-on-alb/IP Address.png" alt="IP Address.png" width="800" height="500">
+        <li>Click on "Create IP Set".</li>
+        <img src="assets/aws-web-waf-on-alb/click-create-IP Set.png" alt="click-create-IP Set.png" width="600" height="300">
+    </ol>
+
+    <h2>Create Web ACL</h2>
+    <ol>
+        <li>In the AWS Management Console, Go to AWS WAF & Shield service.</li>
+        <li>Click on Web ACL</li>
+        <li>Select the Region you want to create and Click on "Create web ACL".</li>
+        <img src="assets/aws-web-waf-on-alb/create web ACL.png" alt="create web ACL.png" width="700" height="400">
+        <li>Give your web ACL a name.</li>
+        <img src="assets/aws-web-waf-on-alb/name-ACL.png" alt="name-ACL.png" width="600" height="300">
+        <li>Resource type is "Regional resource" and Check the region.</li>
+        <img src="assets/aws-web-waf-on-alb/resource type.png" alt="resource type.png" width="600" height="250">
+        <li>Under Associated AWS resources Click on "Add AWS resource".</li>
+        <img src="assets/aws-web-waf-on-alb/add AWS resource.png" alt="add AWS resource.png" width="550" height="200">
+        <li>Select Application Load Balancer and select ALB which you created.</li>
+        <img src="assets/aws-web-waf-on-alb/select alb created.png" alt="select alb created.png" width="600" height="350">
+        <li>Click on Add.</li>
+        <img src="assets/aws-web-waf-on-alb/click add.png" alt="click add.png" width="600" height="350">
+        <li>Click on "Next".</li>
+        <img src="assets/aws-web-waf-on-alb/click-next.png" alt="click-next.png" width="550" height="200">
+        <li>Click on "Add rules" and select "Add my own rules and rule groups".</li>
+        <img src="assets/aws-web-waf-on-alb/add rules.png" alt="add rules.png" width="600" height="300">
+        <li>Select the "IP Set".</li>
+        <img src="assets/aws-web-waf-on-alb/select IP SET.png" alt="select IP SET.png" width="600" height="300">
+        <li>Name the Rule.</li>
+        <img src="assets/aws-web-waf-on-alb/name the rule.png" alt="name the rule.png" width="600" height="200">
+        <li>Select the IP set which you created.</li>
+        <img src="assets/aws-web-waf-on-alb/select created IP Set.png" alt="select created IP Set.png" width="600" height="250">
+        <li>Select the action which you need (For Example, select Block).</li>
+        <img src="assets/aws-web-waf-on-alb/action.png" alt="action.png" width="550" height="200">
+        <li>Click on "Add rule".</li>
+        <img src="assets/aws-web-waf-on-alb/block-add rule.png" alt="block-add rule.png" width="550" height="250">
+        <li>Under Add rules and rule groups, select the rule.</li>
+        <img src="assets/aws-web-waf-on-alb/select the rule.png" alt="block-add rule.png" width="550" height="250">
+        <li>Click on "Next".</li>
+        <img src="assets/aws-web-waf-on-alb/click on next.png" alt="block-add rule.png" width="550" height="250">
+        <li>Under Set rule priority, select the rule.</li>
+        <img src="assets/aws-web-waf-on-alb/set rule priority.png" alt="block-add rule.png" width="550" height="250">
+        <li>Click on "Next".</li>
+        <img src="assets/aws-web-waf-on-alb/set rule next.png" alt="block-add rule.png" width="550" height="250">
+        <li>Under configure metrics, select the Rule.</li>
+        <img src="assets/aws-web-waf-on-alb/configure metrics.png" alt="configure metrics.png" width="550" height="250">
+        <li>Click on "Next".</li>
+        <img src="assets/aws-web-waf-on-alb/configure metrics next.png" alt="configure metrics.png" width="550" height="250">
+        <li>Review and create the web ACL.</li>
+        <img src="assets/aws-web-waf-on-alb/click-create-web acl.png" alt="click-create-web acl.png" width="530" height="200">
+    </ol>
+    
+    <h2>Testing, Monitoring, and Adjustments</h2>
+    <ol>
+        <li>After associating the WAF with the ALB, test your application to ensure that traffic is being routed through the ALB and filtered by the WAF rules.</li>
+        <ul>
+           <li><strong>check By using ALB DNS Name.</strong></li>
+           <img src="assets/aws-web-waf-on-alb/output.png" alt="output.png" width="700" height="400">
+        </ul>
+        <li>Monitor the AWS WAF metrics and ALB metrics to ensure that your setup is working as expected.</li>
+        <li>Adjust WAF rules and ALB settings as needed based on your application's traffic patterns and security requirements.</li>
+    </ol>
+</section>
+
+
+
+
+
+  <div class="lb-transition-wrapper lb-transition-fade-in lb-active" data-lb-comp="transition-wrapper" data-lb-comp-registered="true">
+    <div class="lb-none-pad lb-grid lb-row lb-row-max-large lb-snap" style="display: flex; align-items: center;">
+        <div class="lb-col lb-tiny-24 lb-mid-24">
+            <div class="lb-bg-left-top-cover lb-border-p lb-small-pad lb-box" style="padding-left: 20px; padding-bottom: 0px; background-image: url('https://s3.cn-north-1.amazonaws.com.cn/aws-dam-prod/tmt/template/GSRC_Tutorials_Congratulations.08882b89ba8adfe231cdb223e7ccfb462038399f.png');">
+                <h1 id="Congratulations.21" class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-xlarge-align-center lb-txt-none lb-txt-white lb-h1 lb-title"> Congratulations!</h1>
+                <div class="lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 0px; margin-top: 0px;">
+                    <div class="lb-col lb-tiny-24 lb-mid-6">
+                    </div>
+                    <div class="lb-col lb-tiny-24 lb-mid-12" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <div class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-txt-16 lb-rtxt" style="color: #FFFFFF; margin-top: 0px;">
+                            <p style="color: #FFFFFF;">
+                                Congratulations on setting up your AWS Application Load Balancer (ALB)! 🎉 This achievement marks a milestone in improving your application's reliability and scalability. Wishing you continued success as you navigate the world of cloud infrastructure. Well done! 👏🚀                        </div>
+                    </div>                    
+                    <div class="lb-col lb-tiny-24 lb-mid-6">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1102 @@
+/* Reset some default styles for better layout */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #172342 0%, #2a3a6a 100%);
+    color: #fff;
+    padding-top: 120px;  /* Increased padding to account for fixed header */
+    padding-bottom: 4rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    z-index: 1;  /* Ensure hero section is below the header */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></svg>');
+    background-size: 20px 20px;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.container-row {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+.content-container {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Main Heading */
+.main-heading {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-align: center;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;  /* Ensure heading is above the background pattern */
+}
+
+.highlight {
+    color: #4299e1;
+    position: relative;
+    display: inline-block;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #4299e1, #667eea);
+    border-radius: 2px;
+}
+
+/* Sub Heading */
+.sub-heading {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Course Highlights */
+.course-highlights {
+    margin: 3rem 0;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #4299e1, #667eea);
+    border-radius: 2px;
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.highlight-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.highlight-card h4 {
+    color: #4299e1;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.highlight-card h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, #4299e1, #667eea);
+    border-radius: 1px;
+}
+
+.highlight-card p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Role Storytelling */
+.role-storytelling {
+    margin: 3rem 0;
+    padding: 0 1rem;
+}
+
+.role-title {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.role-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.role-icon {
+    width: 48px;
+    height: 48px;
+    background: #4299e1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.role-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.role-content h4 {
+    color: white;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.role-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-section {
+        padding: 3rem 0;
+    }
+    
+    .main-heading {
+        font-size: 2.8rem;
+    }
+    
+    .sub-heading {
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .course-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 0;
+    }
+    
+    .container-row {
+        padding: 0 1rem;
+    }
+    
+    .main-heading {
+        font-size: 2.2rem;
+    }
+    
+    .sub-heading {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .course-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .stat-item {
+        padding: 1.25rem;
+    }
+    
+    .stat-item i {
+        font-size: 1.75rem;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .stat-content h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 1.5rem 0;
+    }
+    
+    .main-heading {
+        font-size: 1.8rem;
+    }
+    
+    .sub-heading {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .stat-item {
+        padding: 1rem;
+    }
+    
+    .stat-item i {
+        font-size: 1.5rem;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .stat-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .stat-content p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Additional Components */
+.landing-banner3,
+devsecops-eligibility,
+devsecops-course-content,
+devopsmobilecc,
+devsecops-tools,
+upcoming,
+fee-emi-main-aws,
+video-demo,
+devsecops-tools-and-platforms,
+certificate,
+companies,
+intro-cards,
+devsecops-faq {
+    display: block;
+    width: 100%;
+    margin: 2rem 0;
+}
+
+/* Header Styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+}
+
+/* Container Styles */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Left Column Styles */
+.left-column {
+    flex: 2;
+    padding: 20px;
+}
+
+/* Course Name Styles */
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+/* Key Features Styles */
+.feature-container {
+    padding-top: 43px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
+.feature-icon {
+    font-size: 36px;
+}
+
+/* Right Column Styles */
+.right-column {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Request Callback Styles */
+/* .form {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+*/
+
+mat-form-field {
+  width: -webkit-fill-available;
+  font-size: 14px;
+}
+
+button[type="submit"] {
+    background-color: #172342;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color .3s,transform .3s,box-shadow .3s;
+   /* text-shadow: 0px 5px 4px rgba(0,0,0,.5); */
+    box-shadow: 0 4px 4px #00000080;
+}
+
+button[type="submit"]:hover {
+    transform: scale(1.05);
+    box-shadow: none;
+}
+
+button[type="submit"]:disabled {
+    
+    cursor: not-allowed;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+ 
+  input[type="submit"] {
+    text-shadow: 0px 2.5px 4px rgba(0,0,0,.5);
+  }
+  h1 {
+    font-size: 29px !important; /* Adjust the font size as needed for mobile view */
+  }
+  h2{
+    font-size: medium;
+  }
+
+  .container {
+    flex-direction: column;
+    padding-top: 10px !important;  /* Remove the padding-top in mobile view */
+    
+  }
+
+  .left-column {
+    flex: 1;
+  }
+
+  .right-column {
+    
+    flex: 1;
+
+  }
+
+  .feature-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .feature-icon {
+    flex: 0 0 calc(50% - 10px); /* Two images in a row with a 10px gap */
+    margin-bottom: 10px; /* Add some margin for spacing */
+    font-size: 24px; /* Adjust icon size on mobile */
+    width: 100%; /* Set the width to 100% to make the images responsive */
+  }
+}
+
+
+
+.awscoursebtn {
+    background-color: #172342;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 26px;
+
+    transition: background-color .3s,transform .3s,box-shadow .3s;
+   /* text-shadow: 0px 5px 4px rgba(0,0,0,.5); */
+    box-shadow: 0 4px 4px #00000080;
+
+}
+
+.awscoursebtn:hover {
+
+        /* background-color: #002346; */
+        box-shadow: none;
+        transform: scale(.9);
+
+}
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+    background-color: #172342;
+    color: #fff;
+    padding: 30px 125px;
+  }
+
+
+  .banner div {
+    flex: 1;
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+  .banner {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .banner div {
+    margin: 10px 0;
+  }
+  .awscoursebtn{
+    text-shadow: 0px 2.5px 4px rgba(0,0,0,.5);
+
+  }
+}
+
+
+
+.banner div:nth-child(2) {
+    border-left: 1px solid #fff; /* Add a white thin line */
+
+  }
+  .banner div:nth-child(3) {
+    border-left: 1px solid #fff; /* Add a white thin line */
+    /* Add some spacing above the line */
+  }
+
+
+  @media (max-width: 768px) {
+    .banner {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .banner div:nth-child(2),
+    .banner div:nth-child(3) {
+      border-left: none !important ; /* Remove border lines in mobile view */
+    }
+    .awscoursebtn {
+      text-shadow: 0px 2.5px 4px rgba(0, 0, 0, .5);
+    }
+  }
+  
+/* By default, hide the mobile view */
+.course-contentmob {
+    display: none;
+  }
+  
+  /* Show the desktop view for screens wider than 768px (adjust this value as needed) */
+  @media screen and (min-width: 768px) {
+    .desktop {
+      display: block;
+    }
+    .mobile {
+      display: none;
+    }
+  }
+  
+  /* Show the mobile view for screens 768px or narrower */
+  @media screen and (max-width: 768px) {
+    .desktop {
+      display: none;
+    }
+    .mobile {
+      display: block;
+    }
+    
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .exp {
+      display: flex;
+      gap: 15px;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+ /* Add this to your component's CSS file or directly in your component styles */
+
+.form-container {
+  border: 2px solid #ccc; /* Border color and width */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle shadow effect */
+  padding: 20px; /* Add padding to create space between the border and form content */
+  border-radius: 8px; /* Optional: Add border-radius for rounded corners */
+}
+
+/* By default, hide the mobile view */
+.course-contentmob {
+  display: none;
+}
+
+/* Show the desktop view for screens wider than 768px (adjust this value as needed) */
+@media screen and (min-width: 768px) {
+  .desktop {
+    display: block;
+  }
+  .mobile {
+    display: none;
+  }
+}
+
+/* Show the mobile view for screens 768px or narrower */
+@media screen and (max-width: 768px) {
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+  
+}
+
+
+.info-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.info-item {
+  width: 30%;
+  margin: 10px;
+  text-align: center;
+  padding: 10px;
+  position: relative; /* Add relative positioning */
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Align items vertically */
+}
+
+/* Add a border to the right side of the first two items */
+.info-item:nth-child(-n+2)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -5px; /* Adjust this value to control the border thickness */
+  height: 100%;
+  width: 1px;
+  background-color: #ccc;
+}
+
+/* Adjust margin to create space between items */
+.info-item:not(:last-child) {
+  margin-right: 20px; /* Increase margin-right to create space between items */
+}
+
+/* Set the size of the images */
+.info-item img {
+  width: 64px; /* Increase the width to make the icons larger */
+  height: 64px; /* Increase the height to make the icons larger */
+  margin-right: 10px; /* Add some space between the image and text */
+}
+
+/* Style the heading */
+.info-item h2 {
+  margin: 0; /* Reset margin */
+  font-weight: 700
+}
+@media screen and (max-width: 768px) {
+  .info-item {
+    border: 2px solid #ccc; /* Add border for mobile */
+    border-radius: 10px; /* Add border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add glow effect */
+    transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    text-align: center; /* Center text */
+    padding: 15px; /* Increase padding for better spacing */
+  }
+
+  .info-item:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4); /* Change glow on hover */
+  }
+
+  .info-container {
+    /* flex-direction: column; */
+    align-items: stretch;
+  }
+
+  .info-item {
+    width: 100%;
+    margin-bottom: 20px; /* Remove margin-right and add margin-bottom */
+  }
+
+  .info-item:nth-child(-n+2)::after {
+    display: none;
+  }
+
+  .info-item img {
+    width: 48px;
+    height: 48px;
+    margin-right: 10px; /* Adjust margin for better spacing */
+  }
+}
+
+.tick-mark {
+  background-image: url('https://www.digital-lync.com/images/tick-mark-blu.jpg');
+  background-repeat: no-repeat;
+  background-size: 20px; /* Fixed size for the tick mark image */
+  background-position: left center; /* Position the tick mark on the left */
+  padding-left: 40px; /* Increase padding for more spacing */
+  list-style-type: none;
+  margin-bottom: 10px; /* Add margin between list items */
+  line-height: 1.5; /* Ensure consistent spacing */
+}
+
+/* Media query for mobile view */
+@media screen and (max-width: 768px) {
+  .tick-mark {
+    padding-left: 30px; /* Adjust padding for smaller screens */
+  }
+}
+
+.fullnode.salcebrdr {
+  border: none !important;
+  position: relative;
+  list-style-type: none; /* Removes default list styling */
+  padding-left: 20px; /* Indent content */
+}
+
+.fullnode.salcebrdr div {
+  position: relative; /* Ensure pseudo-element is positioned relative to this */
+  /* margin-bottom: 10px;  Add space between items */
+}
+
+.fullnode.salcebrdr div:before {
+  position: absolute;
+  content: "";
+  width: 6px;
+  height: 6px;
+  background-color: #01ac61;
+  border-radius: 50%;
+  left: -16px; /* Adjust position */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+.fullnode.salcebrdr div:not(:last-child):after {
+     content: "";
+  position: absolute;
+  left: -14px;
+  top: 100%;
+  transform: translateY(-50%);
+  height: calc(100% - -12px);
+  border-left: 2px solid #01ac61;
+}
+
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Optionally, apply additional styling if you want more control over the spinner's appearance */
+.mat-progress-spinner circle {
+  stroke-width: 2px; /* Adjust the stroke width if needed */
+}
+
+/* Course Stats Section */
+.course-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+    padding: 0 1rem;
+}
+
+.stat-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.stat-item i {
+    font-size: 2rem;
+    color: #4299e1;
+    margin-bottom: 1rem;
+    background: rgba(66, 153, 225, 0.1);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+}
+
+.stat-content h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.stat-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+}
+
+/* Course Content Section Styles */
+.course-content-section {
+    padding: 5rem 0;
+    background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+    position: relative;
+    overflow: hidden;
+}
+
+.course-content-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="1" fill="%23e2e8f0" opacity="0.5"/></svg>');
+    background-size: 20px 20px;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #718096;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Module Section Styles */
+.module-section {
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.module-section-title {
+    font-size: 1.8rem;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(66, 153, 225, 0.2);
+    position: relative;
+}
+
+.module-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, #4299e1, #667eea);
+}
+
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.module {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.module:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.module-header {
+    background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.module-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+}
+
+.module:hover .module-icon {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.module-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.module-title {
+    flex: 1;
+}
+
+.module-title h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+}
+
+.module-duration {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.module-content {
+    padding: 1.5rem;
+}
+
+.module-description {
+    color: #4a5568;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.topics-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.topics-list li {
+    padding: 0.5rem 0;
+    color: #4a5568;
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.topics-list li::before {
+    content: "✓";
+    color: #4299e1;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.course-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.feature {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature i {
+    font-size: 2.5rem;
+    color: #4299e1;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.feature:hover i {
+    transform: scale(1.1);
+}
+
+.feature h4 {
+    font-size: 1.25rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.feature p {
+    color: #718096;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Remove CTA container styles */
+
+@media (max-width: 992px) {
+    .module-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    .course-features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .module-section-title {
+        font-size: 1.5rem;
+    }
+    
+    .module-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .course-features {
+        grid-template-columns: 1fr;
+    }
+}

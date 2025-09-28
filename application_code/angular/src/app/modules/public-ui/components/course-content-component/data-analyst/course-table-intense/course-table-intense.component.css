@@ -1,0 +1,144 @@
+/* Add or modify styles as needed */
+#table-container-intense{
+  display: none;
+}
+/* Desktop view */
+
+.main-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.sub-tabs {
+  display: flex;
+  width: 80vw;
+  justify-content: space-between;
+}
+
+.sub-tab {
+  padding: 10px 20px;
+  color: black;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  margin-right: 10px;
+  border-radius: 5px 5px 0 0;
+  width: 26vw;
+  height: 50px;
+  font-size: 21px;
+}
+
+.sub-tab:hover {
+  background-color: #f1d6ad;
+}
+
+.sub-tab.active {
+  background-color: #f1d6ad;
+  height: 70px;
+  color: black;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 5px;
+  min-height: 200px;
+  width: 80vw;
+  background-color: #f1d6ad;
+}
+
+.content h2 {
+  color: #030303;
+  font-weight: 600;
+}
+
+.content-columns {
+  display: flex;
+  width: -webkit-fill-available;
+}
+
+.left-column {
+  
+  flex: 1;
+  padding: 0 10px;
+  border-right: 1px solid ;
+  flex-basis: 50%;
+  max-width: 50%;
+  overflow-y: scroll;
+  height: 478px;
+}
+
+.module {
+  padding: 10px 0 0 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  height: 75px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background-color: white;
+}
+
+.module:hover {
+  background-color: #f0f0f0;
+}
+
+.module.active-module {
+  background-color: #faaf3d;
+  color: white;
+}
+
+.right-column {
+  flex: 2;
+  margin: 0 32px 0 57px;
+  background-color: #faaf3d;
+  padding-left: 47px;
+  padding-top: 21px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+/* Mobile view */
+@media (max-width: 767px) {
+  .main-tab {
+    margin-top: 10px;
+  }
+
+  .sub-tabs {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .sub-tab {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .sub-tab.active {
+    height: 50px;
+  }
+
+  .content {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .content-columns {
+    flex-direction: column;
+  }
+
+  .left-column {
+    flex: 1;
+    border-right: none;
+    max-width: 100%;
+    overflow-y: scroll;
+    height: auto;
+  }
+
+  .right-column {
+    flex: 2;
+    margin: 10px 0;
+  }
+}

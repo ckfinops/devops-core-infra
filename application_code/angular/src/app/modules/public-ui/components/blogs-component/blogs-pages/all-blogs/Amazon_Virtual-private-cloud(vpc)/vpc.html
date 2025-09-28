@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #232f3e;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .content {
+            margin: 1em;
+        }
+
+        h2 {
+            color: #232f3e;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 2em;
+        }
+
+        footer {
+            background-color: #232f3e;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <title>Amazon VPC Overview</title>
+</head>
+<body>
+    <div style="padding-top: 100px;"></div>
+    <header>
+        <h1>Amazon VPC (Virtual Private Cloud)</h1>
+        <p>Launch AWS resources in a logically isolated virtual network</p>
+    </header>
+
+    <section class="content">
+        <h2>Overview</h2>
+        <p>With Amazon Virtual Private Cloud (Amazon VPC), you can launch AWS resources in a logically isolated virtual network that you've defined. This virtual network closely resembles a traditional network that you'd operate in your own data center, with the benefits of using the scalable infrastructure of AWS...</p>
+        <img src="assets/blogs/vpc.png" alt="vpc.png" width="500" height="350">
+        <h2>Benefits of Amazon VPC</h2>
+        <ul>
+            <li><strong>Increase security:</strong></li>
+                 Secure and monitor connections, screen traffic, and restrict instance access inside your virtual network.
+            <li><strong>Save time:</strong></li>
+                 Spend less time setting up, managing, and validating your virtual network.
+            <li><strong>Manage and control your environment:</strong></li>
+                 Customize your virtual network by choosing your own IP address range, creating subnets, and configuring route tables.
+        </ul>
+
+        <h2>How it Works</h2>
+        <p>Amazon Virtual Private Cloud (Amazon VPC) gives you full control over your virtual networking environment, including resource placement, connectivity, and security. Get started by setting up your VPC in the AWS service console. Next, add resources to it such as Amazon Elastic Compute Cloud (EC2) and Amazon Relational Database Service (RDS) instances. Finally, define how your VPCs communicate with each other across accounts, Availability Zones, or AWS Regions. In the example below, network traffic is being shared between two VPCs within each Region...</p>
+        <img src="assets/blogs/works.png" alt="works.png" width="700" height="400">
+        <h2>Features</h2>
+        <p>The following features help you configure a VPC to provide the connectivity that your applications need:</p>
+        <ul>
+            <li><strong>Virtual private clouds(VPC):</strong></li>
+            A VPC is a virtual network that closely resembles a traditional network that you'd operate in your own data center. After you create a VPC, you can add subnets.
+            <li><strong>Subnets:</strong></li>
+            A VPC is a virtual network that closely resembles a traditional network that you'd operate in your own data center. After you create a VPC, you can add subnets.
+            <li><strong>IP addressing:</strong></li>
+            You can assign IP addresses, both IPv4 and IPv6, to your VPCs and subnets. You can also bring your public IPv4 and IPv6 GUA addresses to AWS and allocate them to resources in your VPC, such as EC2 instances, NAT gateways, and Network Load Balancers.
+            <li><strong>Routing:</strong></li>
+            Use route tables to determine where network traffic from your subnet or gateway is directed.
+            <li><strong>Gateways and endpoints:</strong></li>
+            A gateway connects your VPC to another network. For example, use an internet gateway to connect your VPC to the internet. Use a VPC endpoint to connect to AWS services privately, without the use of an internet gateway or NAT device.
+            <li><strong>Peering connections:</strong></li>
+            Use a VPC peering connection to route traffic between the resources in two VPCs.
+            <li><strong>Traffic Mirroring:</strong></li>
+            Copy network traffic from network interfaces and send it to security and monitoring appliances for deep packet inspection.
+            <li><strong>Transit gateways:</strong></li>
+            Use a transit gateway, which acts as a central hub, to route traffic between your VPCs, VPN connections, and AWS Direct Connect connections.
+            <li><strong>VPC Flow Logs:</strong></li>
+            A flow log captures information about the IP traffic going to and from network interfaces in your VPC.
+            <li><strong>VPN connections:</strong></li>
+            Connect your VPCs to your on-premises networks using AWS Virtual Private Network (AWS VPN).
+        </ul>
+
+        <h2>Working with Amazon VPC</h2>
+        <p>You can create and manage your VPCs using any of the following interfaces:</p>
+        <ul>
+            <li><strong>AWS Management Console</strong> — Provides a web interface that you can use to access your VPCs.</li>
+            <li><strong>AWS Command Line Interface (AWS CLI)</strong> — Provides commands for a broad set of AWS services, including Amazon VPC, and is supported on Windows, Mac, and Linux. For more information, see <a href="https://aws.amazon.com/cli/" target="_blank">AWS Command Line Interface</a>.</li>
+            <li><strong>AWS SDKs</strong> — Provides language-specific APIs and takes care of many of the connection details, such as calculating signatures, handling request retries, and error handling. For more information, see <a href="https://aws.amazon.com/tools/" target="_blank">AWS SDKs</a>.</li>
+            <li><strong>Query API</strong> — Provides low-level API actions that you call using HTTPS requests. Using the Query API is the most direct way to access Amazon VPC, but it requires that your application handle low-level details such as generating the hash to sign the request, and error handling. For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/query-api.html" target="_blank">Amazon VPC actions in the Amazon EC2 API Reference</a>.</li>
+        </ul>
+    </section>
+
+  
+</body>
+</html>

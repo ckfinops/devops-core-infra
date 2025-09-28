@@ -1,0 +1,30 @@
+/* offer.component.css */
+.subheader {
+  text-align: center;
+  /* padding: 10px; */
+  background-color: #172342;
+  color: white !important;
+  padding-top: 10px;
+  padding-bottom: 8px;
+}
+
+.subheader h5 {
+  display: inline-block;
+  margin-right: 10px; /* Adjust the margin to your preference */
+}
+
+.countdown {
+  display: inline-block;
+  font-size: 15px;
+  color: #ff0000;
+}
+
+.grab-now-link {
+  display: inline-block;
+  padding: 5px 12px;
+  background-color: #FF9900; /* Green color, you can adjust it */
+  color: white !important;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+}

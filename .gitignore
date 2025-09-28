@@ -2,6 +2,8 @@
 .terraform/
 .terraform*
 
+.angular*
+
 # .tfstate files
 *.tfstate
 *.tfstate.*
@@ -36,3 +38,28 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# Ignore Terraform plan files
+*.tfplan
+
+# Ignore backup files
+*.bak
+*.backup
+
+# Ignore local credentials and sensitive files
+*.pem
+*.key
+*.crt
+*.env
+
+# Ignore VSCode and OS-specific files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+
+# Ignore Python cache (if any scripts are used)
+__pycache__/
+*.pyc

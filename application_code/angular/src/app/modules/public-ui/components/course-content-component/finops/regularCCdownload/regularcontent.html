@@ -1,0 +1,73 @@
+<div style="    display: flex;
+    flex-direction: row;
+    justify-content: space-between;">
+    <h1>Get Skilled</h1>
+    <!-- <button (click)="closeDialog()">Close</button> -->
+    <mat-icon class="close-button" (click)="closeDialog()" matTooltip="close">close</mat-icon>
+</div>
+<div class="form">
+        <form [formGroup]="registrationForm" >
+            <div class="form-container">
+                <mat-form-field appearance="fill">
+                    <mat-label  for="name">Name:</mat-label>
+                    <input matInput type="text" id="name" name="name" [formControl]="name" pattern="[a-zA-Z ]+">
+                    <mat-error *ngIf="name.invalid && !name.hasError('required')">
+                        Name should only contain letters and spaces
+                    </mat-error>
+                    <mat-icon-button *ngIf="name.value" matSuffix aria-label="Clear" (click)="name.setValue('')">
+                        <mat-icon>close</mat-icon>
+                    </mat-icon-button>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label for="email">Email:</mat-label>
+                    <input matInput type="email" id="email" name="email" [formControl]="email">
+                    <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="email.hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                    <mat-icon-button *ngIf="email.value" matSuffix aria-label="Clear" (click)="email.setValue('')">
+                        <mat-icon>close</mat-icon>
+                    </mat-icon-button>
+                </mat-form-field>
+                
+                    <mat-form-field appearance="fill">
+                        <mat-label for="phone">Phone Number:</mat-label>
+                        <input matInput type="tel" id="phoneNo" name="phone" [formControl]="phone" maxlength="10" pattern="[0-9]*" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                        <mat-error *ngIf="phone.invalid && !phone.hasError('required')">
+                            Phone number must be 10 digits
+                        </mat-error>
+                        <mat-icon-button *ngIf="phone.value" matSuffix aria-label="Clear" (click)="phone.setValue('')">
+                            <mat-icon>close</mat-icon>
+                        </mat-icon-button>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label el for="experience">Experience Level:</mat-label>
+                        <mat-select id="experience" name="experience" [formControl]="experience">
+                            <mat-option value="Fresher">Fresher</mat-option>
+                            <mat-option value="1-3 years">1-3 years</mat-option>
+                            <mat-option value="3-5 years">3-5 years</mat-option>
+                            <mat-option value="5-8 years">5-8 years</mat-option>
+                            <mat-option value="8+ years">8+ years</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                <mat-form-field appearance="fill" class="course_interest">
+                <mat-label for="course-interest">Course Interested:</mat-label>
+                    <textarea matInput id="course-interest" name="course-interest" rows="2" cols="30" formControlName="courseInterest"></textarea>
+                    <mat-icon-button *ngIf="courseInterest.value" matSuffix  aria-label="Clear" (click)="courseInterest.setValue('')">
+                        <mat-icon>close</mat-icon>
+                    </mat-icon-button>
+                </mat-form-field>
+            </div>
+            <!-- <div>
+                <button mat-raised-button type="submit" [disabled]="!registrationForm.valid" (click)="onSubmit()" [matTooltip]="registrationForm.invalid ? 'Please fill all mandatory fields' : 'You\'ll recieve browcher on Submit'">Request Callback</button>
+            </div> -->
+
+            <mat-dialog-actions style="display: flex; justify-content: center; gap: 10px;">
+                <button class="download_button" mat-raised-button style="margin-bottom: 30px;" type="submit" [disabled]="!registrationForm.valid" (click)="onSubmit()" [matTooltip]="registrationForm.invalid ? 'Please fill all mandatory fields' : 'You\'ll recieve browcher on Download'">Download</button>
+                <mat-spinner *ngIf="loading" style="margin-bottom: 30px;" diameter="30" ></mat-spinner>
+            </mat-dialog-actions>
+            
+        </form>
+    </div>

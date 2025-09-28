@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Routing Policies in Amazon Route 53</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        ol {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        strong {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div style="padding-top: 100px;"></div>
+    <h2>Routing Policies in Amazon Route 53</h2>
+
+    <p>When you create a record, you choose a routing policy, which determines how Amazon Route 53 responds to queries:</p>
+
+    <ol>
+        <li><strong>Simple Routing Policy:</strong>
+            <p>Simple routing lets you configure standard DNS records, with no special Route 53 routing such as weighted or latency. With simple routing, you typically route traffic to a single resource, for example, to a web server for your website.
+                You can use simple routing policy for records in a private hosted zone.
+                If you choose the simple routing policy in the Route 53 console, you can't create multiple records that have the same name and type, but you can specify multiple values in the same record, such as multiple IP addresses. (If you choose the simple routing policy for an alias record, you can specify only one AWS resource or one record in the current hosted zone.) If you specify multiple values in a record, Route 53 returns all values to the recursive resolver in random order, and the resolver returns the values to the client (such as a web browser) that submitted the DNS query.
+                </p>
+        </li>
+        <li><strong>Failover Routing Policy:</strong>
+            <p> Failover routing lets you route traffic to a resource when the resource is healthy or to a different resource when the first resource is unhealthy. The primary and secondary records can route traffic to anything from an Amazon S3 bucket that is configured as a website to a complex tree of records.
+                You can use failover routing policy for records in a private hosted zone.
+                </p>
+        </li>
+        <li><strong>Geolocation Routing Policy:</strong>
+            <p> Geolocation routing lets you choose the resources that serve your traffic based on the geographic location of your users, meaning the location that DNS queries originate from. For example, you might want all queries from Europe to be routed to an Elastic Load Balancing load balancer in the Frankfurt Region.
+                You can use geolocation routing for records in both public and private hosted zones.
+                If the DNS query originates from an on-premises part of a hybrid network, it will be considered as having originated from the AWS Region that the VPC is located in.
+                </p>
+        </li>
+        <li><strong>Geoproximity Routing Policy:</strong>
+            <p>Geoproximity routing lets Amazon Route 53 route traffic to your resources based on the geographic location of your users and your resources. You can also optionally choose to route more traffic or less traffic to a given resource by specifying a value, known as a bias. A bias expands or shrinks the size of the geographic region from which traffic is routed to a resource.
+                To use geoproximity routing, you must use Route 53 traffic flow. You create geoproximity rules for your resources and specify one of the following values for each rule:
+            </p>
+                <p>• If you're using AWS resources, specify the AWS Region or Local Zone that you created the resource in.</p>
+                <p>• If you're using non-AWS resources, specify the latitude and longitude of the resource.</p>
+        </li>
+        <li><strong>Latency Routing Policy:</strong>
+            <p>If your application is hosted in multiple AWS Regions, you can improve performance for your users by serving their requests from the AWS Region that provides the lowest latency.</p>
+            <p>Note: Data about the latency between users and your resources is based entirely on traffic between users and AWS data centers. If you aren't using resources in an AWS Region, the actual latency between your users and your resources can vary significantly from AWS latency data. This is true even if your resources are located in the same city as an AWS Region.</p>
+            <p>For example, suppose you have Elastic Load Balancing load balancers in the US West (Oregon) Region and in the Asia Pacific (Singapore) Region. You create a latency record for each load balancer. Here's what happens when a user in London enters the name of your domain in a browser:</p>
+                <p>•  DNS routes the query to a Route 53 name server.</p>
+                <p>•  Route 53 refers to its data on latency between London and the Singapore Region and between London and the Oregon Region.</p>
+                <p>•  If latency is lower between the London and Oregon Regions, Route 53 responds to the query with the IP address for the Oregon load balancer. If latency is lower between London and the Singapore Region, Route 53 responds with the IP address for the Singapore load balancer.</p>
+        </li>
+        <li><strong>IP-based Routing Policy:</strong>
+            <p>With IP-based routing in Amazon Route 53, you can fine-tune your DNS routing by using your understanding of your network, applications, and clients to make the best DNS routing decisions for your end users.</p>
+            <p>Some common use cases for IP-based routing are the following:</p>
+            <ul>
+                <p>• You want to route end users from certain ISPs to specific endpoints so you can optimize network transit costs or performance.</p>
+                <p>• You want to add overrides to existing Route 53 routing types, such as geolocation routing, based on your knowledge of your clients' physical locations.</p>
+            </ul>
+        </li>
+        <li><strong>Multivalue Answer Routing Policy:</strong>
+            <p>Multivalue answer routing lets you configure Amazon Route 53 to return multiple values, such as IP addresses for your web servers, in response to DNS queries. You can use multivalue answer routing policy for records in a private hosted zone.</p>
+            <p>Note the following:</p>
+            <ul>
+                <p>• If you associate a health check with a multivalue answer record, Route 53 responds to DNS queries with the corresponding IP address only when the health check is healthy.</p>
+                <p>• If you don't associate a health check with a multivalue answer record, Route 53 always considers the record to be healthy.</p>
+                <p>• If you have eight or fewer healthy records, Route 53 responds to all DNS queries with all the healthy records.</p>
+                <p>• When all records are unhealthy, Route 53 responds to DNS queries with up to eight unhealthy records.</p>
+            </ul>
+        </li>
+        <li><strong>Weighted Routing Policy:</strong>
+            <p>Weighted routing lets you associate multiple resources with a single domain name (example.com) or subdomain name (acme.example.com) and choose how much traffic is routed to each resource. This can be useful for a variety of purposes, including load balancing and testing new versions of software.</p>
+            <p>To configure weighted routing, you create records that have the same name and type for each of your resources. You assign each record a relative weight that corresponds with how much traffic you want to send to each resource. Amazon Route 53 sends traffic to a resource based on the weight that you assign to the record as a proportion of the total weight for all records in the group.</p>
+        </li>
+    </ol>
+    <img src="assets/blogs/route53.png" alt="route53.png" width="300" height="80">
+</body>
+</html>

@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Colors */
+    --color-background: #FAFBFC; /* gray-50 */
+    --color-foreground: #111827; /* gray-900 */
+    --color-border: #E5E7EB; /* gray-200 */
+    --color-input: #FFFFFF; /* white */
+    --color-ring: #1E40AF; /* blue-800 */
+    
+    /* Card Colors */
+    --color-card: #FFFFFF; /* white */
+    --color-card-foreground: #111827; /* gray-900 */
+    
+    /* Popover Colors */
+    --color-popover: #FFFFFF; /* white */
+    --color-popover-foreground: #111827; /* gray-900 */
+    
+    /* Muted Colors */
+    --color-muted: #F3F4F6; /* gray-100 */
+    --color-muted-foreground: #6B7280; /* gray-500 */
+    
+    /* Primary Colors */
+    --color-primary: #1E40AF; /* blue-800 */
+    --color-primary-foreground: #FFFFFF; /* white */
+    
+    /* Secondary Colors */
+    --color-secondary: #6366F1; /* indigo-500 */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    
+    /* Accent Colors */
+    --color-accent: #F59E0B; /* amber-500 */
+    --color-accent-foreground: #111827; /* gray-900 */
+    
+    /* Success Colors */
+    --color-success: #059669; /* emerald-600 */
+    --color-success-foreground: #FFFFFF; /* white */
+    
+    /* Warning Colors */
+    --color-warning: #D97706; /* amber-600 */
+    --color-warning-foreground: #FFFFFF; /* white */
+    
+    /* Error/Destructive Colors */
+    --color-error: #DC2626; /* red-600 */
+    --color-error-foreground: #FFFFFF; /* white */
+    --color-destructive: #DC2626; /* red-600 */
+    --color-destructive-foreground: #FFFFFF; /* white */
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .font-data {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Laptop optimizations for 1024px width */
+@layer utilities {
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .laptop-compact {
+      @apply text-sm;
+    }
+    
+    .laptop-spacing {
+      @apply p-3;
+    }
+    
+    .laptop-grid {
+      @apply grid-cols-2;
+    }
+    
+    .laptop-sidebar {
+      @apply w-52;
+    }
+    
+    .laptop-main {
+      @apply ml-52;
+    }
+  }
+  
+  /* Responsive text sizing for laptops */
+  .responsive-text-lg {
+    @apply text-base lg:text-lg xl:text-xl;
+  }
+  
+  .responsive-text-xl {
+    @apply text-lg lg:text-xl xl:text-2xl;
+  }
+  
+  .responsive-text-2xl {
+    @apply text-xl lg:text-2xl xl:text-3xl;
+  }
+  
+  /* Responsive spacing utilities */
+  .responsive-p {
+    @apply p-3 lg:p-4 xl:p-6;
+  }
+  
+  .responsive-px {
+    @apply px-3 lg:px-4 xl:px-6;
+  }
+  
+  .responsive-py {
+    @apply py-3 lg:py-4 xl:py-6;
+  }
+  
+  .responsive-m {
+    @apply m-3 lg:m-4 xl:m-6;
+  }
+  
+  .responsive-mx {
+    @apply mx-3 lg:mx-4 xl:mx-6;
+  }
+  
+  .responsive-my {
+    @apply my-3 lg:my-4 xl:my-6;
+  }
+  
+  .responsive-gap {
+    @apply gap-3 lg:gap-4 xl:gap-6;
+  }
+}

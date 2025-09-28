@@ -1,0 +1,115 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+/>
+<div class="nav-bar">
+  <div class="menu-container">
+    <ul class="menu-items">
+      <li
+        class="menu-item"
+        (mouseenter)="showSubMenu('Home')"
+        (click)="menuClick('Home')"
+        (mouseleave)="hideSubMenu('Home', $event)"
+      >
+        <i
+          class="menu-icon fas fa-home"
+          [ngClass]="{ highlighted: clickedMenu === 'Home' }"
+        ></i>
+      </li>
+      <li
+        class="menu-item"
+        (mouseenter)="showSubMenu('Profile')"
+        (click)="menuClick('Profile')"
+        (mouseleave)="hideSubMenu('Profile', $event)"
+      >
+        <i
+          class="menu-icon fas fa-user"
+          [ngClass]="{ highlighted: clickedMenu === 'Profile' }"
+        ></i>
+      </li>
+      <li
+        class="menu-item"
+        (mouseenter)="showSubMenu('Settings')"
+        (click)="menuClick('Settings')"
+        (mouseleave)="hideSubMenu('Settings', $event)"
+      >
+        <i
+          class="menu-icon fas fa-cog"
+          [ngClass]="{ highlighted: clickedMenu === 'Settings' }"
+        ></i>
+      </li>
+      <!-- Add more menu items with icons as needed -->
+    </ul>
+  </div>
+
+  <div
+    class="sub-menu-card Home"
+    *ngIf="activeSubMenu === 'Home'"
+    (mouseleave)="hideSubMenu('Home', $event, true)"
+  >
+    <div class="aTV Home" style="top: 22px; left: -6px"></div>
+    <ul class="sub-menu">
+      <li class="sub-menu-heading"><b>Home</b></li>
+      <li class="sub-menu-item">Sub-Feature 1 for Home</li>
+      <li class="sub-menu-item">Sub-Feature 2 for Home</li>
+      <li class="sub-menu-item">Sub-Feature 3 for Home</li>
+    </ul>
+  </div>
+
+  <div
+    class="sub-menu-card Profile"
+    *ngIf="activeSubMenu === 'Profile'"
+    (mouseleave)="hideSubMenu('Profile', $event, true)"
+  >
+    <div class="aTV Profile" style="top: 76px; left: -6px"></div>
+    <ul class="sub-menu">
+      <li class="sub-menu-heading"><b>Profile</b></li>
+      <li class="sub-menu-item">Sub-Feature A for Profile</li>
+      <li class="sub-menu-item">Sub-Feature B for Profile</li>
+      <li class="sub-menu-item">Sub-Feature C for Profile</li>
+    </ul>
+  </div>
+
+  <div
+    class="sub-menu-card Settings"
+    *ngIf="activeSubMenu === 'Settings'"
+    (mouseleave)="hideSubMenu('Settings', $event, true)"
+  >
+    <div class="aTV Settings" style="top: 130px; left: -6px"></div>
+    <ul class="sub-menu">
+      <li class="sub-menu-heading"><b>Settings</b></li>
+      <li class="sub-menu-item">Sub-Setting 1 for Settings</li>
+      <li class="sub-menu-item">Sub-Setting 2 for Settings</li>
+      <li class="sub-menu-item">Sub-Setting 3 for Settings</li>
+    </ul>
+  </div>
+</div>
+
+<div class="main-content" [ngClass]="{ expanded: expandMenu }">
+  <h1>
+    Main Content Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+    Aliquid ab mollitia asperiores sapiente odio tenetur a natus, quia
+    doloremque itaque similique consectetur! Aliquam corporis totam non iste
+    facilis eos alias. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    Laudantium sed vel quasi perspiciatis ratione provident culpa vitae eius
+    fugiat nobis dolorum tempora quis harum earum porro facilis odit, ducimus
+    quae.
+  </h1>
+  <!-- ... Your main content content ... -->
+</div>
+
+<div class="header-bar">
+  <div class="menu-header">
+    <i
+      class="menu-icon fas"
+      [ngClass]="{ 'fa-bars': !expandMenu, 'fa-times': expandMenu }"
+      (click)="toggleMenu()"
+    ></i>
+  </div>
+  <div class="logo">
+    <img
+      src="https://www.veolia.com/themes/custom/veo_site/build/assets/images/temp/logo-sticky.png"
+      alt="Logo"
+    />
+  </div>
+</div>

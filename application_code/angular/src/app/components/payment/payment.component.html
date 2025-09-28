@@ -1,0 +1,228 @@
+<div class="payment-container">
+  <div class="payment-header">
+    <h1>Payment Details</h1>
+    <p class="subtitle">Secure payment information for Cloud Binary</p>
+  </div>
+
+  <div class="payment-grid">
+    <!-- Bank Details Card -->
+    <div class="payment-card bank-details">
+      <div class="card-header">
+        <i class="fas fa-university"></i>
+        <h2>Bank Account Details</h2>
+      </div>
+      <div class="card-content">
+        <div class="detail-item">
+          <span class="label">Account Number</span>
+          <span class="value">{{bankDetails.accountNumber}}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Account Name</span>
+          <span class="value">{{bankDetails.accountName}}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Bank Name</span>
+          <span class="value">{{bankDetails.bankName}}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">IFSC Code</span>
+          <span class="value">{{bankDetails.ifscCode}}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Branch</span>
+          <span class="value">{{bankDetails.branch}}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Address</span>
+          <span class="value">{{bankDetails.address}}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course Details Card -->
+    <div class="payment-card course-details">
+      <div class="card-header">
+        <i class="fas fa-graduation-cap"></i>
+        <h2>Course Information</h2>
+      </div>
+      <div class="card-content">
+        <div class="detail-item">
+          <span class="label">AWS DevOps</span>
+          <span class="value highlight">14,999 INR | 90 Days</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Azure DevOps</span>
+          <span class="value highlight">14,999 INR | 90 Days</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">GitOps</span>
+          <span class="value highlight">19,999 INR | 30 Days</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">FinOps</span>
+          <span class="value highlight">19,999 INR | 30 Days</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Schedule</span>
+          <span class="value">Monday To Friday</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Session Timings:</span>
+          <span class="value">8:00 - 09:00 AM IST </span>
+          <span class="value">9:00 - 10:00 AM IST </span>
+          <span class="value">10:00 - 11:00 AM IST </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Company Details Card -->
+    <div class="payment-card company-details">
+      <div class="card-header">
+        <i class="fas fa-building"></i>
+        <h2>Company Information</h2>
+      </div>
+      <div class="card-content">
+        <div class="detail-item">
+          <span class="label">Registered Address</span>
+          <span class="value">{{companyDetails.address}}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Phone</span>
+          <span class="value">{{companyDetails.phone}}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Email</span>
+          <span class="value">{{companyDetails.email}}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Website</span>
+          <span class="value">{{companyDetails.website}}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trainer Contact Card -->
+    <div class="payment-card trainer-details">
+      <div class="card-header">
+        <i class="fas fa-user-tie"></i>
+        <h2>Trainer Contact</h2>
+      </div>
+      <div class="card-content">
+        <div class="detail-item">
+          <span class="label">Name</span>
+          <span class="value">{{trainerDetails.name}}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Phone</span>
+          <span class="value">{{trainerDetails.phone}}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Role</span>
+          <span class="value">Point of Contact for </span>
+          <span class="value">- Course Queries</span>
+          <span class="value">- Running Notes</span>
+          <span class="value">- Session Videos</span>
+          <span class="value">- Course Duration</span>
+          <span class="value">- Course Fee</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Important Notice Card -->
+    <div class="payment-card notice-card">
+      <div class="card-header warning">
+        <i class="fas fa-exclamation-triangle"></i>
+        <h2>Important Notice</h2>
+      </div>
+      <div class="card-content">
+        <div class="notice-item">
+          <i class="fas fa-shield-alt"></i>
+          <p>We do not have any telecallers. Please do not entertain calls from unknown numbers.</p>
+        </div>
+        <div class="notice-item">
+          <i class="fas fa-phone-slash"></i>
+          <p>Our official contact number is +91 9392743006</p>
+        </div>
+        <div class="notice-item">
+          <i class="fas fa-lock"></i>
+          <p>Please be cautious of online scams and avoid sharing payment details with unknown sources.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trainer Availability Card -->
+    <div class="payment-card availability-card">
+      <div class="card-header">
+        <i class="fas fa-clock"></i>
+        <h2>Trainer Availability</h2>
+      </div>
+      <div class="card-content">
+        <div class="availability-item">
+          <i class="fas fa-phone-alt"></i>
+          <div class="availability-info">
+            <p>Available for calls</p>
+            <span class="time-slot">11:00 AM - 2:00 PM IST</span>
+          </div>
+        </div>
+        <br>
+        <div class="availability-item">
+          <i class="fas fa-phone-alt"></i>
+          <div class="availability-info">
+            <p>Available for WhatsApp</p>
+            <span class="time-slot">09:00 AM - 6:00 PM IST</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Scanner Section -->
+  <div class="scanner-section">
+    <div class="scanner-card">
+      <div class="scanner-header">
+        <i class="fas fa-qrcode"></i>
+        <h2>Scan to Pay</h2>
+      </div>
+      <div class="scanner-content">
+        <div class="scanner-image">
+          <img src="assets/QRCode.png" alt="Payment QR Code" />
+        </div>
+        <div class="scanner-info">
+          <p>Scan the QR code using your bank's mobile app to make the payment</p>
+          <div class="scanner-tips">
+            <div class="tip-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Ensure you're using your bank's official app</span>
+            </div>
+            <div class="tip-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Banking Name : <b>Spandana Pindi or Cloud Binary</b></span>
+            </div>
+            <div class="tip-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Verify the amount before confirming</span>
+            </div>
+            <div class="tip-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Keep the payment receipt for reference</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Registration Certificate Download -->
+  <!-- <div class="download-section">
+    <div class="download-card">
+      <i class="fas fa-file-pdf"></i>
+      <div class="download-content">
+        <h3>Company Registration Certificate</h3>
+        <p>View our official registration document</p>
+      </div>
+      <a href="assets/Cloudbinary_Firm_Registration_Certificate.pdf" target="_blank" class="download-button">
+        <i class="fas fa-external-link-alt"></i> View Certificate
+      </a>
+    </div>
+  </div> -->
+</div> 

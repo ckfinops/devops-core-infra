@@ -1,0 +1,240 @@
+
+ /* Styles for desktop view */
+ .desktop-image {
+  display: block;  /* Display for desktop */
+}
+
+/* Styles for mobile view */
+.mobile-image {
+  display: none;   /* Hide for mobile */
+}
+
+/* Media query for screens with a maximum width of 768px (typical for mobile devices) */
+@media screen and (max-width: 768px) {
+  .desktop-image {
+      display: unset;  /* Hide for mobile */
+      padding-left: unset !important;
+  }
+  .mobile-image {
+      display: none;  /* Display for mobile */
+  }
+}
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+h2 {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 45px;
+  color: #172342;
+  /* color: #172342; */
+  /* font-size: xx-large; */
+  
+}
+@media only screen and (max-width: 600px) {
+  h2 {
+    font-size: 24px; /* Adjust the font size for mobile view */
+  }
+}
+
+.outer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 0px;
+}
+
+.inner-grid {
+  flex: 33.33%;
+  max-width: 33.33%;
+  padding: 0 0px;
+  
+}
+
+.inner-grid img {
+  margin-top: -90px;
+  width: 100%;
+  padding: 100px;
+  
+}
+
+@media screen and (max-width: 800px) {
+  .inner-grid {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .inner-grid {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+
+
+
+
+.keycol.keyhome h4 {
+  margin: 0 0 20px;
+}
+
+
+
+
+
+
+/* .keyhome {
+  background: #fff;
+  padding: 60px 0 30px;
+}
+
+.keycol.keyhome h4 {
+  margin: 0 0 70px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 500;
+} */
+/*
+.iconkey1,
+.iconkey2,
+.iconkey3,
+.iconkey4 {
+  height: 77px;
+  width: 77px;
+  line-height: 77px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.iconkey1 {
+  background: #ffffff 0 0 no-repeat padding-box;
+  box-shadow: 0 3px 30px #a2cdeef4;
+}
+.iconkey2 {
+  background: #ffffff 0 0 no-repeat padding-box;
+  box-shadow: 0 3px 30px #a2cdeef4;
+}
+.iconkey3 {
+  background: #ffffff 0 0 no-repeat padding-box;
+  box-shadow: 0 3px 30px #a2cdeef4;
+}
+.iconkey4 {
+  background: #ffffff 0 0 no-repeat padding-box;
+  box-shadow: 0 3px 30px #a2cdeef4;
+} */
+
+/* .keycol.keyhome{
+  background-image: url(assets/key-features/kf.svg);
+  width: 100vw;
+  background-size: 100%;
+  max-width: 1257px;
+  background-repeat: no-repeat;
+  background-position: center;
+} */
+
+/* .heading-1,
+.keycol h5 {
+  text-transform: capitalize;
+}
+
+.keycol h5 {
+  margin: 30px 0 10px;
+  font-weight: 500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  color: #343433;
+}
+
+.keycol p {
+  font-size: 14px;
+  margin: 0 70px 0 0;
+}
+
+.pad_t50 {
+  padding-top: 50px;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .keycol {
+    text-align: center;
+    padding: 50px 0 50px;
+  }
+  .keycol p {
+    margin: 0 0 30px 0;
+  }
+  .keyicon {
+    text-align: -webkit-center;
+  }
+  .pad_t50 {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 767) {
+  body {
+    font-size: 14px;
+  }
+} */
+
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.slider-container {
+  overflow: hidden;
+  width: px;
+  height: 400px;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  width: 1200px; /* 360px * 3 images */
+  animation: slide 20s linear infinite; /* Adjust animation duration as needed */
+}
+
+.slide {
+  width: 360px;
+  height: 400px;
+  margin-right: 20px; /* Add margin to create a gap between images */
+}
+
+/* Remove margin from the last image to avoid extra space */
+.slide:last-child {
+  margin-right: 0;
+}
+
+
+@keyframes slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+@media (max-width: 600px) {
+  .Periodic-Table {
+    display: none;
+  }
+}
